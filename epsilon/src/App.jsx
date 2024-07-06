@@ -8,7 +8,6 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
-import Autocomplete from '@mui/joy/Autocomplete';
 import './App.css';
 
 function ModeToggle() {
@@ -24,6 +23,7 @@ function ModeToggle() {
   }
 
 }
+
 
 export default function LoginFinal() {
   return (
@@ -49,14 +49,9 @@ export default function LoginFinal() {
           <Typography level="h4" component="h1">
             <b>Welcome!</b>
           </Typography>
-          <Typography level="body-sm">Sign in to continue.</Typography>
+          <Typography level="body-sm">Log in to continue.</Typography>
         </div>
         <FormControl>
-          <FormLabel className="role">Role</FormLabel>
-          <Autocomplete
-            placeholder="Role"
-            options={["User", "Admin"]}
-          />
           <FormLabel className="email">Email</FormLabel>
           <Input
             // html input attribute
@@ -79,7 +74,7 @@ export default function LoginFinal() {
         <Link component={RouterLink} to="/Signup">
           Sign Up
         </Link>
-        </Typography> 
+        </Typography>
       </Sheet>
     </main>
   );
