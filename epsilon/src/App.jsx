@@ -7,6 +7,7 @@ import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import Link from '@mui/joy/Link';
+import Autocomplete from '@mui/joy/Autocomplete';
 import './App.css';
 
 function ModeToggle() {
@@ -50,16 +51,21 @@ export default function LoginFinal() {
           <Typography level="body-sm">Sign in to continue.</Typography>
         </div>
         <FormControl>
-          <FormLabel>Email</FormLabel>
+          <FormLabel id="role">Role</FormLabel>
+          <Autocomplete
+            placeholder="Combo box"
+            options={["User", "Admin"]}
+          />
+          <FormLabel id="email">Email</FormLabel>
           <Input
             // html input attribute
             name="email"
             type="email"
-            placeholder="johndoe@email.com"
+            placeholder="student@ahduni.edu.in"
           />
         </FormControl>
         <FormControl>
-          <FormLabel>Password</FormLabel>
+          <FormLabel id="password">Password</FormLabel>
           <Input
             // html input attribute
             name="password"
