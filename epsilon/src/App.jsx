@@ -52,12 +52,12 @@ export default function LoginFinal() {
           <Typography level="body-sm">Sign in to continue.</Typography>
         </div>
         <FormControl>
-          <FormLabel id="role-1">Role</FormLabel>
+          <FormLabel className="role">Role</FormLabel>
           <Autocomplete
             placeholder="Role"
             options={["User", "Admin"]}
           />
-          <FormLabel id="email">Email</FormLabel>
+          <FormLabel className="email">Email</FormLabel>
           <Input
             // html input attribute
             name="email"
@@ -66,7 +66,7 @@ export default function LoginFinal() {
           />
         </FormControl>
         <FormControl>
-          <FormLabel id="password">Password</FormLabel>
+          <FormLabel className="password">Password</FormLabel>
           <Input
             // html input attribute
             name="password"
