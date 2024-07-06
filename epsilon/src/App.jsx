@@ -21,7 +21,6 @@ function ModeToggle() {
   if (!mounted) {
     return <Button variant="soft">Change mode</Button>;
   }
-
 }
 
 
