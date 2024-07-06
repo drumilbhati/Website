@@ -6,7 +6,6 @@ import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
-import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
 import Autocomplete from '@mui/joy/Autocomplete';
 import './App.css';
@@ -49,12 +48,12 @@ export default function LoginFinal() {
           <Typography level="h4" component="h1">
             <b>Welcome!</b>
           </Typography>
-          <Typography level="body-sm">Sign in to continue.</Typography>
+          <Typography level="body-sm">Sign up to continue.</Typography>
         </div>
         <FormControl>
-          <FormLabel id="role-1">Role</FormLabel>
+          <FormLabel id="role">Role</FormLabel>
           <Autocomplete
-            placeholder="Role"
+            placeholder="Combo box"
             options={["User", "Admin"]}
           />
           <FormLabel id="email">Email</FormLabel>
@@ -75,11 +74,13 @@ export default function LoginFinal() {
           />
         </FormControl>
         <Button sx={{ mt: 1 /* margin top */ }}>Log in</Button>
-        <Typography>
-        <Link component={RouterLink} href="/Signup">
-          Sign Up
-        </Link>
-        </Typography> 
+        <Typography
+          endDecorator={<Link to="./App.jsx">Sign in</Link>}
+          fontSize="sm"
+          sx={{ alignSelf: 'center' }}
+        >
+          Already have an account?
+        </Typography>
       </Sheet>
     </main>
   );
