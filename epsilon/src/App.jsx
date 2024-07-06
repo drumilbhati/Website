@@ -76,7 +76,7 @@ export default function LoginFinal() {
         </FormControl>
         <Button sx={{ mt: 1 /* margin top */ }}>Log in</Button>
         <Typography>
-        <Link component={RouterLink} href="/Signup">
+        <Link component={RouterLink} to="/Signup">
           Sign Up
         </Link>
         </Typography> 
