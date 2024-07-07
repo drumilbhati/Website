@@ -56,6 +56,9 @@ const GTA5EpsilonMap = () => {
         <Marker position={[250, 250]}>
           <Popup>Test Marker</Popup>
         </Marker>
+        <Marker position ={[500, 500]}>
+          <Popup>Loc1</Popup>
+        </Marker>
       </MapContainer>
     </div>
   );
