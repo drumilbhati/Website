@@ -68,7 +68,10 @@ export default function LoginFinal() {
             placeholder="password"
           />
         </FormControl>
-        <Button sx={{ mt: 1 /* margin top */ }}>Log in</Button>
+        <Button sx={{ mt: 1 /* margin top */ }} 
+        onClick={() => {
+          window.location.href = '/Map';
+        }}>Log in</Button>
         <Typography>
         <Link component={RouterLink} to="/Signup">
           Sign Up
