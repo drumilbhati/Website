@@ -68,6 +68,7 @@ export default function LoginFinal() {
             placeholder="password"
           />
         </FormControl>
+        {/* Log in button */}
         <Button sx={{ mt: 1 /* margin top */ }}
                 onClick={() => {
                     window.location.href = "/Map";
