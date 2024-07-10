@@ -10,6 +10,41 @@ import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
 import './App.css';
 
+
+// src/App.js
+import React from 'react';
+import HomePage from './components/HomePage';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <HomePage />
+    </div>
+  );
+}
+
+export default App;
+
+/* src/App.css */
+.App {
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+<button onClick={() => {window.location.href = "/HomePage";}}>HomePage</button>     
+
+{/* Home page*/}
+
+
+
+
+
+
 function ModeToggle() {
   const [mounted, setMounted] = React.useState(false);
 
@@ -75,6 +110,14 @@ export default function LoginFinal() {
                 }}>
           Log in
         </Button>
+        
+        {/*Membership Tiers */}
+        <Button onClick={() => {window.location.href = "/MemTiers";}}
+         sx={{ mt: 2 /* margin top */ }}>Tiers </Button>     
+
+             
+
+        
         <Typography>
         <Link component={RouterLink} to="/Signup">
           Sign Up
