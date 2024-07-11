@@ -68,9 +68,9 @@ export default function LoginFinal() {
             placeholder="password"
           />
         </FormControl>
-        <Button sx={{ mt: 1 /* margin top */ }}>Log in</Button>
+        <Button sx={{ mt: 1 /* margin top */ }}>Sign Up</Button>
         <Typography>
-          <Link component={RouterLink} to="/">
+          <Link component={RouterLink} to="/login">
             Already have an account?
           </Link>
         </Typography>
