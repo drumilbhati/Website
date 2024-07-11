@@ -6,8 +6,8 @@ import FormControl from '@mui/joy/FormControl';
 import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
-import Link from '@mui/joy/Link';
 import { Link as RouterLink } from 'react-router-dom';
+import Link from '@mui/joy/Link';
 import './App.css';
 
 function ModeToggle() {
@@ -21,10 +21,10 @@ function ModeToggle() {
   if (!mounted) {
     return <Button variant="soft">Change mode</Button>;
   }
-
 }
 
-export default function LoginFinal() {
+
+export default function Login() {
   return (
     <main>
       <ModeToggle />
@@ -48,7 +48,7 @@ export default function LoginFinal() {
           <Typography level="h4" component="h1">
             <b>Welcome!</b>
           </Typography>
-          <Typography level="body-sm">Sign up to continue.</Typography>
+          <Typography level="body-sm">Log in to continue.</Typography>
         </div>
         <FormControl>
           <FormLabel className="email">Email</FormLabel>
@@ -68,11 +68,17 @@ export default function LoginFinal() {
             placeholder="password"
           />
         </FormControl>
-        <Button sx={{ mt: 1 /* margin top */ }}>Sign Up</Button>
+        {/* Log in button */}
+        <Button sx={{ mt: 1 /* margin top */ }}
+                onClick={() => {
+                    window.location.href = "/Map";
+                }}>
+          Log in
+        </Button>
         <Typography>
-          <Link component={RouterLink} to="/">
-            Already have an account?
-          </Link>
+        <Link component={RouterLink} to="/Signup">
+          Sign Up
+        </Link>
         </Typography>
       </Sheet>
     </main>

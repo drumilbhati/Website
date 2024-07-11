@@ -1,7 +1,10 @@
-function MyButton() {
-    return (
-      <button>I'm a button</button>
-    );
-  }
-
-  MyButton();
+import './HomePage.css'
+export default function MemTiers() {
+  return (
+    <>
+      <div className="membership-tiers">
+        <h1>Select a Membership Tier</h1>
+      </div>
+    </>
+  );
+}

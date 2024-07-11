@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import Login from './Login.jsx'
 import Signup from './Signup.jsx'
 import HomePage from './HomePage.jsx'
 import Map from './Map.jsx'
+import MemTiers from './MemTiers.jsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -12,7 +13,11 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>
+    element: <HomePage/>
+  },
+  {
+    path: "/login",
+    element: <Login/>
   },
   {
     path:"/signup",
@@ -23,8 +28,8 @@ const router = createBrowserRouter([
     element: <Map/>
   },
   {
-    path: "/homepage",
-    element: <HomePage/>
+    path: "/membership-tiers",
+    element: <MemTiers/>
   }
 ]);
 
