@@ -1,45 +1,20 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import axios from 'axios'
+import mongoose from 'mongoose'
+import bodyParser from 'body-parser'
 
-dotenv.config();
+dotenv.config()
 
-const app = express();
+const app = express()
 
-const port = process.env.PORT || 4000;
+app.use(bodyParser.json())
 
-app.listen(port, () => console.log(`Server running on port ${port}`));
+const PORT = process.env.PORT || 5000
 
-axios.get('/api/products', (req, res) => {
-    
-    const products = [
-        {
-            id: 1,
-            name: 'Wooden table',
-            price: 300
-        },
-        {
-            id: 2,
-            name: 'Carpet',
-            price: 300
-        },
-        {
-            id: 3,
-            name: 'Chair',
-            price: 300
-        }
-    ]
-    
-    res.send(products);
-})
+const MONGODB = process.env.MONGO_URL
 
-axios.get('https://jsonplaceholder.typicode.com/todos/1', {
-    headers: {
-        'Accept': 'application/json'
-    }   
-}).then(response => {
-    console.log(response.data);
-}).catch(error => {
-    console.log(error);
-
-})
+mongoose.connect(MONGODB).then(() => {
+    console.log('Connected to MongoDB');
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+}).catch(err => console.log(err))
