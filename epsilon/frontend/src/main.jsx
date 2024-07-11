@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Signup from './Signup.jsx'
+import HomePage from './HomePage.jsx'
 import Map from './Map.jsx'
 import './index.css'
 import {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/map",
     element: <Map/>
+  },
+  {
+    path: "/homepage",
+    element: <HomePage/>
   }
 ]);
 

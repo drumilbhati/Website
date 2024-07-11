@@ -18,12 +18,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "leaflet": "^1.9.4",
-<<<<<<< HEAD
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.0",
-=======
-    "node": "^18.20.4",
->>>>>>> d5ba82053f45e434b28ffd231e17aca70614e474
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-leaflet": "^4.2.1",
