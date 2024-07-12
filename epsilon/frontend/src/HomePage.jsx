@@ -13,7 +13,7 @@ import { Sun, Moon, Eye } from 'lucide-react';
 
 const ColorSchemeToggle = () => {
   const { mode, setMode } = useColorScheme();
-  
+
 };
 
 const EpsilonHomepage = () => {
@@ -30,7 +30,6 @@ const EpsilonHomepage = () => {
     <CssVarsProvider>
       <Sheet
         sx={{
-          padding: 0,
           minHeight: '100vh',
         }}
       >
@@ -42,7 +41,7 @@ const EpsilonHomepage = () => {
             alignItems: 'center',
           }}
         >
-          <Typography level="h1" component="h1">
+          <Typography level="h1" component="h1" sx ={{ padding: 5 }}>
             Epsilon Program
           </Typography>
           <List orientation="horizontal" sx={{ gap: 2 , padding: 5}}>
