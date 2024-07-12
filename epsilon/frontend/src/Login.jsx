@@ -18,9 +18,6 @@ function ModeToggle() {
   React.useEffect(() => {
     setMounted(true);
   }, []);
-  if (!mounted) {
-    return <Button variant="soft">Change mode</Button>;
-  }
 }
 
 
@@ -51,12 +48,12 @@ export default function Login() {
           <Typography level="body-sm">Log in to continue.</Typography>
         </div>
         <FormControl>
-          <FormLabel className="email">Email</FormLabel>
+          <FormLabel className="username">Username</FormLabel>
           <Input
             // html input attribute
-            name="email"
-            type="email"
-            placeholder="student@ahduni.edu.in"
+            name="username"
+            type="username"
+            placeholder="username"
           />
         </FormControl>
         <FormControl>
@@ -71,7 +68,10 @@ export default function Login() {
         {/* Log in button */}
         <Button sx={{ mt: 1 /* margin top */ }}
                 onClick={() => {
-                    window.location.href = "/Map";
+                    setTimeout(() => {
+                      window.location.href = "/Map";
+                    }, 1000);
+                    
                 }}>
           Log in
         </Button>

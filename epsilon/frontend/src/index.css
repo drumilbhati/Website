@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: #72b2fb;
-  background-color: #f9f9f9;
+  background-color: white;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,6 +28,7 @@ body {
   place-items: left;
   min-width: 320px;
   min-height: 100vh;
+  background-color: white;
 }
 
 h1 {
