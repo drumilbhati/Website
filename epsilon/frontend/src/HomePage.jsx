@@ -14,15 +14,6 @@ import { Sun, Moon, Eye } from 'lucide-react';
 const ColorSchemeToggle = () => {
   const { mode, setMode } = useColorScheme();
   
-  return (
-    <Button
-      variant="outlined"
-      color="neutral"
-      onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-    >
-      {mode === 'light' ? <Sun /> : <Moon />}
-    </Button>
-  );
 };
 
 const EpsilonHomepage = () => {
