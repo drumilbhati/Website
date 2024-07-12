@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
+import { CssVarsProvider } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
 import Typography from '@mui/joy/Typography';
 import Button from '@mui/joy/Button';
@@ -10,11 +10,6 @@ import Grid from '@mui/joy/Grid';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import { Sun, Moon, Eye } from 'lucide-react';
-
-const ColorSchemeToggle = () => {
-  const { mode, setMode } = useColorScheme();
-
-};
 
 const EpsilonHomepage = () => {
   const [isEnlightened, setIsEnlightened] = useState(false);
@@ -53,9 +48,6 @@ const EpsilonHomepage = () => {
             </ListItem>
             <ListItem>
               <ListItemButton component="a" href="#join">Join Us</ListItemButton>
-            </ListItem>
-            <ListItem>
-              <ColorSchemeToggle />
             </ListItem>
           </List>
         </Sheet>
