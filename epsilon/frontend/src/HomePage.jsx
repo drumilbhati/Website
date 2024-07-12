@@ -10,19 +10,12 @@ import Grid from '@mui/joy/Grid';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import { Sun, Moon, Eye } from 'lucide-react';
+import './index.css';
+import './App.css';
 
 const ColorSchemeToggle = () => {
   const { mode, setMode } = useColorScheme();
-  
-  return (
-    <Button
-      variant="outlined"
-      color="neutral"
-      onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
-    >
-      {mode === 'light' ? <Sun /> : <Moon />}
-    </Button>
-  );
+
 };
 
 const EpsilonHomepage = () => {
@@ -37,15 +30,10 @@ const EpsilonHomepage = () => {
 
   return (
     <CssVarsProvider>
-      <Sheet
-        sx={{
-          padding: 0,
-          minHeight: '100vh',
-        }}
-      >
         <Sheet
           component="header"
           sx={{
+            padding: '10px',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -130,14 +118,12 @@ const EpsilonHomepage = () => {
           sx={{
             p: 2,
             textAlign: 'center',
-            backgroundColor: 'background.backdrop',
           }}
         >
           <Typography level="body-sm">
             © 2024 Epsilon Program. All rights reserved. Kifflom!
           </Typography>
         </Sheet>
-      </Sheet>
     </CssVarsProvider>
   );
 };
