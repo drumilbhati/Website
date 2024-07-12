@@ -116,7 +116,7 @@ const EpsilonHomepage = () => {
           }}
         >
           <Typography level="body-sm">
-            © 2024 Epsilon Program. All rights reserved. Kifflom!
+            © 2024 Epsilon Program.
           </Typography>
         </Sheet>
       </Sheet>
