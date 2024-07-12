@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+body {
+  color: #61dafbaa;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

@@ -1,4 +1,4 @@
-import './HomePage.css'
+import './index.css'
 export default function MemTiers() {
   return (
     <>
