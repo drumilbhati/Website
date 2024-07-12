@@ -69,9 +69,24 @@ button:focus-visible {
 }
 
 /* index.css */
+body {
+  background-color: #2c3e50; /* Dark background */
+  font-family: 'Arial', sans-serif;
+  color: #ecf0f1; /* Light text color */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .membership-tiers {
   text-align: center;
   padding: 20px;
+  background-color: #34495e; /* Darker container background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .buttons {
@@ -82,18 +97,33 @@ button {
   margin: 0 10px;
   padding: 10px 20px;
   font-size: 16px;
+  border: none;
+  background-color: #e74c3c; /* Bright red */
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #c0392b; /* Darker red */
+  transform: scale(1.1);
 }
 
 .subscription-details {
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #ecf0f1;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #1abc9c; /* Vibrant green */
+  opacity: 0;
+  transform: translateX(-100%);
+  animation: slide-in 0.5s forwards, fade-in 0.5s forwards;
 }
 
 .subscription-details h2 {
   margin-bottom: 10px;
+  color: #2c3e50;
 }
 
 .subscription-details ul {
@@ -103,4 +133,25 @@ button {
 
 .subscription-details ul li {
   margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

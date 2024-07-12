@@ -6,12 +6,16 @@ import HomePage from './HomePage.jsx'
 import Map from './Map.jsx'
 import MemTiers from './MemTiers.jsx'
 import Jokes from './Jokes.jsx'
-import './index.css'
+import './MemTiers.css'
 import './HomePage.jsx'
+import './MemStories.jsx'
+// import './Memstories.css'
+
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import MemberStories from './MemStories.jsx'
 
 
 const router = createBrowserRouter([
@@ -34,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/membership-tiers",
     element: <MemTiers/>
+  },
+  {
+    path: "/member-stories",
+    element: <MemberStories/>  // Why showing error if I write memStories?
   },
   {
     path:'/jokes',

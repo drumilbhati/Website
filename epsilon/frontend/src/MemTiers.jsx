@@ -15,7 +15,7 @@
 
 // MemTiers.jsx
 import React, { useState } from 'react';
-import './index.css';
+import './MemTiers.css';
 import Subscription from './Subscription';
 
 export default function MemTiers() {
