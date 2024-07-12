@@ -67,3 +67,40 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* index.css */
+.membership-tiers {
+  text-align: center;
+  padding: 20px;
+}
+
+.buttons {
+  margin: 20px 0;
+}
+
+button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.subscription-details {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.subscription-details h2 {
+  margin-bottom: 10px;
+}
+
+.subscription-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.subscription-details ul li {
+  margin-bottom: 5px;
+}
