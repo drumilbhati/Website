@@ -5,6 +5,7 @@ import Signup from './Signup.jsx'
 import HomePage from './HomePage.jsx'
 import Map from './Map.jsx'
 import MemTiers from './MemTiers.jsx'
+import Jokes from './Jokes.jsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/membership-tiers",
     element: <MemTiers/>
+  },
+  {
+    path:'/jokes',
+    element: <Jokes/>
   }
 ]);
 
