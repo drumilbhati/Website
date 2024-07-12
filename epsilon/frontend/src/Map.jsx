@@ -46,7 +46,7 @@ const GTA5EpsilonMap = () => {
         center={mapCenter} 
         zoom={0} 
         crs={L.CRS.Simple}
-        style={{ height: '600px', width: '100%' }}
+        style={{ height: '1000px', width: '1000px' }}
       >
         <DebugComponent />
         <ImageOverlay

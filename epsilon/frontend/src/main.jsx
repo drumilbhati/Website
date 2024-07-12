@@ -7,6 +7,7 @@ import Map from './Map.jsx'
 import MemTiers from './MemTiers.jsx'
 import Jokes from './Jokes.jsx'
 import './index.css'
+import './HomePage.jsx'
 import {
   createBrowserRouter,
   RouterProvider,
