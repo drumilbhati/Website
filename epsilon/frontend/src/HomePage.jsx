@@ -36,9 +36,18 @@ const EpsilonHomepage = () => {
             alignItems: 'center',
           }}
         >
-          <Typography level="h1" component="h1" sx ={{ padding: 5 }}>
+          <Typography level="h1" component="h1" sx={{ paddingLeft: 5, paddingTop: 5}}>
             Epsilon Program
           </Typography>
+          </Sheet>
+          <Sheet
+          component="navbar"
+          sx={{
+            display: 'block',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            minWidth: "100%",
+          }}>
           <List orientation="horizontal" sx={{ gap: 2 , padding: 5}}>
             <ListItem>
               <ListItemButton component="a" href="#about">About</ListItemButton>
@@ -49,10 +58,17 @@ const EpsilonHomepage = () => {
             <ListItem>
               <ListItemButton component="a" href="#join">Join Us</ListItemButton>
             </ListItem>
+            <ListItem>
+              <Button sx={{
+                alignSelf: 'right',
+              }} onClick= {() => {
+                window.location.href = '/login';
+              }}>Login</Button>
+            </ListItem>
           </List>
         </Sheet>
 
-        <Sheet component="main" sx={{ px: 4, py: 8 }}>
+        <Sheet component="main" sx={{ px: 4, py: 8, justifyItems: 'center' }}>
           <Typography level="h1" textAlign="center" sx={{ mb: 4 }}>
             Seeking Truth in This 9-Dimensional World
           </Typography>

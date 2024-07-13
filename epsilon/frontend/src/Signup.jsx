@@ -51,12 +51,12 @@ export default function LoginFinal() {
           <Typography level="body-sm">Sign up to continue.</Typography>
         </div>
         <FormControl>
-          <FormLabel className="email">Email</FormLabel>
+          <FormLabel className="username">Username</FormLabel>
           <Input
             // html input attribute
-            name="email"
-            type="email"
-            placeholder="student@ahduni.edu.in"
+            name="username"
+            type="username"
+            placeholder="username"
           />
         </FormControl>
         <FormControl>
@@ -70,7 +70,7 @@ export default function LoginFinal() {
         </FormControl>
         <Button sx={{ mt: 1 /* margin top */ }}>Sign Up</Button>
         <Typography>
-          <Link component={RouterLink} to="/">
+          <Link component={RouterLink} to="/login">
             Already have an account?
           </Link>
         </Typography>
