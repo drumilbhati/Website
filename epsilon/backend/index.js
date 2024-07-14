@@ -1,40 +1,20 @@
 import express from 'express'
-import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose';
+import routes from './routes/userRoutes.js';
 
 dotenv.config();
 
 const app = express();
-app.use(bodyParser.urlencoded( { extended: true } ));
+app.use(express.json())
 
 const port = process.env.PORT || 8000;
 
 const MONGO_URL = process.env.MONGO_URL;
-const db = mongoose.connect(MONGO_URL);
+mongoose.connect(MONGO_URL)
+.then(() => console.log('Connected to MongoDB'))
+.catch((error) => console.log(error.message));
 
-app.get('/', (req, res) => {
-    res.json({message: 'Hello World'});
-})
+app.use('/api/users', routes);
 
-app.get('/api/jokes', (req, res) => {
-    
-const jokes = [
-    {
-        "joke": "Why did the chicken cross the road?",
-        "answer": "To get to the other side!"
-    },
-    {
-        "joke": "Why did the chicken cross the road?",
-        "answer": "To get to the second side!"
-    },
-    {
-        "joke": "Why did the chicken cross the road?",
-        "answer": "To get to the third side!"
-    }
-    ];
-    
-    res.send(jokes);
-});
-
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(port, () => console.log(`Server started on port ${port}`));
