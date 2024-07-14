@@ -16,7 +16,7 @@ import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 
 function ModeToggle() {
-  const { mode, setMode } = useColorScheme('blue');
+  const { mode, setMode } = useColorScheme('dark');
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -36,7 +36,7 @@ function ModeToggle() {
   //     {mode === 'dark' ? <DarkModeRoundedIcon /> : <LightModeRoundedIcon />}
   //   </IconButton>
   // );
-}
+} 
 
 export default function Login() {
   return (
@@ -58,7 +58,7 @@ export default function Login() {
           }}
           variant="outlined"
         >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
             <Typography level="h4" component="h1">
               <b>Welcome!</b>
             </Typography>
@@ -93,7 +93,7 @@ export default function Login() {
           </Button>
           <Typography endDecorator={<Link component={RouterLink} to="/Signup">Sign up</Link>}>
             Don't have an account?
-          </Typography>
+          </Typography> 
         </Sheet>
       </main>
     </CssVarsProvider>
