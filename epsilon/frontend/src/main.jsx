@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import Login from './Login.jsx'
 import Signup from './Signup.jsx'
 import HomePage from './HomePage.jsx'
+import App from './App.jsx'
 import Map from './Map.jsx'
 import MemTiers from './MemTiers.jsx'
 import Jokes from './Jokes.jsx'
@@ -17,7 +18,7 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage/>
+    element: <App/>
   },
   {
     path: "/login",
