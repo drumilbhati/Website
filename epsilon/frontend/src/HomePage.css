@@ -1,0 +1,265 @@
+/* Homepage.css --1 */
+/* body {
+    background-color: #0b0c10;
+    font-family: 'Arial', sans-serif;
+    color: #c5c6c7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .homepage {
+    background-color: #1f2833;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fade-in 1.5s ease-in-out;
+  }
+  
+  .homepage h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #66fcf1;
+    animation: slide-in 1s ease-in-out forwards;
+  }
+  
+  .homepage p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #c5c6c7;
+  }
+  
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #45a29e;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .cta-button:hover {
+    background-color: #66fcf1;
+    transform: scale(1.1);
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-in {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  } */
+  
+
+  /* Homepage.css --2*/
+body {
+  background-color: #0b0c10;
+  font-family: 'Arial', sans-serif;
+  color: #c5c6c7;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+.homepage {
+  width: 90%;
+  max-width: 1200px;
+  background-color: #1f2833;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fade-in 1.5s ease-in-out;
+  position: relative;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #45a29e;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.login-button:hover {
+  background-color: #66fcf1;
+  transform: scale(1.1);
+}
+
+.homepage h1 {
+  font-size: 2.5em;
+  margin: 0;
+  color: #66fcf1;
+  animation: slide-in 1s ease-in-out forwards;
+}
+
+.homepage p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #c5c6c7;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  padding: 15px 25px;
+  font-size: 1.2em;
+  color: white;
+  background-color: #45a29e;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #66fcf1;
+  transform: scale(1.1);
+}
+
+.footer {
+  margin-top: 30px;
+}
+
+.footer p {
+  font-size: 1em;
+  color: #c5c6c7;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+/* Homepage.css
+body {
+    background-color: #0b0c10;
+    font-family: 'Arial', sans-serif;
+    color: #c5c6c7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .homepage {
+    background-color: #1f2833;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fade-in 1.5s ease-in-out;
+  }
+  
+  .homepage h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #66fcf1;
+    animation: slide-in 1s ease-in-out forwards;
+  }
+  
+  .homepage p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #c5c6c7;
+  }
+  
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #45a29e;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .cta-button:hover {
+    background-color: #66fcf1;
+    transform: scale(1.1);
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-in {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+   */

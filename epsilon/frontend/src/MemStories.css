@@ -1,0 +1,134 @@
+/* MemStories.css
+body {
+    background-color: #0b0c10;
+    font-family: 'Arial', sans-serif;
+    color: #c5c6c7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow-x: hidden;
+  }
+  
+  .member-stories {
+    background-color: #1f2833;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    margin: 20px auto;
+    animation: fade-in 1.5s ease-in-out;
+  }
+  
+  .member-stories h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #66fcf1;
+    animation: slide-in-top 1s ease-in-out forwards;
+  }
+  
+  .member-stories p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #c5c6c7;
+  }
+  
+  .story {
+    background-color: #1b1f23;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-in-up 1s ease-in-out forwards;
+  }
+  
+  .story:nth-child(even) {
+    animation-delay: 0.3s;
+  }
+  
+  .story:nth-child(odd) {
+    animation-delay: 0.6s;
+  }
+  
+  .story h3 {
+    font-size: 1.8em;
+    color: #66fcf1;
+    margin-bottom: 10px;
+  }
+  
+  .story p {
+    font-size: 1em;
+    color: #c5c6c7;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-in-top {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #45a29e;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+  }
+  
+  .cta-button:hover {
+    background-color: #66fcf1;
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 768px) {
+    .member-stories {
+      padding: 20px;
+    }
+  
+    .story {
+      padding: 15px;
+    }
+  
+    .story h3 {
+      font-size: 1.5em;
+    }
+  
+    .story p {
+      font-size: 0.9em;
+    }
+  }
+   */

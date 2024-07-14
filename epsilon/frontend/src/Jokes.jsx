@@ -1,4 +1,4 @@
-import './index.css';
+import './MemTiers';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
