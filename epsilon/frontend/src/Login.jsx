@@ -8,7 +8,6 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
-import './App.css';
 
 function ModeToggle() {
   const [mounted, setMounted] = React.useState(false);
