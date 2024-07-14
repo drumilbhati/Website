@@ -14,6 +14,15 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true,
         default: 1000000,
+    },
+    membership: {
+        type: String,
+        enum: ["Level1", "Level2", "Level3"],
+        default: "Level1",
+    },
+    donation: {
+        type: Number,
+        default: 0,
     }
 });
 
