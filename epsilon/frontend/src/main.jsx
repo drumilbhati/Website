@@ -9,6 +9,7 @@ import Jokes from './Jokes.jsx'
 import './MemTiers.css'
 import './HomePage.jsx'
 import './MemStories.jsx'
+import Subscription from './Subscription.jsx'
 // import './Memstories.css'
 
 import {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path:'/jokes',
     element: <Jokes/>
+  },
+  {
+    path: '/subscription',
+    element: <Subscription/>
   }
 ]);
 

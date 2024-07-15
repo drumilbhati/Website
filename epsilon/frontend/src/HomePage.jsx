@@ -13,6 +13,7 @@ import Grid from '@mui/joy/Grid';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import { Sun, Moon, Eye } from 'lucide-react';
+import Navbar from './Navbar.jsx';
 
 const EpsilonHomepage = () => {
   const [isEnlightened, setIsEnlightened] = useState(false);
@@ -51,23 +52,8 @@ const EpsilonHomepage = () => {
             alignItems: 'center',
             minWidth: "100%",
           }}>
-          <List orientation="horizontal" sx={{ gap: 2 , padding: 5}}>
-            <ListItem>
-              <ListItemButton component="a" href="#about">About</ListItemButton>
-            </ListItem>
-            <ListItem>
-              <ListItemButton component="a" href="#teachings">Teachings</ListItemButton>
-            </ListItem>
-            <ListItem>
-              <ListItemButton component="a" href="#join">Join Us</ListItemButton>
-            </ListItem>
-            <ListItem>
-              <Button sx={{
-                alignSelf: 'right',
-              }} onClick= {() => {
-                window.location.href = '/login';
-              }}>Login</Button>
-            </ListItem>
+          <List sx={{width:"5%", paddingLeft: 5}}>
+            <Navbar/>
           </List>
         </Sheet>
 

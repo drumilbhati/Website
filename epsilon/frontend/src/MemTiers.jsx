@@ -17,12 +17,17 @@
 import React, { useState } from 'react';
 import './MemTiers.css';
 import Subscription from './Subscription';
+import Navbar from './Navbar';
+import { List } from '@mui/joy';
 
 export default function MemTiers() {
   const [selectedLevel, setSelectedLevel] = useState('');
 
   return (
     <div className="membership-tiers">
+      <List sx={{width:"5%", paddingLeft: 5, marginTop: 5}}>
+        <Navbar/>
+      </List>
       <h1>Select a Membership Tier</h1>
       <div className="buttons">
         <button onClick={() => setSelectedLevel('Level I')}>Level I</button>

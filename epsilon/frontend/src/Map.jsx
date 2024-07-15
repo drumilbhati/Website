@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, ImageOverlay, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import './App.css';
+import { List } from '@mui/joy';
+import Navbar from './Navbar';
 
 // Fix for default marker icon in react-leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -42,6 +43,9 @@ const GTA5EpsilonMap = () => {
 
   return (
     <div className="map">
+      <List sx={{width:"5%", paddingLeft: 5}}>
+        <Navbar/>
+      </List>
       <MapContainer 
         center={mapCenter} 
         zoom={0} 
