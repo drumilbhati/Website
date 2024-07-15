@@ -68,23 +68,12 @@ button:focus-visible {
   }
 }
 
-/* index.css */
-body {
-  background-color: #2c3e50; /* Dark background */
-  font-family: 'Arial', sans-serif;
-  color: #ecf0f1; /* Light text color */
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+
 
 .membership-tiers {
   text-align: center;
   padding: 20px;
-  background-color: #34495e; /* Darker container background */
+  min-height: 100%; /* Darker container background */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

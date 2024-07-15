@@ -15,6 +15,8 @@
 
 // Subscription.jsx
 import React from 'react';
+import Navbar from './Navbar';
+import { List } from '@mui/joy';
 
 export default function Subscription({ level }) {
   const subscriptionDetails = {
@@ -36,6 +38,9 @@ export default function Subscription({ level }) {
 
   return (
     <div className="subscription-details">
+      <List sx={{width:"5%", paddingLeft: 5}}>
+        <Navbar/>
+      </List>
       <h2>{level} Subscription</h2>
       <p>Price: {details.price}</p>
       <h3>Benefits:</h3>

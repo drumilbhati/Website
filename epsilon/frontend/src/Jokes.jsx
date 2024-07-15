@@ -17,6 +17,9 @@ export default function Jokes() {
 
     return (
         <div className="jokes">
+            <List sx={{width:"5%", paddingLeft: 5}}>
+                <Navbar/>
+            </List>
             <h1>Jokes</h1>
             <h2>Count: {jokes.length}</h2>
 
