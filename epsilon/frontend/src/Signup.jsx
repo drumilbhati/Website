@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import Sheet from '@mui/joy/Sheet';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Typography from '@mui/joy/Typography';
@@ -25,6 +25,40 @@ function ModeToggle() {
 }
 
 export default function LoginFinal() {
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  useEffect(() => {
+    fetch('/api/createUser')
+    .then(response => response.json())
+    .then(username => setUsername(username))
+    .then(password => setPassword(password))
+    .catch(error => console.error('Error:', error));
+  })
+  const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  const user = {
+    username,
+    password
+  };
+
+  const response = await fetch('/api/createUser', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  });
+  const data = await response.json();
+  console.log('Success:', data);
+
+  if (response.ok) {
+    console.log('User created successfully');
+  } else {
+    console.error('Error:', data.error);
+  };
+}
   return (
     <main>
       <ModeToggle />
@@ -50,8 +84,11 @@ export default function LoginFinal() {
           </Typography>
           <Typography level="body-sm">Sign up to continue.</Typography>
         </div>
+        <form onSubmit={handleSubmit}>
         <FormControl>
-          <FormLabel className="username">Username</FormLabel>
+          <FormLabel className="username" value={username} onChange={(event) => setUsername(event.target.value)}>
+            Username
+          </FormLabel>
           <Input
             // html input attribute
             name="username"
@@ -60,7 +97,9 @@ export default function LoginFinal() {
           />
         </FormControl>
         <FormControl>
-          <FormLabel className="password">Password</FormLabel>
+          <FormLabel className="password" value={password} onChange={(event) => setPassword(event.target.value)}>
+            Password
+          </FormLabel>
           <Input
             // html input attribute
             name="password"
@@ -68,7 +107,8 @@ export default function LoginFinal() {
             placeholder="password"
           />
         </FormControl>
-        <Button sx={{ mt: 1 /* margin top */ }}>Sign Up</Button>
+        <Button type="submit" sx={{ mt: 1 /* margin top */ }}>Sign Up</Button>
+        </form>
         <Typography>
           <Link component={RouterLink} to="/login">
             Already have an account?
@@ -77,4 +117,4 @@ export default function LoginFinal() {
       </Sheet>
     </main>
   );
-}
+};
