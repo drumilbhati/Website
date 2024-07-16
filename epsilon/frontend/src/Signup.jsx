@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Sheet from '@mui/joy/Sheet';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Typography from '@mui/joy/Typography';
@@ -13,52 +13,52 @@ import './App.css';
 function ModeToggle() {
   const [mounted, setMounted] = React.useState(false);
 
-  // necessary for server-side rendering
-  // because mode is undefined on the server
   React.useEffect(() => {
     setMounted(true);
   }, []);
+
   if (!mounted) {
     return <Button variant="soft">Change mode</Button>;
   }
 
+  return null; // You should implement the actual mode toggle logic here
 }
 
-export default function LoginFinal() {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+export default function SignUpFinal() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  useEffect(() => {
-    fetch('/api/createUser')
-    .then(response => response.json())
-    .then(username => setUsername(username))
-    .then(password => setPassword(password))
-    .catch(error => console.error('Error:', error));
-  })
   const handleSubmit = async (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const user = {
-    username,
-    password
+    const user = {
+      username,
+      password
+    };
+
+    try {
+      const response = await fetch('/api/createUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      console.log('User created successfully:', data);
+      // Handle successful signup (e.g., redirect to login page or show success message)
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Error creating user:', error);
+      // Handle error (e.g., show error message to user)
+    }
   };
 
-  const response = await fetch('/api/createUser', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  });
-  const data = await response.json();
-  console.log('Success:', data);
-
-  if (response.ok) {
-    console.log('User created successfully');
-  } else {
-    console.error('Error:', data.error);
-  };
-}
   return (
     <main>
       <ModeToggle />
@@ -66,10 +66,10 @@ export default function LoginFinal() {
       <Sheet
         sx={{
           width: 300,
-          mx: 'auto', // margin left & right
-          my: 4, // margin top & bottom
-          py: 3, // padding top & bottom
-          px: 2, // padding left & right
+          mx: 'auto',
+          my: 4,
+          py: 3,
+          px: 2,
           display: 'flex',
           flexDirection: 'column',
           gap: 2,
@@ -85,29 +85,27 @@ export default function LoginFinal() {
           <Typography level="body-sm">Sign up to continue.</Typography>
         </div>
         <form onSubmit={handleSubmit}>
-        <FormControl>
-          <FormLabel className="username" value={username} onChange={(event) => setUsername(event.target.value)}>
-            Username
-          </FormLabel>
-          <Input
-            // html input attribute
-            name="username"
-            type="username"
-            placeholder="username"
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel className="password" value={password} onChange={(event) => setPassword(event.target.value)}>
-            Password
-          </FormLabel>
-          <Input
-            // html input attribute
-            name="password"
-            type="password"
-            placeholder="password"
-          />
-        </FormControl>
-        <Button type="submit" sx={{ mt: 1 /* margin top */ }}>Sign Up</Button>
+          <FormControl>
+            <FormLabel>Username</FormLabel>
+            <Input
+              name="username"
+              type="text"
+              placeholder="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Password</FormLabel>
+            <Input
+              name="password"
+              type="password"
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </FormControl>
+          <Button type="submit" sx={{ mt: 1 }}>Sign Up</Button>
         </form>
         <Typography>
           <Link component={RouterLink} to="/login">
@@ -117,4 +115,4 @@ export default function LoginFinal() {
       </Sheet>
     </main>
   );
-};
+}
