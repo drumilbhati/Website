@@ -1,31 +1,81 @@
 import User from "../models/user.models.js";
+import bcrypt from "bcrypt";
+import jwt, { decode } from "jsonwebtoken";
 
 export const findUser = async (req, res) => {
-    try{
-        const { username } = req.body;
-        const user = await User.findOne({ username });
-        if (user) {
-            res.send(user);
-        } else {
-            res.status(404).send("Hello");
-        }
+    User.findOne({ username: req.body.username })
+    .then((user) => {
+        
+        bcrypt.compare(req.body.password, user.password)
+        .then((match) => {
+
+            if (!match) {
+                return res.status(400).json({ message: 'Incorrect password' });
+            }
+
+            const token = jwt.sign({
+                userId: user._id,
+                userName: user.username,
+            },
+            'secret',
+            { expiresIn: '1h' }
+            );
+
+            res.status(200).json({
+                message: 'Login successful',
+                username: user.username,
+                token,
+            })
+        })
+        .catch((error) => {
+            res.status(400).json({ message: 'Incorrect password' });
+        })
+    })
+    .catch((error) => {
+        res.status(404).json({ message: 'User not found' });
+    }) 
+}
+
+export const authenticateUser = async (req, res, next) => {
+    try {
+        const token = await req.headers.authorization.split(' ')[1];
+
+        const decodedToken = await jwt.verify(token, 'secret');
+
+        const user = await decodedToken;
+        req.user = user;
+        next();
+
+    } catch (error) {
+        res.status(401).json({error: new Error('Invalid request!')});
     }
-    catch(error){
-        res.status(500).send(error);
-    };
-};
+}
+
 
 export const createUser = async (req, res) => {
     try {
-        const user = new User({
-            username: req.body.username,
-            password: req.body.password,
+        const { username, password } = req.body;
+        
+        // Check if user already exists
+        let user = await User.findOne({ username });
+        if (user) {
+          return res.status(400).json({ message: 'User already exists' });
+        }
+        
+        // Hash password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        
+        // Create new user
+        user = new User({
+          username,
+          password: hashedPassword
         });
-    
-        const savedUser = await user.save();
-    
-        res.send(savedUser);
+        
+        await user.save();
+        
+        res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).json({ message: 'Server error' });
     }
 };

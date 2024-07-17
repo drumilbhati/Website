@@ -1,13 +1,16 @@
 import express from 'express';
-import { findUser, createUser } from '../controllers/user.controller.js';
+import { findUser, createUser, authenticateUser } from '../controllers/user.controller.js';
 import dotenv from 'dotenv';
 
 const router = express.Router();
 
 dotenv.config();
 
-router.get('/api/findUser', findUser);
+router.get('/api/login', findUser);
+router.get('/api/auth-endpoint', authenticateUser, (req, res) => {
+  res.json({message: "You are now authenticated"});
+}); 
 
-router.post('/api/createUser', createUser);
+router.post('/api/register', createUser);
 
 export default router;

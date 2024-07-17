@@ -37,7 +37,7 @@ export default function SignUpFinal() {
     };
 
     try {
-      const response = await fetch('/api/createUser', {
+      const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
