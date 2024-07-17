@@ -22,7 +22,7 @@ import MemberStories from './MemStories.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage  />
+    element: <HomePage/>
   },
   {
     path: "/login",

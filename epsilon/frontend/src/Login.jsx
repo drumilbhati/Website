@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Sheet from '@mui/joy/Sheet';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Typography from '@mui/joy/Typography';
@@ -9,11 +10,7 @@ import Button from '@mui/joy/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
 import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
-import IconButton from '@mui/joy/IconButton';
-
-// You'll need to install @mui/icons-material or use your own icons
-import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
-import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
+import axios from 'axios';
 
 function ModeToggle() {
   const { mode, setMode } = useColorScheme('dark');
@@ -26,19 +23,36 @@ function ModeToggle() {
   if (!mounted) {
     return null;
   }
-
-  // return (
-  //   <IconButton
-  //     variant="outlined"
-  //     color="neutral"
-  //     onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
-  //   >
-  //     {mode === 'dark' ? <DarkModeRoundedIcon /> : <LightModeRoundedIcon />}
-  //   </IconButton>
-  // );
 } 
 
 export default function Login() {
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const navigate = useNavigate();
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await axios({
+        method: 'post',
+        url: 'http://localhost:3000/api/login',
+        data: { username, password },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+        setMessage(response.data.message || 'Login successful');
+        navigate('/');
+      }
+    } catch (error) {
+      setMessage(error.response?.data?.message);
+    }
+  };
   return (
     <CssVarsProvider defaultMode="dark">
       <main>
@@ -65,11 +79,14 @@ export default function Login() {
             <ModeToggle />
           </div>
           <Typography level="body-sm">Log in to continue.</Typography>
+          <form onSubmit={handleSubmit}>
           <FormControl>
             <FormLabel>Username</FormLabel>
             <Input
               name="username"
               type="text"
+              value={username}
+              onChange={(event) => {setUsername(event.target.value)}}
               placeholder="username"
             />
           </FormControl>
@@ -78,19 +95,15 @@ export default function Login() {
             <Input
               name="password"
               type="password"
+              value={password}
+              onChange={(event) => {setPassword(event.target.value)}}
               placeholder="password"
             />
           </FormControl>
-          <Button 
-            sx={{ mt: 1 }}
-            onClick={() => {
-              setTimeout(() => {
-                window.location.href = "/Map";
-              }, 1000);
-            }}
-          >
+          <Button type="submit" sx={{ mt: 1 }}>
             Log in
           </Button>
+          </form>
           <Typography endDecorator={<Link component={RouterLink} to="/Signup">Sign up</Link>}>
             Don't have an account?
           </Typography> 
@@ -99,105 +112,3 @@ export default function Login() {
     </CssVarsProvider>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import * as React from 'react';
-// import Sheet from '@mui/joy/Sheet';
-// import CssBaseline from '@mui/joy/CssBaseline';
-// import Typography from '@mui/joy/Typography';
-// import FormControl from '@mui/joy/FormControl';
-// import FormLabel from '@mui/joy/FormLabel';
-// import Input from '@mui/joy/Input';
-// import Button from '@mui/joy/Button';
-// import { Link as RouterLink } from 'react-router-dom';
-// import Link from '@mui/joy/Link';
-
-// function ModeToggle() {
-//   const [mounted, setMounted] = React.useState(false);
-
-//   // necessary for server-side rendering
-//   // because mode is undefined on the server
-//   React.useEffect(() => {
-//     setMounted(true);
-//   }, []);
-// }
-
-
-// export default function Login() {
-//   return (
-//     <main>
-//       <ModeToggle />
-//       <CssBaseline />
-//       <Sheet
-//         sx={{
-//           width: 300,
-//           mx: 'auto', // margin left & right
-//           my: 4, // margin top & bottom
-//           py: 3, // padding top & bottom
-//           px: 2, // padding left & right
-//           display: 'flex',
-//           flexDirection: 'column',
-//           gap: 2,
-//           borderRadius: 'sm',
-//           boxShadow: 'md',
-//         }}
-//         variant="outlined"
-//       >
-//         <div>
-//           <Typography level="h4" component="h1">
-//             <b>Welcome!</b>
-//           </Typography>
-//           <Typography level="body-sm">Log in to continue.</Typography>
-//         </div>
-//         <FormControl>
-//           <FormLabel className="username">Username</FormLabel>
-//           <Input
-//             // html input attribute
-//             name="username"
-//             type="username"
-//             placeholder="username"
-//           />
-//         </FormControl>
-//         <FormControl>
-//           <FormLabel className="password">Password</FormLabel>
-//           <Input
-//             // html input attribute
-//             name="password"
-//             type="password"
-//             placeholder="password"
-//           />
-//         </FormControl>
-//         {/* Log in button */}
-//         <Button sx={{ mt: 1 /* margin top */ }}
-//                 onClick={() => {
-//                     setTimeout(() => {
-//                       window.location.href = "/Map";
-//                     }, 1000);
-                    
-//                 }}>
-//           Log in
-//         </Button>
-//         <Typography>
-//         <Link component={RouterLink} to="/Signup">
-//           Sign Up
-//         </Link>
-//         </Typography>
-//       </Sheet>
-//     </main>
-//   );
-// }

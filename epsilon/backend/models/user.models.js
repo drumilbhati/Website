@@ -12,13 +12,12 @@ const userSchema = new mongoose.Schema({
     },
     balance: {
         type: Number,
-        required: true,
         default: 1000000,
     },
     membership: {
         type: String,
-        enum: ["Level1", "Level2", "Level3"],
-        default: "Level1",
+        enum: ["None", "Level1", "Level2", "Level3"],
+        default: "None",
     },
     donation: {
         type: Number,
