@@ -37,9 +37,9 @@ export default function Login() {
 
     try {
       const response = await axios({
-        method: 'get',
+        method: 'post',
         url: 'http://localhost:3000/api/login',
-        params: { username, password },
+        data: { username, password },
         headers: {
           'Content-Type': 'application/json',
         },
