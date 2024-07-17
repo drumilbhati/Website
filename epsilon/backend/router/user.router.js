@@ -6,7 +6,7 @@ const router = express.Router();
 
 dotenv.config();
 
-router.get('/api/login', findUser);
+router.post('/api/login', findUser);
 router.get('/api/auth-endpoint', authenticateUser, (req, res) => {
   res.json({message: "You are now authenticated"});
 }); 

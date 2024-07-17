@@ -13,10 +13,14 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true, limit: "16kb"}));
 app.use(express.static("public"));
 app.use(router);
-app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true
-}));
+app.use(cors(
+  {origin: 'http://localhost:3000',
+  credentials: true,
+  optionsSuccessStatus: 200,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+  }
+));
 
 mongoose.connect(process.env.MONGO_URL, {
     dbName: process.env.DB_NAME,
