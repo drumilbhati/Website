@@ -1,101 +1,100 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/joy/Box';
 import IconButton from '@mui/joy/IconButton';
-import Drawer from '@mui/joy/Drawer';
 import Input from '@mui/joy/Input';
 import List from '@mui/joy/List';
 import ListItemButton from '@mui/joy/ListItemButton';
 import Typography from '@mui/joy/Typography';
-import ModalClose from '@mui/joy/ModalClose';
-import Menu from '@mui/icons-material/Menu';
 import Search from '@mui/icons-material/Search';
+import Menu from '@mui/icons-material/Menu';
 
-export default function DrawerMobileNavigation() {
-  const [open, setOpen] = React.useState(false);
+const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const navItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Join Us', href: '/membership-tiers' },
+    { label: 'Find Us', href: '/map' },
+    { label: 'Login', href: '/login' },
+  ];
 
   return (
-    <React.Fragment>
-      <IconButton variant="outlined" color="neutral" onClick={() => setOpen(true)}>
-        <Menu />
-      </IconButton>
-      <Drawer open={open} onClose={() => setOpen(false)}>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 0.5,
-            ml: 'auto',
-            mt: 1,
-            mr: 2,
-          }}
-        >
-          <Typography
-            component="label"
-            htmlFor="close-icon"
-            fontSize="sm"
-            fontWeight="lg"
-            sx={{ cursor: 'pointer' }}
+    <Box
+      component="nav"
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        p: 2,
+        backgroundColor: 'rgba(10, 10, 10, 0.9)',
+        backdropFilter: 'blur(10px)',
+      }}
+    >
+      <Typography
+        level="h4"
+        component="div"
+        sx={{
+          fontFamily: "'Pricedown', sans-serif",
+          color: '#ffab00',
+          textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+          display: { xs: 'none', sm: 'block' },
+        }}
+      >
+      </Typography>
+
+      <List
+        role="menubar"
+        orientation="horizontal"
+        sx={{
+          display: { xs: 'none', md: 'flex' },
+          gap: 2,
+        }}
+      >
+        {navItems.map((item) => (
+          <ListItemButton
+            key={item.label}
+            role="menuitem"
+            component="a"
+            href={item.href}
+            sx={{
+              fontWeight: 'bold',
+              color: '#ffab00',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 171, 0, 0.1)',
+              },
+            }}
           >
-            Close
-          </Typography>
-          <ModalClose id="close-icon" sx={{ position: 'initial' }} />
-        </Box>
+            {item.label}
+          </ListItemButton>
+        ))}
+      </List>
+
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <Input
           size="sm"
           placeholder="Search"
-          variant="plain"
+          variant="outlined"
           endDecorator={<Search />}
-          slotProps={{
-            input: {
-              'aria-label': 'Search anything',
-            },
-          }}
           sx={{
-            m: 3,
-            borderRadius: 0,
-            borderBottom: '2px solid',
-            borderColor: 'neutral.outlinedBorder',
+            display: { xs: 'none', md: 'flex' },
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            color: '#fff',
             '&:hover': {
-              borderColor: 'neutral.outlinedHoverBorder',
-            },
-            '&::before': {
-              border: '1px solid var(--Input-focusedHighlight)',
-              transform: 'scaleX(0)',
-              left: 0,
-              right: 0,
-              bottom: '-2px',
-              top: 'unset',
-              transition: 'transform .15s cubic-bezier(0.1,0.9,0.2,1)',
-              borderRadius: 0,
-            },
-            '&:focus-within::before': {
-              transform: 'scaleX(1)',
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
             },
           }}
         />
-        <List
-          size="lg"
-          component="nav"
-          sx={{
-            flex: 'none',
-            fontSize: 'xl',
-            '& > div': { justifyContent: 'center' },
-          }}
+        <IconButton
+          variant="outlined"
+          color="neutral"
+          onClick={() => setMobileOpen(true)}
+          sx={{ display: { md: 'none' } }}
         >
-          <ListItemButton sx={{ fontWeight: 'lg' }} onClick={() => {
-            window.location.href = '/';
-          }}>Home</ListItemButton>
-          <ListItemButton onClick={() => {
-            window.location.href = '/membership-tiers';
-          }}>Join Us</ListItemButton>
-          <ListItemButton onClick={() => {
-            window.location.href = '/map';
-          }}>Find Us</ListItemButton>
-          <ListItemButton onClick={() => {
-            window.location.href = '/login';
-          }}>Login</ListItemButton>
-        </List>
-      </Drawer>
-    </React.Fragment>
+          <Menu />
+        </IconButton>
+      </Box>
+    </Box>
   );
-}
+};
+
+export default Navbar;

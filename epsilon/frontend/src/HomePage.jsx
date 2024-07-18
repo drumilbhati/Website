@@ -1,335 +1,188 @@
+  import React, { useState, useEffect } from 'react';
+  import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
+  import Sheet from '@mui/joy/Sheet';
+  import Typography from '@mui/joy/Typography';
+  import Button from '@mui/joy/Button';
+  import Grid from '@mui/joy/Grid';
+  import Card from '@mui/joy/Card';
+  import CardContent from '@mui/joy/CardContent';
+  import { Sun, Moon, Eye } from 'lucide-react';
+  import Navbar from './Navbar.jsx';
 
-//Drumil's Code
+  const theme = extendTheme({
+    colorSchemes: {
+      dark: {
+        palette: {
+          primary: {
+            50: '#e3f2fd',
+            100: '#bbdefb',
+            200: '#90caf9',
+            300: '#64b5f6',
+            400: '#42a5f5',
+            500: '#2196f3',
+            600: '#1e88e5',
+            700: '#1976d2',
+            800: '#1565c0',
+            900: '#0d47a1',
+          },
+          background: {
+            body: '#0a0a0a',
+            surface: '#121212',
+          },
+        },
+      },
+    },
+  });
 
-import React, { useState, useEffect } from 'react';
-import { CssVarsProvider } from '@mui/joy/styles';
-import Sheet from '@mui/joy/Sheet';
-import Typography from '@mui/joy/Typography';
-import Button from '@mui/joy/Button';
-import List from '@mui/joy/List';
-import ListItem from '@mui/joy/ListItem';
-import ListItemButton from '@mui/joy/ListItemButton';
-import Grid from '@mui/joy/Grid';
-import Card from '@mui/joy/Card';
-import CardContent from '@mui/joy/CardContent';
-import { Sun, Moon, Eye } from 'lucide-react';
-import Navbar from './Navbar.jsx';
+  const EpsilonHomepage = () => {
+    const [isEnlightened, setIsEnlightened] = useState(false);
 
-const EpsilonHomepage = () => {
-  const [isEnlightened, setIsEnlightened] = useState(false);
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setIsEnlightened(prev => !prev);
+      }, 5000);
+      return () => clearInterval(interval);
+    }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsEnlightened(prev => !prev);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <CssVarsProvider>
-      <Sheet
-        sx={{
-          minHeight: '100vh',
-        }}
-      >
+    return (
+      <CssVarsProvider theme={theme} defaultMode="dark">
         <Sheet
-          component="header"
           sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            minHeight: '100vh',
+            background: 'linear-gradient(to bottom, #121212, #0a0a0a)',
+            backgroundImage: 'url("/api/placeholder/1920/1080")', // Placeholder for a GTA5-style background image
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+            backgroundBlendMode: 'overlay',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
           }}
         >
-          <Typography level="h1" component="h1" sx={{ paddingLeft: 5, paddingTop: 5}}>
-            Epsilon Program
-          </Typography>
-          </Sheet>
           <Sheet
-          component="navbar"
-          sx={{
-            display: 'block',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            minWidth: "100%",
-          }}>
-          <List sx={{width:"5%", paddingLeft: 5}}>
-            <Navbar/>
-          </List>
-        </Sheet>
-
-        <Sheet component="main" sx={{ px: 4, py: 8, justifyItems: 'center' }}>
-          <Typography level="h1" textAlign="center" sx={{ mb: 4 }}>
-            Seeking Truth in This 9-Dimensional World
-          </Typography>
-          <Typography level="h3" textAlign="center" sx={{ mb: 4 }}>
-            Unlock the secrets of the universe and ascend to a higher plane of existence.
-          </Typography>
-          <Button
-            size="lg"
-            sx={{ display: 'block', mx: 'auto', mb: 8 }}
-          >
-            Begin Your Journey
-          </Button>
-
-          <Grid container spacing={4} sx={{ mb: 8 }}>
-            {[
-              { icon: Sun, title: 'Enlightenment', description: 'Discover the truth that lies beyond the veil of reality.' },
-              { icon: Moon, title: 'Inner Peace', description: 'Achieve harmony with the cosmic forces that shape our existence.' },
-              { icon: Eye, title: 'True Vision', description: 'See beyond the limitations of your physical form.' },
-            ].map((item, index) => (
-              <Grid key={index} xs={12} md={4}>
-                <Card>
-                  <CardContent>
-                    <item.icon style={{ width: 48, height: 48, marginBottom: 16 }} />
-                    <Typography level="h4" component="h3" sx={{ mb: 1 }}>
-                      {item.title}
-                    </Typography>
-                    <Typography>
-                      {item.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-
-          <Typography level="h2" textAlign="center" sx={{ mb: 2 }}>
-            Are You Ready to Ascend?
-          </Typography>
-          <Typography level="h4" textAlign="center" sx={{ mb: 4 }}>
-            Join the Epsilon Program and unlock your true potential.
-          </Typography>
-          <Sheet
+            component="header"
             sx={{
-              width: 200,
-              height: 200,
-              mx: 'auto',
-              transition: 'transform 1s',
-              transform: isEnlightened ? 'scale(1.1) rotate(360deg)' : 'none',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              background: 'rgba(10, 10, 10, 0.9)',
+              backdropFilter: 'blur(10px)',
+              padding: 2,
             }}
           >
-            <img src="/frontend/src/assets/epsilon.png" alt="Epsilon Symbol" style={{ width: '100%', height: '100%' }} />
+            <Typography
+              level="h1"
+              component="h1"
+              sx={{
+                paddingLeft: 5,
+                paddingTop: 2,
+                fontFamily: "'Pricedown', sans-serif",
+                color: '#ffab00',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+              }}
+            >
+              Epsilon Program
+            </Typography>
+          </Sheet>
+          <Sheet
+            component="navbar"
+            sx={{
+              display: 'block',
+              minWidth: "100%",
+              background: 'rgba(10, 10, 10, 0.9)',
+              backdropFilter: 'blur(10px)',
+            }}
+          >
+            <Navbar />
+          </Sheet>
+
+          <Sheet component="main" sx={{ px: 4, py: 8, justifyItems: 'center' }}>
+            <Typography
+              level="h1"
+              textAlign="center"
+              sx={{
+                mb: 4,
+                fontFamily: "'Pricedown', sans-serif",
+                color: '#ffab00',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+              }}
+            >
+              Seeking Truth in This 9-Dimensional World
+            </Typography>
+            <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#fff' }}>
+              Unlock the secrets of the universe and ascend to a higher plane of existence.
+            </Typography>
+            <Button
+              size="lg"
+              sx={{
+                display: 'block',
+                mx: 'auto',
+                mb: 8,
+                backgroundColor: '#ffab00',
+                color: '#000',
+                fontWeight: 'bold',
+                '&:hover': { backgroundColor: '#ffd600' },
+              }}
+            >
+              Begin Your Journey
+            </Button>
+
+            <Grid container spacing={4} sx={{ mb: 8 }}>
+              {[
+                { icon: Sun, title: 'Enlightenment', description: 'Discover the truth that lies beyond the veil of reality.' },
+                { icon: Moon, title: 'Inner Peace', description: 'Achieve harmony with the cosmic forces that shape our existence.' },
+                { icon: Eye, title: 'True Vision', description: 'See beyond the limitations of your physical form.' },
+              ].map((item, index) => (
+                <Grid key={index} xs={12} md={4}>
+                  <Card sx={{ backgroundColor: 'rgba(10, 10, 10, 0.9)', backdropFilter: 'blur(10px)' }}>
+                    <CardContent>
+                      <item.icon style={{ width: 48, height: 48, marginBottom: 16, color: '#ffab00' }} />
+                      <Typography level="h4" component="h3" sx={{ mb: 1, color: '#ffab00' }}>
+                        {item.title}
+                      </Typography>
+                      <Typography sx={{ color: '#fff' }}>
+                        {item.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+
+            <Typography level="h2" textAlign="center" sx={{ mb: 2, color: '#ffab00', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+              Are You Ready to Ascend?
+            </Typography>
+            <Typography level="h4" textAlign="center" sx={{ mb: 4, color: '#fff' }}>
+              Join the Epsilon Program and unlock your true potential.
+            </Typography>
+            <Sheet
+              sx={{
+                width: 200,
+                height: 200,
+                mx: 'auto',
+                transition: 'transform 1s',
+                transform: isEnlightened ? 'scale(1.1) rotate(360deg)' : 'none',
+              }}
+            >
+              <img src="/frontend/src/assets/epsilon.png" alt="Epsilon Symbol" style={{ width: '100%', height: '100%' }} />
+            </Sheet>
+          </Sheet>
+
+          <Sheet
+            component="footer"
+            sx={{
+              p: 2,
+              textAlign: 'center',
+              backgroundColor: 'rgba(10, 10, 10, 0.9)',
+              backdropFilter: 'blur(10px)',
+            }}
+          >
+            <Typography level="body-sm" sx={{ color: '#fff' }}>
+              © 2024 Epsilon Program. All Rights Reserved.
+            </Typography>
           </Sheet>
         </Sheet>
+      </CssVarsProvider>
+    );
+  };
 
-        <Sheet
-          component="footer"
-          sx={{
-            p: 2,
-            textAlign: 'center',
-            backgroundColor: 'background.backdrop',
-          }}
-        >
-          <Typography level="body-sm">
-            © 2024 Epsilon Program.
-          </Typography>
-        </Sheet>
-       
-</Sheet>
-      
-    </CssVarsProvider>
-  );
-};
-
-export default EpsilonHomepage;
-
-
-
-// Homepage.jsx--1
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import './HomePage.css';
-
-// export default function Homepage() {
-//   return (
-//     <div className="homepage">
-//       <h1>Welcome to the Epsilon Program</h1>
-//       <p>Discover enlightenment through our membership tiers and special events.</p>
-//       <nav className="navbar">
-//         <Link to="/login" className="cta-button">Login / Signup</Link>
-//         <Link to="/membership-tiers" className="cta-button">Membership Tiers</Link>
-//         <Link to="/member-stories" className="cta-button">Member Stories</Link>
-//         <Link to="/admin" className="cta-button">Admin Features</Link>
-//         <Link to="/events" className="cta-button">Events</Link>
-//         <Link to="/donations" className="cta-button">Donations</Link>
-//         <Link to="/virtual-currency" className="cta-button">Virtual Currency</Link>
-//       </nav>
-//     </div>
-//   );
-// }
-
-// Homepage.jsx --2
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import './HomePage.css';
-
-// export default function Homepage() {
-//   return (
-//     <div className="homepage">
-//       <header>
-//         <h1>Welcome to the Epsilon Program</h1>
-//         <Link to="/login" className="login-button">Login / Signup</Link>
-//       </header>
-//       <p>Discover enlightenment through our membership tiers and special events.</p>
-//       <nav className="navbar">
-//         <Link to="/membership-tiers" className="cta-button">Membership Tiers</Link>
-//         <Link to="/member-stories" className="cta-button">Member Stories</Link>
-//         <Link to="/admin" className="cta-button">Admin Features</Link>
-//         <Link to="/events" className="cta-button">Events</Link>
-//         <Link to="/donations" className="cta-button">Donations</Link>
-//         <Link to="/virtual-currency" className="cta-button">Virtual Currency</Link>
-//       </nav>
-//       <div className="footer">
-//         <p>Join the Epsilon Program and start your journey to enlightenment today!</p>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-
-
-// export default function Homepage() {
-//   return (
-//     <div className="homepage">
-//       <h1>Welcome to the Epsilon Program</h1>
-//       <p>Follow the path to enlightenment and discover your true self.</p>
-//       <Link to="/membership-tiers" className="cta-button">Explore Membership Tiers</Link>
-//     </div>
-//   );
-// }
-
-//Previos code is below discuss with Vidhan and then commented out
-
-// import React, { useState, useEffect } from 'react';
-// import { CssVarsProvider } from '@mui/joy/styles';
-// import Sheet from '@mui/joy/Sheet';
-// import Typography from '@mui/joy/Typography';
-// import Button from '@mui/joy/Button';
-// import List from '@mui/joy/List';
-// import ListItem from '@mui/joy/ListItem';
-// import ListItemButton from '@mui/joy/ListItemButton';
-// import Grid from '@mui/joy/Grid';
-// import Card from '@mui/joy/Card';
-// import CardContent from '@mui/joy/CardContent';
-// import { Sun, Moon, Eye } from 'lucide-react';
-
-
-
-
-
-// const EpsilonHomepage = () => {
-//   const [isEnlightened, setIsEnlightened] = useState(false);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setIsEnlightened(prev => !prev);
-//     }, 5000);
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return (
-//     <CssVarsProvider>
-//       <Sheet
-//         sx={{
-//           minHeight: '100vh',
-//         }}
-//       >
-//         <Sheet
-//           component="header"
-//           sx={{
-//             display: 'flex',
-//             justifyContent: 'space-between',
-//             alignItems: 'center',
-//           }}
-//         >
-//           <Typography level="h1" component="h1" sx ={{ padding: 5 }}>
-//             Epsilon Program
-//           </Typography>
-//           <List orientation="horizontal" sx={{ gap: 2 , padding: 5}}>
-//             <ListItem>
-//               <ListItemButton component="a" href="#about">About</ListItemButton>
-//             </ListItem>
-//             <ListItem>
-//               <ListItemButton component="a" href="#teachings">Teachings</ListItemButton>
-//             </ListItem>
-//             <ListItem>
-//               <ListItemButton component="a" href="#join">Join Us</ListItemButton>
-//             </ListItem>
-//           </List>
-//         </Sheet>
-
-//         <Sheet component="main" sx={{ px: 4, py: 8 }}>
-//           <Typography level="h1" textAlign="center" sx={{ mb: 4 }}>
-//             Seeking Truth in This 9-Dimensional World
-//           </Typography>
-//           <Typography level="h3" textAlign="center" sx={{ mb: 4 }}>
-//             Unlock the secrets of the universe and ascend to a higher plane of existence.
-//           </Typography>
-//           <Button
-//             size="lg"
-//             sx={{ display: 'block', mx: 'auto', mb: 8 }}
-//           >
-//             Begin Your Journey
-//           </Button>
-
-//           <Grid container spacing={4} sx={{ mb: 8 }}>
-//             {[
-//               { icon: Sun, title: 'Enlightenment', description: 'Discover the truth that lies beyond the veil of reality.' },
-//               { icon: Moon, title: 'Inner Peace', description: 'Achieve harmony with the cosmic forces that shape our existence.' },
-//               { icon: Eye, title: 'True Vision', description: 'See beyond the limitations of your physical form.' },
-//             ].map((item, index) => (
-//               <Grid key={index} xs={12} md={4}>
-//                 <Card>
-//                   <CardContent>
-//                     <item.icon style={{ width: 48, height: 48, marginBottom: 16 }} />
-//                     <Typography level="h4" component="h3" sx={{ mb: 1 }}>
-//                       {item.title}
-//                     </Typography>
-//                     <Typography>
-//                       {item.description}
-//                     </Typography>
-//                   </CardContent>
-//                 </Card>
-//               </Grid>
-//             ))}
-//           </Grid>
-
-//           <Typography level="h2" textAlign="center" sx={{ mb: 2 }}>
-//             Are You Ready to Ascend?
-//           </Typography>
-//           <Typography level="h4" textAlign="center" sx={{ mb: 4 }}>
-//             Join the Epsilon Program and unlock your true potential.
-//           </Typography>
-//           <Sheet
-//             sx={{
-//               width: 200,
-//               height: 200,
-//               mx: 'auto',
-//               transition: 'transform 1s',
-//               transform: isEnlightened ? 'scale(1.1) rotate(360deg)' : 'none',
-//             }}
-//           >
-//             <img src="/frontend/src/assets/epsilon.png" alt="Epsilon Symbol" style={{ width: '100%', height: '100%' }} />
-//           </Sheet>
-//         </Sheet>
-
-//         <Sheet
-//           component="footer"
-//           sx={{
-//             p: 2,
-//             textAlign: 'center',
-//             backgroundColor: 'background.backdrop',
-//           }}
-//         >
-//           <Typography level="body-sm">
-//             © 2024 Epsilon Program.
-//           </Typography>
-//         </Sheet>
-//       </Sheet>
-//     </CssVarsProvider>
-//   );
-// };
-
-// export default EpsilonHomepage;
+  export default EpsilonHomepage;

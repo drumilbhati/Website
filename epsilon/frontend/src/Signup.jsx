@@ -1,48 +1,57 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
 import CssBaseline from '@mui/joy/CssBaseline';
 import Typography from '@mui/joy/Typography';
 import FormControl from '@mui/joy/FormControl';
-import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
-import Link from '@mui/joy/Link';
 import { Link as RouterLink } from 'react-router-dom';
+import Link from '@mui/joy/Link';
 import './App.css';
 
-function ModeToggle() {
-  const [mounted, setMounted] = React.useState(false);
+// Custom theme inspired by GTA5 (same as login component)
+const theme = extendTheme({
+  colorSchemes: {
+    dark: {
+      palette: {
+        primary: {
+          50: '#e3f2fd',
+          100: '#bbdefb',
+          200: '#90caf9',
+          300: '#64b5f6',
+          400: '#42a5f5',
+          500: '#2196f3',
+          600: '#1e88e5',
+          700: '#1976d2',
+          800: '#1565c0',
+          900: '#0d47a1',
+        },
+        background: {
+          body: '#121212',
+          surface: '#1e1e1e',
+        },
+      },
+    },
+  },
+});
 
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return <Button variant="soft">Change mode</Button>;
-  }
-
-  return null; // You should implement the actual mode toggle logic here
-}
-
-export default function SignUpFinal() {
+export default function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const user = {
-      username,
-      password
-    };
-
     try {
       const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify({ username, password }),
       });
 
       if (!response.ok) {
@@ -50,69 +59,121 @@ export default function SignUpFinal() {
       }
 
       const data = await response.json();
-      console.log('User created successfully:', data);
-      // Handle successful signup (e.g., redirect to login page or show success message)
-      window.location.href = '/';
+      setMessage('Account created successfully');
+      // Redirect to login page after a short delay
+      setTimeout(() => navigate('/login'), 2000);
     } catch (error) {
-      console.error('Error creating user:', error);
-      // Handle error (e.g., show error message to user)
+      setMessage(error.message || 'Error creating account');
     }
   };
 
   return (
-    <main>
-      <ModeToggle />
+    <CssVarsProvider theme={theme} defaultMode="dark">
       <CssBaseline />
       <Sheet
         sx={{
-          width: 300,
-          mx: 'auto',
-          my: 4,
-          py: 3,
-          px: 2,
+          width: '100%',
+          height: '100vh',
+          background: 'linear-gradient(to bottom, #1e1e1e, #121212)',
           display: 'flex',
           flexDirection: 'column',
-          gap: 2,
-          borderRadius: 'sm',
-          boxShadow: 'md',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundImage: 'url("/api/placeholder/1920/1080")', // Placeholder for a GTA5-style background image
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
-        variant="outlined"
       >
-        <div>
-          <Typography level="h4" component="h1">
-            <b>Welcome!</b>
+        <Sheet
+          sx={{
+            width: 350,
+            p: 4,
+            borderRadius: 'md',
+            boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)',
+            background: 'rgba(30, 30, 30, 0.8)',
+            backdropFilter: 'blur(10px)',
+          }}
+          variant="outlined"
+        >
+          <Typography
+            level="h3"
+            sx={{
+              mb: 2,
+              fontFamily: "'Pricedown', sans-serif", // Custom GTA-style font (you'd need to import this)
+              color: '#ffab00',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+              textAlign: 'center',
+            }}
+          >
+            Join Los Santos
           </Typography>
-          <Typography level="body-sm">Sign up to continue.</Typography>
-        </div>
-        <form onSubmit={handleSubmit}>
-          <FormControl>
-            <FormLabel>Username</FormLabel>
-            <Input
-              name="username"
-              type="text"
-              placeholder="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </FormControl>
-          <FormControl>
-            <FormLabel>Password</FormLabel>
-            <Input
-              name="password"
-              type="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </FormControl>
-          <Button type="submit" sx={{ mt: 1 }}>Sign Up</Button>
-        </form>
-        <Typography>
-          <Link component={RouterLink} to="/login">
-            Already have an account?
-          </Link>
-        </Typography>
+          <form onSubmit={handleSubmit}>
+            <FormControl sx={{ mb: 2 }}>
+              <Input
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                sx={{
+                  backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                  color: '#fff',
+                  '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.4)' },
+                }}
+              />
+            </FormControl>
+            <FormControl sx={{ mb: 2 }}>
+              <Input
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                sx={{
+                  backgroundColor: 'rgba(0, 0, 0, 0.3)',
+                  color: '#fff',
+                  '&:hover': { backgroundColor: 'rgba(0, 0, 0, 0.4)' },
+                }}
+              />
+            </FormControl>
+            <Button
+              type="submit"
+              fullWidth
+              sx={{
+                mt: 2,
+                mb: 2,
+                backgroundColor: '#ffab00',
+                color: '#000',
+                fontWeight: 'bold',
+                '&:hover': { backgroundColor: '#ffd600' },
+              }}
+            >
+              Create Account
+            </Button>
+          </form>
+          {message && (
+            <Typography level="body-sm" color="danger" sx={{ mb: 2, textAlign: 'center' }}>
+              {message}
+            </Typography>
+          )}
+          <Typography 
+            level="body-sm"
+            sx={{
+              textAlign: 'center',
+              color: '#bdbdbd',
+            }}
+          >
+            Already have an account?{' '}
+            <Link
+              component={RouterLink}
+              to="/login"
+              sx={{
+                color: '#ffab00',
+                '&:hover': { color: '#ffd600' },
+              }}
+            >
+              Log in
+            </Link>
+          </Typography>
+        </Sheet>
       </Sheet>
-    </main>
+    </CssVarsProvider>
   );
 }

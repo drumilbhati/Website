@@ -1,5 +1,5 @@
 import React from 'react';
-import './MemStories.css';
+import './App.css';
 
 export default function MemberStories() {
   return (
