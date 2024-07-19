@@ -38,7 +38,7 @@ const theme = extendTheme({
   },
 });
 
-export default function Login() {
+export default function AdminLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -47,11 +47,11 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/login', { username, password });
+      const response = await axios.post('http://localhost:3000/api/admin-login', { username, password });
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
         setMessage(response.data.message || 'Login successful');
-        navigate('/');
+        navigate('/admin-dashboard');
       }
     } catch (error) {
       setMessage(error.response?.data?.message || 'Login failed');
@@ -96,7 +96,7 @@ export default function Login() {
               textAlign: 'center',
             }}
           >
-            Epsilon Program Login
+            Admin Login
           </Typography>
           <form onSubmit={handleSubmit}>
             <FormControl sx={{ mb: 2 }}>
@@ -164,12 +164,12 @@ export default function Login() {
             </Link>
             <Link 
               component={RouterLink}
-              to="/admin-login"
+              to="/login"
               sx={{
                 color: '#ffab00',
                 '&:hover': { color: '#ffd600' },
               }}>
-              Admin Login
+              User Login
             </Link>
           </Typography>
         </Sheet>

@@ -10,6 +10,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    role: {
+        type: String,
+        enum: ["user", "admin"],
+        default: "user",
+    },
     balance: {
         type: Number,
         default: 1000000,
@@ -22,7 +27,7 @@ const userSchema = new mongoose.Schema({
     donation: {
         type: Number,
         default: 0,
-    }
+    },
 });
 
 const User = mongoose.model("User", userSchema);

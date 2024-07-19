@@ -1,17 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Login from './Login.jsx'
+import AdminLogin from './AdminLogin.jsx'
 import Signup from './Signup.jsx'
 import HomePage from './HomePage.jsx'
+import AdminDashboard from './AdminDashboard.jsx'
 import Map from './Map.jsx'
 import Jokes from './Jokes.jsx'
-import './MemTiers.css'
+import './MemTiers.css' 
 import './HomePage.jsx'
 import './MemStories.jsx'
 import App from './App.jsx'
 import MemStories from './MemStories.jsx'
 import Subscription from './Subscription.jsx'
-// import './Memstories.css'
 
 import {
   createBrowserRouter,
@@ -51,6 +52,14 @@ const router = createBrowserRouter([
   {
     path: '/subscription',
     element: <Subscription/>
+  },
+  {
+    path: 'admin-login',
+    element: <AdminLogin/>
+  },
+  {
+    path: 'admin-dashboard',
+    element: <AdminDashboard/>
   }
 ]);
 
