@@ -1,13 +1,14 @@
-  import React, { useState, useEffect } from 'react';
-  import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
-  import Sheet from '@mui/joy/Sheet';
-  import Typography from '@mui/joy/Typography';
-  import Button from '@mui/joy/Button';
-  import Grid from '@mui/joy/Grid';
-  import Card from '@mui/joy/Card';
-  import CardContent from '@mui/joy/CardContent';
-  import { Sun, Moon, Eye } from 'lucide-react';
-  import Navbar from './Navbar.jsx';
+import React, { useState, useEffect } from 'react';
+import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
+import Sheet from '@mui/joy/Sheet';
+import Typography from '@mui/joy/Typography';
+import Button from '@mui/joy/Button';
+import Grid from '@mui/joy/Grid';
+import Card from '@mui/joy/Card';
+import CardContent from '@mui/joy/CardContent';
+import { Sun, Moon, Eye } from 'lucide-react';
+import Navbar from './Navbar.jsx';
+import './App.css';
 
   const theme = extendTheme({
     colorSchemes: {
@@ -26,8 +27,8 @@
             900: '#0d47a1',
           },
           background: {
-            body: '#0a0a0a',
-            surface: '#121212',
+            body: '#121212',
+            surface: '#1e1e1e',
           },
         },
       },
@@ -48,14 +49,9 @@
       <CssVarsProvider theme={theme} defaultMode="dark">
         <Sheet
           sx={{
+            backgroundColor: '#000',
             minHeight: '100vh',
             background: 'linear-gradient(to bottom, #121212, #0a0a0a)',
-            backgroundImage: 'url("/api/placeholder/1920/1080")', // Placeholder for a GTA5-style background image
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
-            backgroundBlendMode: 'overlay',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
           }}
         >
           <Sheet
@@ -64,7 +60,7 @@
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              background: 'rgba(10, 10, 10, 0.9)',
+              background: '#000',
               backdropFilter: 'blur(10px)',
               padding: 2,
             }}
@@ -88,14 +84,14 @@
             sx={{
               display: 'block',
               minWidth: "100%",
-              background: 'rgba(10, 10, 10, 0.9)',
+              background: '#000',
               backdropFilter: 'blur(10px)',
             }}
           >
             <Navbar />
           </Sheet>
 
-          <Sheet component="main" sx={{ px: 4, py: 8, justifyItems: 'center' }}>
+          <Sheet component="main" sx={{ px: 4, py: 8, justifyItems: 'center', backgroundColor: '#000' }}>
             <Typography
               level="h1"
               textAlign="center"
@@ -108,7 +104,7 @@
             >
               Seeking Truth in This 9-Dimensional World
             </Typography>
-            <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#fff' }}>
+            <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#ffab00' }}>
               Unlock the secrets of the universe and ascend to a higher plane of existence.
             </Typography>
             <Button
@@ -153,18 +149,7 @@
             </Typography>
             <Typography level="h4" textAlign="center" sx={{ mb: 4, color: '#fff' }}>
               Join the Epsilon Program and unlock your true potential.
-            </Typography>
-            <Sheet
-              sx={{
-                width: 200,
-                height: 200,
-                mx: 'auto',
-                transition: 'transform 1s',
-                transform: isEnlightened ? 'scale(1.1) rotate(360deg)' : 'none',
-              }}
-            >
-              <img src="/frontend/src/assets/epsilon.png" alt="Epsilon Symbol" style={{ width: '100%', height: '100%' }} />
-            </Sheet>
+            </Typography> 
           </Sheet>
 
           <Sheet

@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import router from './router/user.router.js';
+import userRouter from './router/user.router.js';
+import eventsRouter from './router/events.routes.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
@@ -12,7 +13,8 @@ const PORT = process.env.PORT || 8000;
 app.use(express.json());
 app.use(express.urlencoded({extended: true, limit: "16kb"}));
 app.use(express.static("public"));
-app.use(router);
+app.use(userRouter);
+app.use(eventsRouter);
 app.use(cors(
   {origin: 'http://localhost:3000',
   credentials: true,

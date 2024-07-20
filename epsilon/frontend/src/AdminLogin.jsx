@@ -151,17 +151,6 @@ export default function AdminLogin() {
               color: '#bdbdbd',
             }}
           >
-            New to Los Santos?{' '}
-            <Link
-              component={RouterLink}
-              to="/Signup"
-              sx={{
-                color: '#ffab00',
-                '&:hover': { color: '#ffd600' },
-              }}
-            >
-              Create an account
-            </Link>
             <Link 
               component={RouterLink}
               to="/login"

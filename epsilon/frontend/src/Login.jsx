@@ -154,7 +154,7 @@ export default function Login() {
             New to Los Santos?{' '}
             <Link
               component={RouterLink}
-              to="/Signup"
+              to="/signup"
               sx={{
                 color: '#ffab00',
                 '&:hover': { color: '#ffd600' },
