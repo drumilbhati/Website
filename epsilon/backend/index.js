@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import userRouter from './router/user.router.js';
-import eventsRouter from './router/events.routes.js';
+import eventsRouter from './router/events.router.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
