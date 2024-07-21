@@ -45,7 +45,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/member-stories",
-    element: <MemStories/>  // Why showing error if I write memStories?
+    element: <MemStories/>
   },
   {
     path:'/jokes',
