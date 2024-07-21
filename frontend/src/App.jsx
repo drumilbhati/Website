@@ -16,7 +16,7 @@ const App = () => {
         {/* Protected routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<UserProfile />} />
-          <Route path="/" element={<Home />} /> {/* Assume you have a Home component */}
+          <Route path="/" element={<HomePage />} /> {/* Assume you have a Home component */}
         </Route>
 
         {/* Admin routes (you might want to create a separate AdminRoute component) */}
