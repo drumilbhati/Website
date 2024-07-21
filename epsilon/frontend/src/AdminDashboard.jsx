@@ -6,13 +6,14 @@ import Typography from '@mui/joy/Typography';
 import Button from '@mui/joy/Button';
 import Input from '@mui/joy/Input';
 import Textarea from '@mui/joy/Textarea';
-import Checkbox from '@mui/joy/Checkbox';
 import Table from '@mui/joy/Table';
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
 import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
+import Select from '@mui/joy/Select'; 
 import { PlusCircle } from 'lucide-react';
+import DropDown from './DropDown';
 import axios from 'axios';
 
 const theme = extendTheme({
@@ -39,7 +40,6 @@ const theme = extendTheme({
     },
   },
 });
-
 const AdminEventDashboard = () => {
   const [events, setEvents] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,7 +50,7 @@ const AdminEventDashboard = () => {
     location: '',
     createdBy: '',
     capacity: 0,
-    membershipRequired: false
+    membershipRequired: 'None'
   });
 
   useEffect(() => {
@@ -68,7 +68,15 @@ const AdminEventDashboard = () => {
 
   const handleCreateEvent = async () => {
     try {
-      await axios.post('/api/post-event', newEvent);
+      const eventData = {
+        ...newEvent,
+        capacity: Number(newEvent.capacity),
+        membershipRequired: newEvent.membershipRequired
+      };
+      
+      console.log('Sending event data:', eventData);  // Log the data being sent
+      
+      await axios.post('/api/post-event', eventData);
       setIsModalOpen(false);
       setNewEvent({
         title: '',
@@ -77,11 +85,12 @@ const AdminEventDashboard = () => {
         location: '',
         createdBy: '',
         capacity: 0,
-        membershipRequired: false
+        membershipRequired: 'None'
       });
       fetchEvents();
     } catch (error) {
       console.error('Error creating event:', error);
+      alert(`Error creating event: ${error.response?.data?.message || error.message}`);
     }
   };
 
@@ -90,7 +99,6 @@ const AdminEventDashboard = () => {
       <CssBaseline />
       <Sheet
         sx={{
-          width: '100%',
           minHeight: '100vh',
           background: 'linear-gradient(to bottom, #1e1e1e, #121212)',
           p: 3,
@@ -125,19 +133,20 @@ const AdminEventDashboard = () => {
         <Sheet
           variant="outlined"
           sx={{
+            color: '#fff',
             borderRadius: 'md',
             overflow: 'auto',
             backgroundColor: 'rgba(30, 30, 30, 0.8)',
           }}
         >
-          <Table stickyHeader hoverRow>
+        <Table stickyHeader hoverRow sx={{color: '#ffab00'}}>
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Date</th>
-                <th>Location</th>
-                <th>Capacity</th>
-                <th>Membership Required</th>
+                <th style={{color: '#ffab00', textAlign: 'center'}}>Title</th>
+                <th style={{color: '#ffab00', textAlign: 'center'}}>Date</th>
+                <th style={{color: '#ffab00', textAlign: 'center'}}>Location</th>
+                <th style={{color: '#ffab00', textAlign: 'center'}}>Capacity</th>
+                <th style={{color: '#ffab00', textAlign: 'center'}}>Membership Required</th>
               </tr>
             </thead>
             <tbody>
@@ -153,7 +162,6 @@ const AdminEventDashboard = () => {
             </tbody>
           </Table>
         </Sheet>
-
         <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
           <ModalDialog>
             <DialogTitle>Create New Event</DialogTitle>
@@ -193,18 +201,17 @@ const AdminEventDashboard = () => {
                 type="number"
                 placeholder="Capacity"
                 value={newEvent.capacity}
-                onChange={(e) => setNewEvent({ ...newEvent, capacity: parseInt(e.target.value) })}
+                onChange={(e) => setNewEvent({ ...newEvent, capacity: e.target.value })}
                 sx={{ mb: 2 }}
               />
-              <Checkbox
-                label="Membership Required"
-                checked={newEvent.membershipRequired}
-                onChange={(e) => setNewEvent({ ...newEvent, membershipRequired: e.target.checked })}
-                sx={{ mb: 2 }}
+              <DropDown
+                onChange={(event, newValue) => setNewEvent({ ...newEvent, membershipRequired: newValue })}
               />
+              
               <Button
                 onClick={handleCreateEvent}
                 sx={{
+                  mt: 2,
                   backgroundColor: '#ffab00',
                   color: '#000',
                   fontWeight: 'bold',
