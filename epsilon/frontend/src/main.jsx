@@ -13,11 +13,13 @@ import './MemStories.jsx'
 import App from './App.jsx'
 import MemStories from './MemStories.jsx'
 import Subscription from './Subscription.jsx'
-
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import UserProfile from './UserProfile.jsx'
+import { AuthProvider } from './AuthContext.jsx'
+import ProtectedRoute from './ProtectedRoute.jsx'
 
 
 const router = createBrowserRouter([
@@ -60,12 +62,22 @@ const router = createBrowserRouter([
   {
     path: 'admin-dashboard',
     element: <AdminDashboard/>
+  },
+  {
+    path: 'user-profile',
+    element: (
+      <ProtectedRoute>
+        <UserProfile/>
+      </ProtectedRoute>
+    )
   }
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <RouterProvider router={router}/>
+      <AuthProvider>
+        <RouterProvider router={router}/>
+      </AuthProvider>
   </React.StrictMode>,
 )

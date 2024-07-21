@@ -91,7 +91,7 @@ import './App.css';
             <Navbar />
           </Sheet>
 
-          <Sheet component="main" sx={{ px: 4, py: 8, justifyItems: 'center', backgroundColor: '#000' }}>
+          <Sheet component="main" sx={{ px: 4, py: 8, justifyItems: 'center', backgroundColor: '#111' }}>
             <Typography
               level="h1"
               textAlign="center"

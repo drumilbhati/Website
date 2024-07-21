@@ -74,7 +74,7 @@ const AdminEventDashboard = () => {
         membershipRequired: newEvent.membershipRequired
       };
       
-      console.log('Sending event data:', eventData);  // Log the data being sent
+      console.log('Sending event data:', eventData);
       
       await axios.post('/api/post-event', eventData);
       setIsModalOpen(false);

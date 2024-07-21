@@ -10,6 +10,16 @@ export default function DropDown(props) {
       onChange={onChange}
       placeholder={"Select subscription level"}
       indicator={<KeyboardArrowDown />}
+      sx={{
+        [`& .${selectClasses.indicator}`]: {
+          transition: '0.2s',
+          transform: 'rotate(0deg)',
+        },
+        [`&:hover .${selectClasses.indicator}`]: {
+          transform: 'rotate(180deg)',
+        },
+        minWidth: '100%',
+      }}
       
     >
       <Option value="None">None</Option>
