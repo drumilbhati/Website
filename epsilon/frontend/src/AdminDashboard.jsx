@@ -14,6 +14,7 @@ import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 import { PlusCircle } from 'lucide-react';
 import axios from 'axios';
+import Dropdown from './Dropdown';
 
 const theme = extendTheme({
   colorSchemes: {
@@ -196,15 +197,13 @@ const AdminEventDashboard = () => {
                 onChange={(e) => setNewEvent({ ...newEvent, capacity: parseInt(e.target.value) })}
                 sx={{ mb: 2 }}
               />
-              <Checkbox
-                label="Membership Required"
-                checked={newEvent.membershipRequired}
-                onChange={(e) => setNewEvent({ ...newEvent, membershipRequired: e.target.checked })}
-                sx={{ mb: 2 }}
-              />
+              
+              <Dropdown/>
+            
               <Button
                 onClick={handleCreateEvent}
                 sx={{
+                  mt: 2,
                   backgroundColor: '#ffab00',
                   color: '#000',
                   fontWeight: 'bold',
