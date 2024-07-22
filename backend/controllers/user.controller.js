@@ -46,6 +46,7 @@
 
             const user = await decodedToken;
             req.user = user;
+            res.status(200).json({user: decodedToken});
             next();
 
         } catch (error) {

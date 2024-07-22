@@ -1,7 +1,8 @@
 // MemTiers.jsx
 import React, { useState } from 'react';
-import './App.css';
 import Subscription from './Subscription';
+import './MemTiers.css';
+import './App.css';
 
 export default function MemTiers() {
   const [selectedLevel, setSelectedLevel] = useState('');

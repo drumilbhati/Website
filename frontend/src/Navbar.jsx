@@ -16,7 +16,8 @@ const Navbar = () => {
     { label: 'Join Us', href: '/membership-tiers' },
     { label: 'Find Us', href: '/map' },
     { label: 'Login', href: '/login' },
-    { label: 'Demo', href: '/user-profile'}
+    { label: 'Demo', href: '/user-profile'},
+    { label: 'UserProfile', href: '/user-profile'},
   ];
 
   return (

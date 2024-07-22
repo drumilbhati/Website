@@ -2,6 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  min-height: max-content;
 
   color-scheme: light dark;
   color: #72b2fb;
@@ -27,8 +28,8 @@ body {
   display: flex;
   place-items: left;
   min-width: 320px;
-  min-height: 100vh;
   background-color: white;
+  min-height: 100vh;
 }
 
 h1 {
@@ -73,7 +74,7 @@ button:focus-visible {
 .membership-tiers {
   text-align: center;
   padding: 20px;
-  min-height: 100%; /* Darker container background */
+  min-height: max-content; /* Darker container background */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

@@ -1,29 +1,34 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import Jokes from './Jokes.jsx';
+import Map from './Map.jsx';
+import EpsilonHomepage from './HomePage.jsx';
 import Login from './Login.jsx';
+import Signup from './Signup.jsx';
 import AdminLogin from './AdminLogin.jsx';
+import AdminDashboard from './AdminDashboard.jsx';
+import MemStories from './MemStories.jsx';
+import Subscription from './Subscription.jsx';
 import UserProfile from './UserProfile.jsx';
-import ProtectedRoute from './ProtectedRoute.jsx';
-import AdminDashboard from './AdminDashboard.jsx'; // Assume you have this component
+import MemTiers from './MemTiers.jsx';
+import './App.css';
 
-const App = () => {
+export default function App() {
   return (
-    <Router>
+    <>
       <Routes>
+        <Route path="/" element={<EpsilonHomepage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/admin-login" element={<AdminLogin />} />
-        
-        {/* Protected routes */}
-        <Route element={<ProtectedRoute />}>
-          <Route path="/profile" element={<UserProfile />} />
-          <Route path="/" element={<HomePage />} /> {/* Assume you have a Home component */}
-        </Route>
-
-        {/* Admin routes (you might want to create a separate AdminRoute component) */}
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/member-stories" element={<MemStories />} />
+        <Route path="/subscription" element={<Subscription />} />
+        <Route path="/user-profile" element={<UserProfile />} />
+        <Route path="/jokes" element={<Jokes />} />
+        <Route path="/map" element={<Map />} />
+        <Route path="/membership-tiers" element={<MemTiers />} />
       </Routes>
-    </Router>
+    </>
   );
-};
-
-export default App;
+}
