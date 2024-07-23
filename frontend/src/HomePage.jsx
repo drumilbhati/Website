@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from 'react';
 import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
@@ -72,7 +74,7 @@ import './App.css';
                 paddingLeft: 5,
                 paddingTop: 2,
                 fontFamily: "'Pricedown', sans-serif",
-                color: '#ffab00',
+                color: '#4caf50',
                 textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               }}
             >
@@ -98,13 +100,13 @@ import './App.css';
               sx={{
                 mb: 4,
                 fontFamily: "'Pricedown', sans-serif",
-                color: '#ffab00',
+                color: '#4caf50',
                 textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               }}
             >
               Seeking Truth in This 9-Dimensional World
             </Typography>
-            <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#ffab00' }}>
+            <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#4caf50' }}>
               Unlock the secrets of the universe and ascend to a higher plane of existence.
             </Typography>
             <Button
@@ -113,7 +115,7 @@ import './App.css';
                 display: 'block',
                 mx: 'auto',
                 mb: 8,
-                backgroundColor: '#ffab00',
+                backgroundColor: '#4caf50',
                 color: '#000',
                 fontWeight: 'bold',
                 '&:hover': { backgroundColor: '#ffd600' },
@@ -131,8 +133,8 @@ import './App.css';
                 <Grid key={index} xs={12} md={4}>
                   <Card sx={{ backgroundColor: 'rgba(10, 10, 10, 0.9)', backdropFilter: 'blur(10px)' }}>
                     <CardContent>
-                      <item.icon style={{ width: 48, height: 48, marginBottom: 16, color: '#ffab00' }} />
-                      <Typography level="h4" component="h3" sx={{ mb: 1, color: '#ffab00' }}>
+                      <item.icon style={{ width: 48, height: 48, marginBottom: 16, color: '#4caf50' }} />
+                      <Typography level="h4" component="h3" sx={{ mb: 1, color: '#4caf50' }}>
                         {item.title}
                       </Typography>
                       <Typography sx={{ color: '#fff' }}>
@@ -144,7 +146,7 @@ import './App.css';
               ))}
             </Grid>
 
-            <Typography level="h2" textAlign="center" sx={{ mb: 2, color: '#ffab00', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+            <Typography level="h2" textAlign="center" sx={{ mb: 2, color: '#4caf50', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
               Are You Ready to Ascend?
             </Typography>
             <Typography level="h4" textAlign="center" sx={{ mb: 4, color: '#fff' }}>

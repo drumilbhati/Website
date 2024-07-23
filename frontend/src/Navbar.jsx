@@ -32,14 +32,17 @@ export default function DrawerScrollable() {
               <ListItemButton onClick={() => navigate('/')}>Home</ListItemButton>
             </ListItem>
             <ListItem>
-              <ListItemButton onClick={() => navigate('/join')}>Join Us</ListItemButton>
+              <ListItemButton onClick={() => navigate('/membership-tiers')}>Join Us</ListItemButton>
             </ListItem>
             <ListItem>
-              <ListItemButton onClick={() => navigate('/donate')}>Donate</ListItemButton>
+              <ListItemButton onClick={() => navigate('/Donation')}>Donate</ListItemButton>
             </ListItem>
             <ListItem>
               <ListItemButton onClick={() => navigate('/testimonials')}>Testimonials</ListItemButton>
             </ListItem>   
+            <ListItem>
+              <ListItemButton onClick={() => navigate('/Login')}>Login</ListItemButton>
+            </ListItem>
           </List>
         </DialogContent>
         <Box

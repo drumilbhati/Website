@@ -13,6 +13,7 @@ import UserProfile from './UserProfile.jsx';
 import MemTiers from './MemTiers.jsx';
 import SideButton from './SideButton.jsx';
 import './App.css';
+import EpsilonDonation from './Donation.jsx';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/map" element={<Map />} />
         <Route path="/membership-tiers" element={<MemTiers />} />
         <Route path="/side-button" element={<SideButton />} />
+        <Route path="/Donation" element={<EpsilonDonation />} />
       </Routes>
     </>
   );
