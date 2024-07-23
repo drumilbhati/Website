@@ -140,7 +140,7 @@ const MembershipTiers = () => {
       monthlyPrice: '$9.99',
       yearlyPrice: '$99.99',
       features: ['Access to basic content', 'Email support', 'Monthly newsletter'],
-      gradient: 'linear-gradient(45deg, #FFC67D, #FF99CC)'
+      gradient: 'linear-gradient(45deg, #45B3FA, #8BC34A)'
     },
     {
       name: 'Pro',
@@ -198,6 +198,7 @@ const MembershipTiers = () => {
             key={tier.name}
             variant="outlined"
             sx={{
+              mb: 2,
               width: 300,
               background: tier.gradient,
               color: 'white',
@@ -228,7 +229,7 @@ const MembershipTiers = () => {
                 }
               }}
             >
-              Select {tier.name}
+              Buy {tier.name}
             </Button>
           </Card>
         ))}
