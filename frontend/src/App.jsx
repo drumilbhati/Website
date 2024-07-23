@@ -11,6 +11,7 @@ import MemStories from './MemStories.jsx';
 import Subscription from './Subscription.jsx';
 import UserProfile from './UserProfile.jsx';
 import MemTiers from './MemTiers.jsx';
+import SideButton from './SideButton.jsx';
 import './App.css';
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/jokes" element={<Jokes />} />
         <Route path="/map" element={<Map />} />
         <Route path="/membership-tiers" element={<MemTiers />} />
+        <Route path="/side-button" element={<SideButton />} />
       </Routes>
     </>
   );

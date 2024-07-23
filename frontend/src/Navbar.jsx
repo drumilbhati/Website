@@ -1,102 +1,64 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import Avatar from '@mui/joy/Avatar';
 import Box from '@mui/joy/Box';
-import IconButton from '@mui/joy/IconButton';
-import Input from '@mui/joy/Input';
+import Button from '@mui/joy/Button';
+import Drawer from '@mui/joy/Drawer';
+import DialogTitle from '@mui/joy/DialogTitle';
+import DialogContent from '@mui/joy/DialogContent';
 import List from '@mui/joy/List';
+import ListItem from '@mui/joy/ListItem';
 import ListItemButton from '@mui/joy/ListItemButton';
 import Typography from '@mui/joy/Typography';
-import Search from '@mui/icons-material/Search';
-import Menu from '@mui/icons-material/Menu';
+import ModalClose from '@mui/joy/ModalClose';
+import { useNavigate } from 'react-router-dom';
+import { Menu } from '@mui/icons-material';
+import IconButton from '@mui/joy/IconButton';
 
-const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Join Us', href: '/membership-tiers' },
-    { label: 'Find Us', href: '/map' },
-    { label: 'Login', href: '/login' },
-    { label: 'Demo', href: '/user-profile'},
-    { label: 'UserProfile', href: '/user-profile'},
-  ];
+export default function DrawerScrollable() {
+  const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   return (
-    <Box
-      component="nav"
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        p: 2,
-        backgroundColor: 'rgba(10, 10, 10, 0.9)',
-        backdropFilter: 'blur(10px)',
-      }}
-    >
-      <Typography
-        level="h4"
-        component="div"
-        sx={{
-          fontFamily: "'Pricedown', sans-serif",
-          color: '#ffab00',
-          textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
-          display: { xs: 'none', sm: 'block' },
-        }}
-      >
-      </Typography>
-
-      <List
-        role="menubar"
-        orientation="horizontal"
-        sx={{
-          display: { xs: 'none', md: 'flex' },
-          gap: 2,
-        }}
-      >
-        {navItems.map((item) => (
-          <ListItemButton
-            key={item.label}
-            role="menuitem"
-            component="a"
-            href={item.href}
-            sx={{
-              fontWeight: 'bold',
-              color: '#ffab00',
-              '&:hover': {
-                backgroundColor: 'rgba(255, 171, 0, 0.1)',
-              },
-            }}
-          >
-            {item.label}
-          </ListItemButton>
-        ))}
-      </List>
-
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Input
-          size="sm"
-          placeholder="Search"
-          variant="outlined"
-          endDecorator={<Search />}
+    <React.Fragment>
+      <IconButton onClick={() => setOpen(true)} sx={{ display: { xs: 'none', md: 'inline-flex', right: 560 } }}>
+        <Menu />
+      </IconButton>
+      <Drawer open={open} onClose={() => setOpen(false)}>
+        <ModalClose />
+        <DialogTitle sx={{fontSize: 30, fontFamily: "'Pricedown', sans-serif"}}>Epsilon Program</DialogTitle>
+        <DialogContent>
+          <List sx={{fontSize: 20, fontFamily: "'Pricedown', sans-serif"}}>
+            <ListItem>
+              <ListItemButton onClick={() => navigate('/')}>Home</ListItemButton>
+            </ListItem>
+            <ListItem>
+              <ListItemButton onClick={() => navigate('/join')}>Join Us</ListItemButton>
+            </ListItem>
+            <ListItem>
+              <ListItemButton onClick={() => navigate('/donate')}>Donate</ListItemButton>
+            </ListItem>
+            <ListItem>
+              <ListItemButton onClick={() => navigate('/testimonials')}>Testimonials</ListItemButton>
+            </ListItem>   
+          </List>
+        </DialogContent>
+        <Box
           sx={{
-            display: { xs: 'none', md: 'flex' },
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            color: '#fff',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.2)',
-            },
+            display: 'flex',
+            gap: 1,
+            p: 1.5,
+            pb: 2,
+            borderTop: '1px solid',
+            borderColor: 'divider',
           }}
-        />
-        <IconButton
-          variant="outlined"
-          color="neutral"
-          onClick={() => setMobileOpen(true)}
-          sx={{ display: { md: 'none' } }}
         >
-          <Menu />
-        </IconButton>
-      </Box>
-    </Box>
+          <Avatar size="lg" />
+          <div>
+            <Typography level="title-md">user.username</Typography>
+            <Typography level="body-sm">joined 20 Jun 2023</Typography>
+          </div>
+        </Box>
+      </Drawer>
+    </React.Fragment>
   );
-};
-
-export default Navbar;
+}
