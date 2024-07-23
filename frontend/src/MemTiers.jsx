@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Card, Typography, Stack, Modal, ModalDialog, ModalClose, Box } from '@mui/joy';
+import { Button, Card, Typography, Stack, Modal, ModalDialog, ModalClose, Box,Sheet  } from '@mui/joy';
+import Navbar from './Navbar.jsx';
+import './App.css';
 
 const MembershipTiers = () => {
   const [selectedTier, setSelectedTier] = useState(null);
@@ -40,6 +42,8 @@ const MembershipTiers = () => {
   };
 
   return (
+
+    
     <Stack spacing={4} alignItems="center">
       <Box 
         sx={{ 
@@ -62,6 +66,17 @@ const MembershipTiers = () => {
           Select the Membership
         </Typography>
       </Box>
+      <Sheet
+            component="navbar"
+            sx={{
+              display: 'block',
+              minWidth: "100%",
+              background: 'linear-gradient(to bottom, #1e1e1e, #121212)',
+              backdropFilter: 'blur(10px)',
+            }}
+          >
+            <Navbar />
+      </Sheet>
       
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4} useFlexGap>
         {tiers.map((tier) => (
