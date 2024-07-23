@@ -7,29 +7,33 @@ const UserProfile = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        // Decode token to get basic user info
-        const decodedUser = jwtDecode(token);
-        setUser(decodedUser);
-
-        // Fetch additional user details from the server
-        fetch('/api/auth-endpoint', {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to fetch user details');
-          }
-          return response.json();
-        })
-        .then(data => setUser(prevUser => ({ ...prevUser, ...data.user })))
-        .catch(error => setError(error.message));
-      } catch (error) {
-        setError('Invalid token');
-        localStorage.removeItem('token');
+    if (!token) {
+      setError('No token found');
+    } else {
+      if (token) {
+        try {
+          // Decode token to get basic user info
+          const decodedUser = jwtDecode(token);
+          setUser(decodedUser);
+  
+          // Fetch additional user details from the server
+          fetch('/api/auth-endpoint', {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Failed to fetch user details');
+            }
+            return response.json();
+          })
+          .then(data => setUser(prevUser => ({ ...prevUser, ...data.user })))
+          .catch(error => setError(error.message));
+        } catch (error) {
+          setError('Invalid token');
+          localStorage.removeItem('token');
+        }
       }
     }
   }, []);
@@ -45,7 +49,6 @@ const UserProfile = () => {
         <div>
           <p>Username: {user.userName}</p>
           <p>Role: {user.role}</p>
-          {/* Add more user details as needed */}
         </div>
       ) : (
         <p>Loading user profile...</p>
