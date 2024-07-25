@@ -257,7 +257,7 @@ export const createUser = async (req, res) => {
             username,
             password: hashedPassword,
             role: 'user',
-            balance: 0,
+            balance: 1000000,
             donation: 0
         });
         
