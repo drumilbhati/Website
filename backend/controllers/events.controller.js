@@ -1,4 +1,6 @@
 import Event from "../models/events.models.js";
+import User from "../models/user.models.js";
+import jwt from "jsonwebtoken";
 
 export const createEvent = async (req, res) => {
     const event = new Event({
@@ -30,17 +32,23 @@ export const getEvents = async (req, res) => {
 
 export const registerForEvent = async (req, res) => {
     try {
-        const event = await Event.findOne({ title: req.body.title });
+        const { token, event_title} = req.body;
+        const decodedToken = jwt.verify(token, 'secret');
+        const user = await User.findById(decodedToken.userId).select('-password');
+        const event = await Event.findOne({ title: event_title });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
         if (!event) {
             return res.status(404).json({ message: 'Event not found' });
         }
-        if (event.attendees.includes(req.body.userId)) {
+        if (event.attendees.includes(user.username)) {
             return res.status(400).json({ message: 'User already registered for this event' });
         }
         if (event.capacity <= event.attendees.length) {
             return res.status(400).json({ message: 'Event is full' });
         }
-        event.attendees.push(req.body.userId);
+        event.attendees.push(user.username);
         await event.save();
         res.status(200).json(event);
     } catch (error) {
