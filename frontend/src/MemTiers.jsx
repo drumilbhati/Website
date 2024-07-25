@@ -75,7 +75,6 @@ const MembershipTiers = () => {
               backdropFilter: 'blur(10px)',
             }}
           >
-            <Navbar />
       </Sheet>
       
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4} useFlexGap>

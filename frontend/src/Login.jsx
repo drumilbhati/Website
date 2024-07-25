@@ -48,7 +48,8 @@ export default function Login() {
     event.preventDefault();
     try {
       const response = await axios.post('http://localhost:3000/api/login', { username, password });
-      if (response.data.token) {
+      localStorage.removeItem('token');
+      if (response) {
         localStorage.setItem('token', response.data.token);
         setMessage(response.data.message || 'Login successful');
         navigate('/');

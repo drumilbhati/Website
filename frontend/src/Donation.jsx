@@ -6,26 +6,31 @@ import Button from '@mui/joy/Button';
 import Grid from '@mui/joy/Grid';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
+import Modal from '@mui/joy/Modal';
+import ModalDialog from '@mui/joy/ModalDialog';
+import ModalClose from '@mui/joy/ModalClose';
+import Input from '@mui/joy/Input';
 import { DollarSign, Zap, Brain, ChevronUp, Eye } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './Navbar.jsx';
 import './App.css';
+import axios from 'axios';
 
 const theme = extendTheme({
   colorSchemes: {
     dark: {
       palette: {
         primary: {
-          50: '#e8f5e9',
-          100: '#c8e6c9',
-          200: '#a5d6a7',
-          300: '#81c784',
-          400: '#66bb6a',
-          500: '#4caf50',
-          600: '#43a047',
-          700: '#388e3c',
-          800: '#2e7d32',
-          900: '#1b5e20',
+          50: '#e3f2fd',
+          100: '#bbdefb',
+          200: '#90caf9',
+          300: '#64b5f6',
+          400: '#42a5f5',
+          500: '#2196f3',
+          600: '#1e88e5',
+          700: '#1976d2',
+          800: '#1565c0',
+          900: '#0d47a1',
         },
         background: {
           body: '#121212',
@@ -40,6 +45,10 @@ const EpsilonDonation = () => {
   const [donationAmount, setDonationAmount] = useState(0);
   const [isEnlightened, setIsEnlightened] = useState(false);
   const [floatingIcons, setFloatingIcons] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [donationInput, setDonationInput] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   useEffect(() => {
     const donationInterval = setInterval(() => {
@@ -69,16 +78,44 @@ const EpsilonDonation = () => {
     }, 5000);
   };
 
+  const handleDonation = async (event) => {
+    event.preventDefault();
+    setError('');
+    setSuccess('');
+    const amount = parseFloat(donationInput);
+
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post('http://localhost:3000/api/donate', 
+        { token, amount },
+      );
+      
+      if(response.status !== 200) {
+        throw new Error(response.data.message);
+      }
+
+      const responseData = response.data;
+      console.log('Donation response:', responseData);
+      
+      setSuccess('Donation successful! Thank you for your contribution.');
+      setDonationInput('');
+      setDonationAmount(prev => prev + amount);
+      addFloatingIcon();
+      setOpen(false);
+    } catch (error) {
+      console.error('Donation error:', error);
+      setError(error.response?.data?.message || 'An error occurred while processing your donation.');
+    }
+  };
+
   return (
     <CssVarsProvider theme={theme} defaultMode="dark">
       <Sheet
         sx={{
-          backgroundColor: '#121212',
+          width: '100%',
           minHeight: '100vh',
-          background: 'linear-gradient(to bottom, #121212, #1e1e1e)',
-          perspective: '1000px',
-          overflow: 'hidden',
-          position: 'relative',
+          background: 'linear-gradient(to bottom, #1e1e1e, #121212)',
+          overflowX: 'hidden',
         }}
       >
         <AnimatePresence>
@@ -91,7 +128,7 @@ const EpsilonDonation = () => {
               transition={{ duration: 5 }}
               style={{ position: 'absolute', zIndex: 10 }}
             >
-              <icon.icon size={32} color="#4caf50" />
+              <icon.icon size={32} color="#ffab00" />
             </motion.div>
           ))}
         </AnimatePresence>
@@ -110,8 +147,6 @@ const EpsilonDonation = () => {
               background: 'rgba(30, 30, 30, 0.8)',
               backdropFilter: 'blur(10px)',
               padding: 2,
-              transform: 'rotateX(5deg)',
-              transformOrigin: 'top',
             }}
           >
             <Typography
@@ -121,8 +156,8 @@ const EpsilonDonation = () => {
                 paddingLeft: 5,
                 paddingTop: 2,
                 fontFamily: "'Pricedown', sans-serif",
-                color: '#4caf50',
-                textShadow: '0 0 10px rgba(76, 175, 80, 0.5)',
+                color: '#ffab00',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               }}
             >
               Epsilon Program
@@ -137,14 +172,12 @@ const EpsilonDonation = () => {
             minWidth: "100%",
             background: 'rgba(30, 30, 30, 0.8)',
             backdropFilter: 'blur(10px)',
-            transform: 'rotateX(-5deg)',
-            transformOrigin: 'top',
           }}
         >
           <Navbar />
         </Sheet>
 
-        <Sheet component="main" sx={{ px: 4, py: 8, justifyItems: 'center', backgroundColor: 'rgba(30, 30, 30, 0.8)' }}>
+        <Sheet component="main" sx={{ px: 4, py: 8, justifyItems: 'center', backgroundColor: 'rgba(18, 18, 18, 0.8)' }}>
           <motion.div
             animate={{ scale: isEnlightened ? 1.1 : 1 }}
             transition={{ duration: 2 }}
@@ -155,30 +188,29 @@ const EpsilonDonation = () => {
               sx={{
                 mb: 4,
                 fontFamily: "'Pricedown', sans-serif",
-                color: '#4caf50',
-                textShadow: '0 0 10px rgba(76, 175, 80, 0.5)',
-                transform: 'perspective(1000px) rotateX(10deg)',
+                color: '#ffab00',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               }}
             >
               Kifflom! Seek the Truth in Los Santos
             </Typography>
           </motion.div>
-          <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#81c784' }}>
+          <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#90caf9' }}>
             Embrace the teachings of Kraff and ascend to the 10th Paradigm.
           </Typography>
           <Button
             size="lg"
-            onClick={addFloatingIcon}
+            onClick={() => setOpen(true)}
             sx={{
               display: 'block',
               mx: 'auto',
               mb: 8,
-              backgroundColor: '#4caf50',
+              backgroundColor: '#ffab00',
               color: '#000',
               fontWeight: 'bold',
-              '&:hover': { backgroundColor: '#45a049', transform: 'scale(1.05)' },
+              '&:hover': { backgroundColor: '#ffd600', transform: 'scale(1.05)' },
               transition: 'all 0.3s ease',
-              boxShadow: '0 0 10px rgba(76, 175, 80, 0.5)',
+              boxShadow: '0 0 10px rgba(255, 171, 0, 0.5)',
             }}
           >
             Donate to Ascend
@@ -198,14 +230,14 @@ const EpsilonDonation = () => {
                 >
                   <Card 
                     sx={{ 
-                      backgroundColor: 'rgba(30, 30, 30, 0.9)', 
+                      backgroundColor: 'rgba(30, 30, 30, 0.8)', 
                       backdropFilter: 'blur(10px)',
                       transform: 'perspective(1000px) rotateY(5deg)',
                       transition: 'transform 0.3s ease',
                       '&:hover': {
                         transform: 'perspective(1000px) rotateY(0deg) scale(1.05)',
                       },
-                      boxShadow: '0 0 20px rgba(76, 175, 80, 0.3)',
+                      boxShadow: '0 0 20px rgba(255, 171, 0, 0.3)',
                     }}
                   >
                     <CardContent>
@@ -213,9 +245,9 @@ const EpsilonDonation = () => {
                         animate={{ rotate: [0, 360] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                       >
-                        <item.icon style={{ width: 48, height: 48, marginBottom: 16, color: '#4caf50' }} />
+                        <item.icon style={{ width: 48, height: 48, marginBottom: 16, color: '#ffab00' }} />
                       </motion.div>
-                      <Typography level="h4" component="h3" sx={{ mb: 1, color: '#4caf50' }}>
+                      <Typography level="h4" component="h3" sx={{ mb: 1, color: '#ffab00' }}>
                         {item.title}
                       </Typography>
                       <Typography sx={{ color: '#fff' }}>
@@ -237,9 +269,8 @@ const EpsilonDonation = () => {
               textAlign="center" 
               sx={{ 
                 mb: 2, 
-                color: '#4caf50', 
-                textShadow: '0 0 10px rgba(76, 175, 80, 0.5)',
-                transform: 'perspective(1000px) rotateX(-5deg)',
+                color: '#ffab00', 
+                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               }}
             >
               The Truth is Expensive
@@ -248,7 +279,7 @@ const EpsilonDonation = () => {
           <Typography level="h4" textAlign="center" sx={{ mb: 4, color: '#fff' }}>
             Total Donations: ${donationAmount.toLocaleString()}
           </Typography> 
-          <Typography level="body-lg" textAlign="center" sx={{ mb: 4, color: '#81c784' }}>
+          <Typography level="body-lg" textAlign="center" sx={{ mb: 4, color: '#90caf9' }}>
             Join Cris Formage and the Epsilon Program. Remember, happiness is yours for only $5000!
           </Typography>
         </Sheet>
@@ -258,16 +289,91 @@ const EpsilonDonation = () => {
           sx={{
             p: 2,
             textAlign: 'center',
-            backgroundColor: 'rgba(30, 30, 30, 0.9)',
+            background: 'rgba(30, 30, 30, 0.8)',
             backdropFilter: 'blur(10px)',
-            transform: 'rotateX(-5deg)',
-            transformOrigin: 'bottom',
           }}
         >
-          <Typography level="body-sm" sx={{ color: '#81c784' }}>
+          <Typography level="body-sm" sx={{ color: '#90caf9' }}>
             © 2024 Epsilon Program. Kifflom!
           </Typography>
         </Sheet>
+
+        <Modal
+          open={open}
+          onClose={() => setOpen(false)}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <ModalDialog
+            aria-labelledby="donation-modal-title"
+            aria-describedby="donation-modal-description"
+            sx={{
+              maxWidth: 500,
+              borderRadius: 'md',
+              p: 3,
+              boxShadow: 'lg',
+              backgroundColor: 'rgba(30, 30, 30, 0.9)',
+              backdropFilter: 'blur(10px)',
+            }}
+          >
+            <ModalClose
+              variant="outlined"
+              sx={{
+                top: 'calc(-1/4 * var(--IconButton-size))',
+                right: 'calc(-1/4 * var(--IconButton-size))',
+                boxShadow: '0 2px 12px 0 rgba(0 0 0 / 0.2)',
+                borderRadius: '50%',
+                bgcolor: 'background.body',
+              }}
+            />
+            <Typography
+              id="donation-modal-title"
+              component="h2"
+              level="h4"
+              textColor="#ffab00"
+              fontWeight="lg"
+              mb={1}
+            >
+              Ascend Through Donation
+            </Typography>
+            <Typography id="donation-modal-description" textColor="#90caf9" mb={3}>
+              Enter the amount you wish to donate to the Epsilon Program. Remember, the path to enlightenment is paved with generous contributions.
+            </Typography>
+            <form onSubmit={handleDonation}>
+              <Input
+                autoFocus
+                placeholder="Enter donation amount"
+                type="number"
+                value={donationInput}
+                onChange={(e) => setDonationInput(e.target.value)}
+                sx={{ mb: 2, input: { color: '#fff' } }}
+              />
+              <Button
+                type="submit"
+                sx={{
+                  backgroundColor: '#ffab00',
+                  color: '#000',
+                  '&:hover': { backgroundColor: '#ffd600' },
+                }}
+              >
+                Donate and Ascend
+              </Button>
+            </form>
+            {error && (
+              <Typography color="danger" mt={2}>
+                {error}
+              </Typography>
+            )}
+            {success && (
+              <Typography color="success" mt={2}>
+                {success}
+              </Typography>
+            )}
+          </ModalDialog>
+        </Modal>
       </Sheet>
     </CssVarsProvider>
   );

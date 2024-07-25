@@ -11,18 +11,9 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
-app.use(express.urlencoded({extended: true, limit: "16kb"}));
-app.use(express.static("public"));
+app.use(express.urlencoded({extended: true, limit: "1mb"}));
 app.use(userRouter);
 app.use(eventsRouter);
-app.use(cors(
-  {origin: 'http://localhost:3000',
-  credentials: true,
-  optionsSuccessStatus: 200,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  preflightContinue: false,
-  }
-));
 
 mongoose.connect(process.env.MONGO_URL)
 .then(() => {
