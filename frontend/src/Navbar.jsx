@@ -1,7 +1,7 @@
 import * as React from 'react';
+import axios from 'axios';
 import Avatar from '@mui/joy/Avatar';
 import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
 import Drawer from '@mui/joy/Drawer';
 import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
@@ -16,18 +16,43 @@ import IconButton from '@mui/joy/IconButton';
 
 export default function DrawerScrollable() {
   const [open, setOpen] = React.useState(false);
+  const [username, setUsername] = React.useState('');
   const navigate = useNavigate();
+
+  const findUser = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post('http://localhost:3000/api/profile', { token });
+
+      if (response.status === 200) {
+        setUsername(response.data.username);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  React.useEffect(() => {
+    if (open) {
+      findUser();
+    }
+  }, [open]);
 
   return (
     <React.Fragment>
-      <IconButton onClick={() => setOpen(true)} sx={{ display: { xs: 'none', md: 'inline-flex', right: 560 } }}>
+      <IconButton
+        onClick={() => setOpen(true)}
+        sx={{ display: { xs: 'none', md: 'inline-flex' }, right: 560 }}
+      >
         <Menu />
       </IconButton>
       <Drawer open={open} onClose={() => setOpen(false)}>
         <ModalClose />
-        <DialogTitle sx={{fontSize: 30, fontFamily: "'Pricedown', sans-serif"}}>Epsilon Program</DialogTitle>
+        <DialogTitle sx={{ fontSize: 30, fontFamily: "'Pricedown', sans-serif" }}>
+          Epsilon Program
+        </DialogTitle>
         <DialogContent>
-          <List sx={{fontSize: 20, fontFamily: "'Pricedown', sans-serif"}}>
+          <List sx={{ fontSize: 20, fontFamily: "'Pricedown', sans-serif" }}>
             <ListItem>
               <ListItemButton onClick={() => navigate('/')}>Home</ListItemButton>
             </ListItem>
@@ -39,7 +64,7 @@ export default function DrawerScrollable() {
             </ListItem>
             <ListItem>
               <ListItemButton onClick={() => navigate('/testimonials')}>Testimonials</ListItemButton>
-            </ListItem>   
+            </ListItem>
             <ListItem>
               <ListItemButton onClick={() => navigate('/Login')}>Login</ListItemButton>
             </ListItem>
@@ -55,9 +80,9 @@ export default function DrawerScrollable() {
             borderColor: 'divider',
           }}
         >
-          <Avatar size="lg" />
+          <Avatar size="lg" onClick={() => navigate('/user-profile')}/>
           <div>
-            <Typography level="title-md">user.username</Typography>
+            <Typography level="title-md">{username || 'Guest'}</Typography>
             <Typography level="body-sm">joined 20 Jun 2023</Typography>
           </div>
         </Box>

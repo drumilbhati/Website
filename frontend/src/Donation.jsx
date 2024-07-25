@@ -50,21 +50,6 @@ const EpsilonDonation = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  useEffect(() => {
-    const donationInterval = setInterval(() => {
-      setDonationAmount(prev => prev + Math.floor(Math.random() * 100));
-    }, 3000);
-
-    const enlightenmentInterval = setInterval(() => {
-      setIsEnlightened(prev => !prev);
-    }, 5000);
-
-    return () => {
-      clearInterval(donationInterval);
-      clearInterval(enlightenmentInterval);
-    };
-  }, []);
-
   const addFloatingIcon = () => {
     const newIcon = {
       id: Date.now(),
@@ -93,7 +78,9 @@ const EpsilonDonation = () => {
       if(response.status !== 200) {
         throw new Error(response.data.message);
       }
-
+      if (response.status === 200) {
+        setDonationAmount(response.data.donation);
+      }
       const responseData = response.data;
       console.log('Donation response:', responseData);
       
@@ -102,6 +89,7 @@ const EpsilonDonation = () => {
       setDonationAmount(prev => prev + amount);
       addFloatingIcon();
       setOpen(false);
+      return responseData;
     } catch (error) {
       console.error('Donation error:', error);
       setError(error.response?.data?.message || 'An error occurred while processing your donation.');
@@ -204,7 +192,7 @@ const EpsilonDonation = () => {
             sx={{
               display: 'block',
               mx: 'auto',
-              mb: 8,
+              mb: 2,
               backgroundColor: '#ffab00',
               color: '#000',
               fontWeight: 'bold',
@@ -215,8 +203,10 @@ const EpsilonDonation = () => {
           >
             Donate to Ascend
           </Button>
-
-          <Grid container spacing={4} sx={{ mb: 8 }}>
+          <div style={{color: '#ffab00'}}>
+            Donated: {donationAmount}
+          </div>
+          <Grid container spacing={4} sx={{ mb: 8, mt: 2}}>
             {[
               { icon: DollarSign, title: 'Generous Donations', description: 'Your path to enlightenment begins with opening your wallet.' },
               { icon: Zap, title: 'Karmic Energy', description: 'Harness the power of the universe through our patented Epsilon tracts.' },
@@ -276,9 +266,6 @@ const EpsilonDonation = () => {
               The Truth is Expensive
             </Typography>
           </motion.div>
-          <Typography level="h4" textAlign="center" sx={{ mb: 4, color: '#fff' }}>
-            Total Donations: ${donationAmount.toLocaleString()}
-          </Typography> 
           <Typography level="body-lg" textAlign="center" sx={{ mb: 4, color: '#90caf9' }}>
             Join Cris Formage and the Epsilon Program. Remember, happiness is yours for only $5000!
           </Typography>

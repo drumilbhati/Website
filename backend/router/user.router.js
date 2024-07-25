@@ -1,5 +1,5 @@
 import express from 'express';
-import { findUser, createUser, authenticateUser, findAdmin, donate } from '../controllers/user.controller.js';
+import { findUser, createUser, authenticateUser, findAdmin, donate, findProfile } from '../controllers/user.controller.js';
 import dotenv from 'dotenv';
 
 const router = express.Router();
@@ -18,5 +18,7 @@ router.post('/api/donate', donate);
 router.get('/api/demo', (req, res)=> {
     res.send("Hi");
 })
+
+router.post('/api/profile', findProfile);
 
 export default router;
