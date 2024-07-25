@@ -44,21 +44,53 @@ export default function Login() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:3000/api/login', { username, password });
-      localStorage.removeItem('token');
-      if (response) {
-        localStorage.setItem('token', response.data.token);
-        setMessage(response.data.message || 'Login successful');
-        navigate('/');
-      }
-    } catch (error) {
-      setMessage(error.response?.data?.message || 'Login failed');
-    }
-  };
+  const API_URL = 'http://localhost:3001'; // Consider moving this to an environment variable
 
+  const handleSubmit = async (event) => {
+  event.preventDefault();
+  setMessage('');
+  
+  try {
+    console.log('Attempting to login...');
+    const response = await axios.post(`${API_URL}/api/login`, 
+      { username, password },
+      { // Important for CORS if using cookies
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    
+    console.log('Login response:', response);
+
+    if (response.data && response.data.token) {
+      localStorage.setItem('token', response.data.token);
+      setMessage(response.data.message || 'Login successful');
+      navigate('/');
+    } else {
+      throw new Error('Invalid response from server');
+    }
+  } catch (error) {
+    console.error('Login error:', error);
+
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.error('Error data:', error.response.data);
+      console.error('Error status:', error.response.status);
+      console.error('Error headers:', error.response.headers);
+      setMessage(`Error: ${error.response.status} - ${error.response.data.message || 'Unknown error'}`);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error('Error request:', error.request);
+      setMessage('No response from server. Please check your network connection.');
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error('Error message:', error.message);
+      setMessage(`An unexpected error occurred: ${error.message}`);
+    }
+  }
+};
   return (
     <CssVarsProvider theme={theme} defaultMode="dark">
       <CssBaseline />
