@@ -11,7 +11,7 @@ import Navbar from './Navbar.jsx';
 import './App.css';
 import EpsilonTestimonials from './Testimonials.jsx';
 import UserPage from './UserPage.jsx';
-
+import backgroundImage from './assets/latest.png';
   const theme = extendTheme({
     colorSchemes: {
       dark: {
@@ -48,12 +48,14 @@ import UserPage from './UserPage.jsx';
     }, []);
 
     return (
+
       <CssVarsProvider theme={theme} defaultMode="dark">
         <Sheet
           sx={{
             backgroundColor: '#000',
             minHeight: '100vh',
             background: 'linear-gradient(to bottom, #121212, #0a0a0a)',
+            // backgroundSize: 'cover',
           }}
         >
           <Sheet
@@ -67,6 +69,18 @@ import UserPage from './UserPage.jsx';
               padding: 2,
             }}
           >
+          {/* <div
+            style={{
+                      backgroundImage: 'url(C:\Users\vidha\Documents\GitHub\Website\frontend\src\assets\latest.png)',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      height: '100vh',
+                      width: '100%',
+                    }}
+                  >
+                    
+          </div> */}
+            
             <Typography
               level="h1"
               component="h1"
@@ -149,7 +163,7 @@ import UserPage from './UserPage.jsx';
             <Typography level="h2" textAlign="center" sx={{ mb: 2, color: '#ffab00', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
               Are You Ready to Ascend?
             </Typography>
-            <Typography level="h4" textAlign="center" sx={{ mb: 4, color: '#fff' }}>
+            <Typography level="h4" textAlign="center" sx={{ mb: 2, color: '#fff' }}>
               Join the Epsilon Program and unlock your true potential.
             </Typography> 
             <EpsilonTestimonials />

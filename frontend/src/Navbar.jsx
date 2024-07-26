@@ -13,6 +13,7 @@ import ModalClose from '@mui/joy/ModalClose';
 import { useNavigate } from 'react-router-dom';
 import { Menu } from '@mui/icons-material';
 import IconButton from '@mui/joy/IconButton';
+import { Button } from '@mui/joy';
 
 export default function DrawerScrollable() {
   const [open, setOpen] = React.useState(false);
@@ -66,7 +67,7 @@ export default function DrawerScrollable() {
               <ListItemButton onClick={() => navigate('/testimonials')}>Testimonials</ListItemButton>
             </ListItem>
             <ListItem>
-              <ListItemButton onClick={() => navigate('/Login')}>Login</ListItemButton>
+              <ListItemButton onClick={() => navigate('/UserPage')}>Event Registeration</ListItemButton>
             </ListItem>
           </List>
         </DialogContent>
@@ -85,8 +86,22 @@ export default function DrawerScrollable() {
             <Typography level="title-md">{username || 'Guest'}</Typography>
             <Typography level="body-sm">joined 20 Jun 2023</Typography>
           </div>
+          {username ? (
+            <Button sx={{ ml: 'auto' }} onClick={() => {
+              localStorage.removeItem('token');
+              window.location.reload();
+            }}>
+              Logout
+            </Button>
+          ) : (
+            <Button sx={{ ml: 'auto' }} onClick={() => navigate('/Login')}>
+              Login
+            </Button>
+          )}
         </Box>
       </Drawer>
     </React.Fragment>
   );
 }
+
+

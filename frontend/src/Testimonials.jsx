@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Card, Typography, Box, Avatar } from '@mui/joy';
 
 const testimonials = [
   {
-    name: "Brother Zolton",
+    name: "Michael De Santa",
     story: "The Epsilon Program has shown me the path to true enlightenment. Kifflom!",
-    avatar: "/api/placeholder/100/100"
+    avatar: "/api/placeholder/100/100" // Placeholder for Michael's image
   },
   {
-    name: "Sister Amber",
+    name: "Trevor Philips",
     story: "Through generous donations, I've ascended to a higher plane of existence.",
-    avatar: "/api/placeholder/100/100"
+    avatar: "/api/placeholder/100/100" // Placeholder for Trevor's image
   },
   {
-    name: "Brother Teddy",
+    name: "Franklin Clinton",
     story: "Epsilon has taught me the truth about the world. The world is 157 years old!",
-    avatar: "/api/placeholder/100/100"
+    avatar: "/api/placeholder/100/100" // Placeholder for Franklin's image
   }
 ];
 
@@ -30,28 +31,86 @@ const EpsilonTestimonials = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-cyan-300 flex flex-col items-center justify-center p-4">
-      <h1 className="text-4xl mb-8 text-center animate-pulse">Epsilon Program Testimonials</h1>
+    <Box sx={{  
+      minHeight: '100vh',
+      bgcolor: '#000',
+      color: '#ffab00',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      p: 4,
+      background: 'linear-gradient(to bottom, #1e1e1e, #121212)',
+    }}>
+      <Typography 
+        level="h2" 
+        sx={{ 
+          mb: 4, 
+          textAlign: 'center', 
+          color: '#ffab00',
+          textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+          animation: 'pulse 2s infinite'
+        }}
+      >
+        Epsilon Program Testimonials
+      </Typography>
       <motion.div
         key={currentTestimonial}
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -50 }}
         transition={{ duration: 0.5 }}
-        className="max-w-md w-full"
+        style={{ width: '100%', maxWidth: '400px' }}
       >
-        <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
-          <img
+        <Card
+          variant="outlined"
+          sx={{
+            border: '2px solid #ffab00',
+            background: '#333',
+            color: 'white',
+            boxShadow: '0 10px 20px rgba(0,0,0,0.2), 0 6px 6px rgba(0,0,0,0.1)',
+            transform: 'perspective(1000px) rotateX(10deg)',
+            transition: 'all 0.3s ease-in-out',
+            '&:hover': { 
+              transform: 'perspective(1000px) rotateX(0deg) scale(1.05)',
+              boxShadow: '0 15px 30px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.2)'
+            },
+          }}
+        >
+          <Avatar
             src={testimonials[currentTestimonial].avatar}
             alt={testimonials[currentTestimonial].name}
-            className="w-24 h-24 rounded-full mx-auto mb-4"
+            sx={{ width: 80, height: 80, mx: 'auto', mb: 2 }}
           />
-          <h2 className="text-xl font-bold mb-2 text-center">{testimonials[currentTestimonial].name}</h2>
-          <p className="text-center italic">"{testimonials[currentTestimonial].story}"</p>
-        </div>
+          <Typography level="h4" sx={{ mb: 2, textAlign: 'center', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+            {testimonials[currentTestimonial].name}
+          </Typography>
+          <Typography sx={{ textAlign: 'center', fontStyle: 'italic', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>
+            "{testimonials[currentTestimonial].story}"
+          </Typography>
+        </Card>
       </motion.div>
-      <p className="mt-8 text-sm animate-bounce">Kifflom, Brother-Brother!</p>
-    </div>
+      <Typography 
+        sx={{ 
+          mt: 4, 
+          fontSize: '0.875rem', 
+          animation: 'bounce 1s infinite',
+          textShadow: '1px 1px 2px rgba(0,0,0,0.3)'
+        }}
+      >
+        Kifflom, Brother-Brother!
+      </Typography>
+      <style jsx global>{`
+        @keyframes pulse {
+          0% { opacity: 1; }
+          50% { opacity: 0.5; }
+          100% { opacity: 1; }
+        }
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+      `}</style>
+    </Box>
   );
 };
 
