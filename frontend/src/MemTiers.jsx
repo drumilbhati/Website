@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Typography, Stack, Modal, ModalDialog, ModalClose, Box,Sheet  } from '@mui/joy';
+import { Button, Card, Typography, Stack, Modal, ModalDialog, ModalClose, Box, Sheet } from '@mui/joy';
 import Navbar from './Navbar.jsx';
 import './App.css';
 
@@ -9,25 +9,25 @@ const MembershipTiers = () => {
 
   const tiers = [
     {
-      name: 'Basic',
+      name: 'Cris Formage Level 1',
       monthlyPrice: '$9.99',
       yearlyPrice: '$99.99',
       features: ['Access to basic content', 'Email support', 'Monthly newsletter'],
-      gradient: 'linear-gradient(45deg, #45B3FA, #8BC34A)'
+      gradient: 'linear-gradient(45deg, #FFAB00, #FF12AA)'
     },
     {
-      name: 'Pro',
+      name: 'Cris Formage Level 2',
       monthlyPrice: '$19.99',
       yearlyPrice: '$199.99',
       features: ['Access to all content', 'Priority email support', 'Exclusive webinars', 'Ad-free experience'],
-      gradient: 'linear-gradient(45deg, #FFC5C5, #99CCFF, #66CCCC)'
+      gradient: 'linear-gradient(45deg, #FFAB00, #FF12DD)'
     },
     {
-      name: 'Premium',
+      name: 'Cris Formage Level 3',
       monthlyPrice: '$29.99',
       yearlyPrice: '$299.99',
       features: ['All Pro features', '24/7 phone support', 'Personal account manager', 'Early access to new features'],
-      gradient: 'linear-gradient(95deg, #3498DB, #2ECC71)'
+      gradient: 'linear-gradient(45deg, #FFAB00, #FF12FF)'
     }
   ];
 
@@ -42,8 +42,6 @@ const MembershipTiers = () => {
   };
 
   return (
-
-    
     <Stack spacing={4} alignItems="center">
       <Box 
         sx={{ 
@@ -58,7 +56,7 @@ const MembershipTiers = () => {
         <Typography 
           level="h2" 
           sx={{ 
-            color: '#4caf50',
+            color: '#FFA500',
             textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
             animation: 'fadeIn 1s ease-in'
           }}
@@ -67,14 +65,14 @@ const MembershipTiers = () => {
         </Typography>
       </Box>
       <Sheet
-            component="navbar"
-            sx={{
-              display: 'block',
-              minWidth: "100%",
-              background: 'linear-gradient(to bottom, #1e1e1e, #121212)',
-              backdropFilter: 'blur(10px)',
-            }}
-          >
+        component="navbar"
+        sx={{
+          display: 'block',
+          minWidth: "100%",
+          background: 'linear-gradient(to bottom, #1e1e1e, #121212)',
+          backdropFilter: 'blur(10px)',
+        }}
+      >
       </Sheet>
       
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={4} useFlexGap>
@@ -128,7 +126,7 @@ const MembershipTiers = () => {
       <Modal open={openModal} onClose={() => setOpenModal(false)}>  
         <ModalDialog
           sx={{
-            background: selectedTier?.gradient,
+            background: selectedTier?.gradient || 'linear-gradient(45deg, #FFA500, #FFD700)',
             color: 'white',
             boxShadow: '0 10px 20px rgba(0,0,0,0.2), 0 6px 6px rgba(0,0,0,0.1)',
           }}
