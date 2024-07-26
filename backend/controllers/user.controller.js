@@ -199,3 +199,30 @@ export const findProfile = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 }
+
+export const subscribe = async(req, res) => {
+    try{
+        const { token, tier} = req.body;
+        const decodedToken = jwt.verify(token, JWT_SECRET);
+        const user = await User.findById(decodedToken.userId).select('-password');
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        if (user.role !== 'user') {
+            return res.status(403).json({ message: 'Unauthorized' });
+        }
+        if (!tier) {
+            return res.status(400).json({ message: 'Invalid tier' });
+        }
+
+        user.membership = tier;
+        await user.save();
+
+        res.status(200).json({ message: 'Subscription successful' });
+    }
+    catch(error) {
+        console.error('Subscription error:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
