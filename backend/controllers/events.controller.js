@@ -33,7 +33,7 @@ export const getEvents = async (req, res) => {
 export const registerForEvent = async (req, res) => {
     try {
         const { token, event_title} = req.body;
-        const decodedToken = jwt.verify(token, 'secret');
+        const decodedToken = jwt.verify(token, JWT_SECRET);
         const user = await User.findById(decodedToken.userId).select('-password');
         const event = await Event.findOne({ title: event_title });
         if (!user) {

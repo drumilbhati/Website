@@ -9,6 +9,8 @@ import CardContent from '@mui/joy/CardContent';
 import { Sun, Moon, Eye } from 'lucide-react';
 import Navbar from './Navbar.jsx';
 import './App.css';
+import EpsilonTestimonials from './Testimonials.jsx';
+import UserPage from './UserPage.jsx';
 
   const theme = extendTheme({
     colorSchemes: {
@@ -150,6 +152,7 @@ import './App.css';
             <Typography level="h4" textAlign="center" sx={{ mb: 4, color: '#fff' }}>
               Join the Epsilon Program and unlock your true potential.
             </Typography> 
+            <EpsilonTestimonials />
           </Sheet>
 
           <Sheet
@@ -166,6 +169,7 @@ import './App.css';
             </Typography>
           </Sheet>
         </Sheet>
+        
       </CssVarsProvider>
     );
   };

@@ -14,6 +14,8 @@ import MemTiers from './MemTiers.jsx';
 import SideButton from './SideButton.jsx';
 import './App.css';
 import EpsilonDonation from './Donation.jsx';
+import EpsilonTestimonials from './Testimonials.jsx';
+import UserPage from './UserPage.jsx';
 
 export default function App() {
   return (
@@ -32,6 +34,8 @@ export default function App() {
         <Route path="/membership-tiers" element={<MemTiers />} />
         <Route path="/side-button" element={<SideButton />} />
         <Route path="/Donation" element={<EpsilonDonation />} />
+        <Route path='/Testimonials' element={<EpsilonTestimonials />}></Route>
+        <Route path="/UserPage" element={<UserPage />}></Route>
       </Routes>
     </>
   );
