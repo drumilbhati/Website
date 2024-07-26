@@ -44,6 +44,15 @@ export const registerForEvent = async (req, res) => {
         if (!event) {
             return res.status(404).json({ message: 'Event not found' });
         }
+        if (user.membership === 'None' && event.membershipRequired !== 'None') {
+            return res.status(400).json({ message: 'Membership required' });
+        }
+        if (user.membership === 'Level1' && (event.membershipRequired !== 'Level2' || event.membershipRequired !== 'Level3')) {
+            return res.status(400).json({ message: 'Invalid membership level' });
+        }
+        if (user.membership === 'Level2' && event.membershipRequired !== 'Level3') {
+            return res.status(400).json({ message: 'Invalid membership level' });
+        }
         if (event.attendees.includes(user.username)) {
             return res.status(400).json({ message: 'User already registered for this event' });
         }
