@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     },
     membership: {
         type: String,
-        enum: ["None", "Level1", "Level2", "Level3"],
+        enum: ["None", "Cris Formage Level 1", "Cris Formage Level 2", "Cris Formage Level 3"],
         default: "None",
     },
     donation: {
