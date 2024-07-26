@@ -2,6 +2,8 @@ import Event from "../models/events.models.js";
 import User from "../models/user.models.js";
 import jwt from "jsonwebtoken";
 
+const JWT_SECRET = process.env.JWT_SECRET;
+
 export const createEvent = async (req, res) => {
     const event = new Event({
         title: req.body.title,
