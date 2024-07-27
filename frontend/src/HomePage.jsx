@@ -10,8 +10,7 @@ import { Sun, Moon, Eye } from 'lucide-react';
 import Navbar from './Navbar.jsx';
 import './App.css';
 import EpsilonTestimonials from './Testimonials.jsx';
-import UserPage from './UserPage.jsx';
-import backgroundImage from './assets/latest.png';
+
   const theme = extendTheme({
     colorSchemes: {
       dark: {
@@ -69,18 +68,6 @@ import backgroundImage from './assets/latest.png';
               padding: 2,
             }}
           >
-          {/* <div
-            style={{
-                      backgroundImage: 'url(C:\Users\vidha\Documents\GitHub\Website\frontend\src\assets\latest.png)',
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      height: '100vh',
-                      width: '100%',
-                    }}
-                  >
-                    
-          </div> */}
-            
             <Typography
               level="h1"
               component="h1"
@@ -88,7 +75,6 @@ import backgroundImage from './assets/latest.png';
                 paddingLeft: 5,
                 paddingTop: 2,
                 fontFamily: "'Pricedown', sans-serif",
-                color: '#ffab00',
                 color: '#ffab00',
                 textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               }}
@@ -116,13 +102,11 @@ import backgroundImage from './assets/latest.png';
                 mb: 4,
                 fontFamily: "'Pricedown', sans-serif",
                 color: '#ffab00',
-                color: '#ffab00',
                 textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               }}
             >
               Seeking Truth in This 9-Dimensional World
             </Typography>
-            <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#ffab00' }}>
             <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#ffab00' }}>
               Unlock the secrets of the universe and ascend to a higher plane of existence.
             </Typography>
@@ -132,7 +116,6 @@ import backgroundImage from './assets/latest.png';
                 display: 'block',
                 mx: 'auto',
                 mb: 8,
-                backgroundColor: '#ffab00',
                 backgroundColor: '#ffab00',
                 color: '#000',
                 fontWeight: 'bold',
@@ -153,8 +136,6 @@ import backgroundImage from './assets/latest.png';
                     <CardContent>
                       <item.icon style={{ width: 48, height: 48, marginBottom: 16, color: '#ffab00' }} />
                       <Typography level="h4" component="h3" sx={{ mb: 1, color: '#ffab00' }}>
-                      <item.icon style={{ width: 48, height: 48, marginBottom: 16, color: '#ffab00' }} />
-                      <Typography level="h4" component="h3" sx={{ mb: 1, color: '#ffab00' }}>
                         {item.title}
                       </Typography>
                       <Typography sx={{ color: '#fff' }}>
@@ -166,7 +147,6 @@ import backgroundImage from './assets/latest.png';
               ))}
             </Grid>
 
-            <Typography level="h2" textAlign="center" sx={{ mb: 2, color: '#ffab00', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
             <Typography level="h2" textAlign="center" sx={{ mb: 2, color: '#ffab00', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
               Are You Ready to Ascend?
             </Typography>

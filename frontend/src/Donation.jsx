@@ -117,7 +117,6 @@ const EpsilonDonation = () => {
               style={{ position: 'absolute', zIndex: 10 }}
             >
               <icon.icon size={32} color="#ffab00" />
-              <icon.icon size={32} color="#ffab00" />
             </motion.div>
           ))}
         </AnimatePresence>
@@ -237,9 +236,7 @@ const EpsilonDonation = () => {
                         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                       >
                         <item.icon style={{ width: 48, height: 48, marginBottom: 16, color: '#ffab00' }} />
-                        <item.icon style={{ width: 48, height: 48, marginBottom: 16, color: '#ffab00' }} />
                       </motion.div>
-                      <Typography level="h4" component="h3" sx={{ mb: 1, color: '#ffab00' }}>
                       <Typography level="h4" component="h3" sx={{ mb: 1, color: '#ffab00' }}>
                         {item.title}
                       </Typography>
