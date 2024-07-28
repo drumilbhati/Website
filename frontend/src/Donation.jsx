@@ -183,7 +183,7 @@ const EpsilonDonation = () => {
               Kifflom! Seek the Truth in Los Santos
             </Typography>
           </motion.div>
-          <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#90caf9' }}>
+          <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#ffab00' }}>
             Embrace the teachings of Kraff and ascend to the 10th Paradigm.
           </Typography>
           <Button
@@ -204,7 +204,7 @@ const EpsilonDonation = () => {
             Donate to Ascend
           </Button>
           <div style={{color: '#ffab00'}}>
-            Donated: {donationAmount}
+            Donated: ${donationAmount}
           </div>
           <Grid container spacing={4} sx={{ mb: 8, mt: 2}}>
             {[
@@ -266,7 +266,7 @@ const EpsilonDonation = () => {
               The Truth is Expensive
             </Typography>
           </motion.div>
-          <Typography level="body-lg" textAlign="center" sx={{ mb: 4, color: '#90caf9' }}>
+          <Typography level="body-lg" textAlign="center" sx={{ mb: 4, color: '#ffab00' }}>
             Join Cris Formage and the Epsilon Program. Remember, happiness is yours for only $5000!
           </Typography>
         </Sheet>
@@ -280,7 +280,7 @@ const EpsilonDonation = () => {
             backdropFilter: 'blur(10px)',
           }}
         >
-          <Typography level="body-sm" sx={{ color: '#90caf9' }}>
+          <Typography level="body-sm" sx={{ color: 'grey' }}>
             © 2024 Epsilon Program. Kifflom!
           </Typography>
         </Sheet>
