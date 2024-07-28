@@ -336,7 +336,7 @@ const EpsilonDonation = () => {
                 type="number"
                 value={donationInput}
                 onChange={(e) => setDonationInput(e.target.value)}
-                sx={{ mb: 2, input: { color: '#fff' } }}
+                sx={{ mb: 2, input: { color: '#000' } }}
               />
               <Button
                 type="submit"
