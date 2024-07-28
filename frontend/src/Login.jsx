@@ -38,6 +38,46 @@ const theme = extendTheme({
   },
 });
 
+const WalkingCharacter = () => (
+  <svg className="absolute left-0 bottom-20 w-32 h-32" viewBox="0 0 100 100">
+    <g id="character">
+      <circle cx="50" cy="30" r="20" fill="#ffab00" /> {/* Head */}
+      <rect x="40" y="50" width="20" height="30" fill="#ffab00" /> {/* Body */}
+      <rect x="35" y="80" width="10" height="20" fill="#ffab00"> {/* Left leg */}
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          values="0 40 80; -20 40 80; 0 40 80"
+          dur="1s"
+          repeatCount="indefinite"
+        />
+      </rect>
+      <rect x="55" y="80" width="10" height="20" fill="#ffab00"> {/* Right leg */}
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          values="0 60 80; 20 60 80; 0 60 80"
+          dur="1s"
+          repeatCount="indefinite"
+        />
+      </rect>
+    </g>
+    <animateMotion
+      xlinkHref="#character"
+      dur="5s"
+      repeatCount="indefinite"
+      path="M -50,0 L 300,0"
+    />
+    <text x="50" y="20" fontSize="12" fill="#fff" textAnchor="middle">
+      Login now!
+      <animateMotion
+        dur="5s"
+        repeatCount="indefinite"
+        path="M -50,0 L 300,0"
+      />
+    </text>
+  </svg>
+);
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -45,7 +85,7 @@ export default function Login() {
   const [alert, setAlert] = useState('');
   const navigate = useNavigate();
   
-  const API_URL = 'http://localhost:3001'; // Consider moving this to an environment variable
+  const API_URL = 'http://localhost:3001'; 
 
   const handleSubmit = async (event) => {
   event.preventDefault();
@@ -55,7 +95,7 @@ export default function Login() {
     console.log('Attempting to login...');
     const response = await axios.post(`${API_URL}/api/login`, 
       { username, password },
-      { // Important for CORS if using cookies
+      {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -116,6 +156,7 @@ export default function Login() {
           justifyContent: 'center',
         }}
       >
+        {/* <WalkingCharacter /> */}
         <Sheet
           sx={{
             width: 350,
@@ -127,6 +168,7 @@ export default function Login() {
           }}
           variant="outlined"
         >
+          <WalkingCharacter />
           <Typography
             level="h3"
             sx={{

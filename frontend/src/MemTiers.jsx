@@ -65,7 +65,20 @@ const MembershipTiers = () => {
     setOpenModal(false);
   };
 
-  useEffect();
+  useEffect(() => {
+        if (alert) {
+      const timer = setTimeout(() => setAlert(null), 5000);
+      return () => clearTimeout(timer);
+    }
+    const response = axios.get('http://localhost:3001/api/profile', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    response.then((response) => {
+      setUserBalance(response.data.balance);
+    });
+  }, [alert]);
 
   return (
     <Box sx={{
