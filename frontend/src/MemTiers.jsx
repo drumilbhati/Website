@@ -65,7 +65,24 @@ const MembershipTiers = () => {
     setOpenModal(false);
   };
 
-  useEffect();
+useEffect(() =>{
+  const fetchData = async () => {
+    try{
+      const response = await axios.get('http://localhost:3001/api/profile', {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } 
+      });
+      console.log(response.data);
+      setUserBalance(response.data.balance);
+    }catch(error){
+      console.error('Error fetching user balance:', error);
+      setAlert({
+        type: 'error',
+        message: 'Error fetching user balance. Please try again later.'
+      })
+    }
+  };
+  fetchData();
+}, []);
 
   return (
     <Box sx={{
