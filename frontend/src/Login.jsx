@@ -42,6 +42,7 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [alert, setAlert] = useState('');
   const navigate = useNavigate();
   
   const API_URL = 'http://localhost:3001'; // Consider moving this to an environment variable
@@ -66,8 +67,18 @@ export default function Login() {
     if (response.data && response.data.token) {
       localStorage.setItem('token', response.data.token);
       setMessage(response.data.message || 'Login successful');
+      setAlert({
+        type: 'success',
+        message: response.data.message || 'Login successful',
+    });
+    setTimeout(() => {
       navigate('/');
+    }, 2000);
     } else {
+      setAlert({
+        type: 'error',
+        message: response.data.message || 'Login failed',
+      })
       throw new Error('Invalid response from server');
     }
   } catch (error) {

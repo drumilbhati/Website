@@ -1,12 +1,9 @@
 import User from "../models/user.models.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET ;
-
+    
 export const findUser = async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -198,7 +195,8 @@ export const findProfile = async (req, res) => {
         console.error('User profile error:', error);
         res.status(500).json({ message: 'Server error' });
     }
-}
+};
+
 export const subscribe = async (req, res) => {
     try {
         const { token, tier } = req.body;
@@ -215,34 +213,36 @@ export const subscribe = async (req, res) => {
             return res.status(400).json({ message: 'Invalid tier' });
         }
 
-        // Define tier prices
-        const tierPrices = {
-            'Cris Formage Level 1': 9.99,
-            'Cris Formage Level 2': 19.99,
-            'Cris Formage Level 3': 29.99
-        };
+        try {
+            // Check if user is already subscribed to this tier
+            if (user.membership === tier) {
+                return res.status(400).json({ message: 'You are already subscribed to this tier' });
+            }
 
-        const price = tierPrices[tier];
-        if (!price) {
-            return res.status(400).json({ message: 'Invalid tier' });
+            // Get the price of the new tier
+            const oldPrice = user.membershipPrice;
+            user.setMembership(tier);
+            const priceDifference = user.membershipPrice - oldPrice;
+
+            // Check if user can afford the new tier
+            if (!user.canAfford(priceDifference)) {
+                return res.status(400).json({ message: 'Insufficient balance for this subscription' });
+            }
+
+            // Make the purchase
+            user.makePurchase(priceDifference);
+
+            await user.save();
+
+            res.status(200).json({ 
+                message: 'Subscription successful',
+                membership: user.membership,
+                membershipPrice: user.membershipPrice,
+                balance: user.balance
+            });
+        } catch (error) {
+            return res.status(400).json({ message: error.message });
         }
-
-        if (user.balance < price) {
-            return res.status(400).json({ message: 'Insufficient balance' });
-        }
-
-        // Update user's balance and membership
-        user.balance -= price;
-        user.membership = tier;
-        
-        // Save the updated user document
-        await user.save();
-
-        res.status(200).json({ 
-            message: 'Subscription successful',
-            newBalance: user.balance,
-            membership: user.membership
-        });
     } catch (error) {
         console.error('Subscription error:', error);
         res.status(500).json({ message: 'Server error' });

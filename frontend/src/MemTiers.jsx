@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Card, Typography, Stack, Modal, ModalDialog, ModalClose, Box, Sheet, Alert } from '@mui/joy';
-import Navbar from './Navbar.jsx';
 import axios from 'axios';
-import './App.css';
 
 const MembershipTiers = () => {
   const [selectedTier, setSelectedTier] = useState(null);
   const [openModal, setOpenModal] = useState(false);
-  const [userBalance, setUserBalance] = useState(100000); // Simulated user balance
+  const [userBalance, setUserBalance] = useState(0); // Simulated user balance
   const [alert, setAlert] = useState(null);
 
   const tiers = [
@@ -41,36 +39,27 @@ const MembershipTiers = () => {
 
   const handleConfirm = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/subscribe`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          token: userToken, // You'll need to store the user's token somewhere in your app
-          tier: selectedTier.name
-        }),
+      const response = await axios.post('http://localhost:3001/api/subscribe', {
+        tier: selectedTier.name,
+        token: localStorage.getItem('token')
       });
-  
-      const data = await response.json();
-  
-      if (response.ok) {
-        setUserBalance(data.newBalance);
+      if (response.status === 200) {
+        setUserBalance(response.data.balance);
         setAlert({
           type: 'success',
-          message: `Successfully subscribed to ${selectedTier.name}. Your new balance is $${data.newBalance.toFixed(2)}.`
+          message: `Successfully subscribed to ${selectedTier.name}. Your new balance is $${response.data.balance}.`
         });
       } else {
         setAlert({
           type: 'error',
-          message: data.message
+          message: response.data.message
         });
       }
     } catch (error) {
       console.error('Subscription error:', error);
       setAlert({
         type: 'error',
-        message: 'An error occurred while processing your subscription.'
+        message: 'Subscription failed. Please try again later.'
       });
     }
     setOpenModal(false);
@@ -81,6 +70,14 @@ const MembershipTiers = () => {
       const timer = setTimeout(() => setAlert(null), 5000);
       return () => clearTimeout(timer);
     }
+    const response = axios.get('http://localhost:3001/api/profile', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    response.then((response) => {
+      setUserBalance(response.data.balance);
+    });
   }, [alert]);
 
   return (
@@ -123,7 +120,7 @@ const MembershipTiers = () => {
               mt: 2
             }}
           >
-            Your current balance: ${userBalance.toFixed(2)}
+            Your balance: ${userBalance !== null ? userBalance : 'Loading...'} 
           </Typography>
         </Box>
         
@@ -152,7 +149,7 @@ const MembershipTiers = () => {
             >
               <Box>
                 <Typography level="h2" sx={{ mb: 2, textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>{tier.name}</Typography>
-                <Typography level="h3" sx={{ mb: 2, textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>${tier.monthlyPrice}/month</Typography>
+                <Typography level="h3" sx={{ mb: 2, textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>${tier.monthlyPrice}</Typography>
                 <Stack spacing={1} sx={{ mb: 2 }}>
                   {tier.features.map((feature, index) => (
                     <Typography key={index} level="body2" sx={{ textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>• {feature}</Typography>
@@ -186,7 +183,7 @@ const MembershipTiers = () => {
             <ModalClose sx={{ color: 'white' }} />
             <Typography level="h4" sx={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>Confirm Subscription</Typography>
             <Typography sx={{ textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>
-              You have selected the {selectedTier?.name} tier at ${selectedTier?.monthlyPrice}/month. 
+              You have selected the {selectedTier?.name} tier at ${selectedTier?.monthlyPrice}.
               Would you like to proceed with this subscription?
             </Typography>
             <Stack direction="row" spacing={2} sx={{ mt: 2 }}>
