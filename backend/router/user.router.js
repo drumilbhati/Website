@@ -1,10 +1,7 @@
 import express from 'express';
 import { findUser, createUser, authenticateUser, findAdmin, donate, findProfile, subscribe } from '../controllers/user.controller.js';
-import dotenv from 'dotenv';
 
 const router = express.Router();
-
-dotenv.config();
 
 router.post('/api/login', findUser);
 router.get('/api/auth-endpoint', authenticateUser);

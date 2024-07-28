@@ -10,8 +10,7 @@ import { Sun, Moon, Eye } from 'lucide-react';
 import Navbar from './Navbar.jsx';
 import './App.css';
 import EpsilonTestimonials from './Testimonials.jsx';
-import UserPage from './UserPage.jsx';
-import backgroundImage from './assets/latest.png';
+
   const theme = extendTheme({
     colorSchemes: {
       dark: {
@@ -69,18 +68,6 @@ import backgroundImage from './assets/latest.png';
               padding: 2,
             }}
           >
-          {/* <div
-            style={{
-                      backgroundImage: 'url(C:\Users\vidha\Documents\GitHub\Website\frontend\src\assets\latest.png)',
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      height: '100vh',
-                      width: '100%',
-                    }}
-                  >
-                    
-          </div> */}
-            
             <Typography
               level="h1"
               component="h1"
