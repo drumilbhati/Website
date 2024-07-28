@@ -1,12 +1,9 @@
 import User from "../models/user.models.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET ;
-
+    
 export const findUser = async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -198,13 +195,13 @@ export const findProfile = async (req, res) => {
         console.error('User profile error:', error);
         res.status(500).json({ message: 'Server error' });
     }
-}
+};
 
-export const subscribe = async(req, res) => {
-    try{
-        const { token, tier} = req.body;
+export const subscribe = async (req, res) => {
+    try {
+        const { token, tier } = req.body;
         const decodedToken = jwt.verify(token, JWT_SECRET);
-        const user = await User.findById(decodedToken.userId).select('-password');
+        const user = await User.findById(decodedToken.userId);
 
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
@@ -216,12 +213,37 @@ export const subscribe = async(req, res) => {
             return res.status(400).json({ message: 'Invalid tier' });
         }
 
-        user.membership = tier;
-        await user.save();
+        try {
+            // Check if user is already subscribed to this tier
+            if (user.membership === tier) {
+                return res.status(400).json({ message: 'You are already subscribed to this tier' });
+            }
 
-        res.status(200).json({ message: 'Subscription successful' });
-    }
-    catch(error) {
+            // Get the price of the new tier
+            const oldPrice = user.membershipPrice;
+            user.setMembership(tier);
+            const priceDifference = user.membershipPrice - oldPrice;
+
+            // Check if user can afford the new tier
+            if (!user.canAfford(priceDifference)) {
+                return res.status(400).json({ message: 'Insufficient balance for this subscription' });
+            }
+
+            // Make the purchase
+            user.makePurchase(priceDifference);
+
+            await user.save();
+
+            res.status(200).json({ 
+                message: 'Subscription successful',
+                membership: user.membership,
+                membershipPrice: user.membershipPrice,
+                balance: user.balance
+            });
+        } catch (error) {
+            return res.status(400).json({ message: error.message });
+        }
+    } catch (error) {
         console.error('Subscription error:', error);
         res.status(500).json({ message: 'Server error' });
     }
