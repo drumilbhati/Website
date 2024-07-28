@@ -65,20 +65,7 @@ const MembershipTiers = () => {
     setOpenModal(false);
   };
 
-  useEffect(() => {
-    if (alert) {
-      const timer = setTimeout(() => setAlert(null), 5000);
-      return () => clearTimeout(timer);
-    }
-    const response = axios.get('http://localhost:3001/api/profile', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    });
-    response.then((response) => {
-      setUserBalance(response.data.balance);
-    });
-  }, [alert]);
+  useEffect();
 
   return (
     <Box sx={{
@@ -120,7 +107,7 @@ const MembershipTiers = () => {
               mt: 2
             }}
           >
-            Your balance: ${userBalance !== null ? userBalance : 'Loading...'} 
+            Your balance: ${userBalance !== 0 ? userBalance : '100000'} 
           </Typography>
         </Box>
         
