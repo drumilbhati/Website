@@ -43,7 +43,7 @@ export default function DrawerScrollable() {
     <React.Fragment>
       <IconButton
         onClick={() => setOpen(true)}
-        sx={{ display: { xs: 'none', md: 'inline-flex' } }}
+        sx={{ display: { xs: 'none', md: 'inline-flex' } left: 8}}
       >
         <Menu />
       </IconButton>
