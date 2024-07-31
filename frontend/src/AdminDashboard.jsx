@@ -11,7 +11,7 @@ import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
 import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
-import { PlusCircle } from 'lucide-react';
+import { PlusCircle, Trash2 } from 'lucide-react';
 import DropDown from './DropDown';
 import axios from 'axios';
 
@@ -39,6 +39,7 @@ const theme = extendTheme({
     },
   },
 });
+
 const AdminEventDashboard = () => {
   const [events, setEvents] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -90,6 +91,16 @@ const AdminEventDashboard = () => {
     } catch (error) {
       console.error('Error creating event:', error);
       alert(`Error creating event: ${error.response?.data?.message || error.message}`);
+    }
+  };
+
+  const handleRemoveEvent = async (eventId) => {
+    try {
+      await axios.post('/api/delete-event', {token: localStorage.getItem('token'), eventId });
+      fetchEvents();
+    } catch (error) {
+      console.error('Error removing event:', error);
+      alert(`Error removing event: ${error.response?.data?.message || error.message}`);
     }
   };
 
@@ -146,6 +157,7 @@ const AdminEventDashboard = () => {
                 <th style={{color: '#ffab00', textAlign: 'center'}}>Location</th>
                 <th style={{color: '#ffab00', textAlign: 'center'}}>Capacity</th>
                 <th style={{color: '#ffab00', textAlign: 'center'}}>Membership Required</th>
+                <th style={{color: '#ffab00', textAlign: 'center'}}>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -156,6 +168,19 @@ const AdminEventDashboard = () => {
                   <td>{event.location}</td>
                   <td>{event.capacity}</td>
                   <td>{event.membershipRequired}</td>
+                  <td>
+                    <Button
+                      startDecorator={<Trash2 />}
+                      onClick={() => handleRemoveEvent(event._id)}
+                      sx={{
+                        backgroundColor: '#ffab00',
+                        color: '#fff',
+                        '&:hover': { backgroundColor: '#d32f2f' },
+                      }}
+                    >
+                      Remove
+                    </Button>
+                  </td>
                 </tr>
               ))}
             </tbody>
