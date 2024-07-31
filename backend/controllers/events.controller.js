@@ -66,3 +66,22 @@ export const registerForEvent = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+
+export const deleteEvent = async(req, res) => {
+    try {
+        const { token, eventId} = req.body;
+        const decodedToken = jwt.verify(token, JWT_SECRET);
+        const user = await User.findById(decodedToken.userId).select('-password');
+        if (user.role !== 'admin') {
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+        const event = await Event.findOne({ _id: eventId });
+        if (!event) {
+            return res.status(404).json({ message: 'Event not found' });
+        }
+        await Event.deleteOne({ _id: eventId });
+        res.status(200).json({ message: 'Event deleted successfully' });
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+}
