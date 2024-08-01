@@ -28,7 +28,6 @@ export default function App() {
         <Route path="/member-stories" element={<MemStories />} />
         <Route path="/subscription" element={<Subscription />} />
         <Route path="/user-profile" element={<UserProfile />} />
-        <Route path="/jokes" element={<Jokes />} />
         <Route path="/map" element={<Map />} />
         <Route path="/membership-tiers" element={<MemTiers />} />
         <Route path="/side-button" element={<SideButton />} />
