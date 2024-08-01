@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8000;
 app.use(cors({
-    origin: 'http://localhost:3000', // Allow only the frontend origin
+    origin: 'https://epsilon-recruitement-hzlqojd88-drumilbhatis-projects.vercel.app/', // Allow only the frontend origin
     credentials: true, // Allow cookies if you're using them
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
