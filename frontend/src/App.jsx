@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Jokes from './Jokes.jsx';
 import Map from './Map.jsx';
 import EpsilonHomepage from './HomePage.jsx';
 import Login from './Login.jsx';
