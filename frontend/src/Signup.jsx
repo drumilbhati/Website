@@ -46,7 +46,7 @@ export default function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch(`${process.env.API_URL}/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -45,7 +45,7 @@ export default function Login() {
   const [alert, setAlert] = useState('');
   const navigate = useNavigate();
   
-  const API_URL = 'http://localhost:3001'; // Consider moving this to an environment variable
+  const API_URL = 'https://website-8t82.onrender.com'; // Consider moving this to an environment variable
 
   const handleSubmit = async (event) => {
   event.preventDefault();

@@ -51,7 +51,7 @@ const UserProfile = () => {
       try {
         const decodedToken = jwtDecode(token);
         
-        const response = await axios.get('http://localhost:3000/api/auth-endpoint', {
+        const response = await axios.get(`${process.env.API_URL}/api/auth-endpoint`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
