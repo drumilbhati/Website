@@ -3,6 +3,9 @@ import userRouter from './router/user.router.js';
 import eventsRouter from './router/events.router.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8000;
