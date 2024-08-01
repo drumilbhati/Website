@@ -71,7 +71,7 @@ const EpsilonDonation = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:3000/api/donate', 
+      const response = await axios.post(`${process.env.API_URL}/api/donate`, 
         { token, amount },
       );
       
