@@ -10,14 +10,8 @@ import { Sun, Moon, Eye } from 'lucide-react';
 import './App.css';
 import EpsilonTestimonials from './Testimonials.jsx';
 import Navbar from './Navbar.jsx';
+import { useNavigate } from 'react-router-dom';
 
-const HomePage = () => {
-  const navigate = useNavigate();  // Initialize navigate here
-
-  const handleClick = () => {
-    navigate('/Login');  // Use navigate to change route
-  };
-}
 const theme = extendTheme({
   colorSchemes: {
     dark: {
@@ -45,6 +39,8 @@ const theme = extendTheme({
 
 const EpsilonHomepage = () => {
   const [isEnlightened, setIsEnlightened] = useState(false);
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -107,7 +103,7 @@ const EpsilonHomepage = () => {
           </Typography>
           
           <Button
-            onClick={() => handleClick()}
+            onClick={() => navigate('/Login')}
             size="lg"
             sx={{
               display: 'block',
@@ -168,6 +164,7 @@ const EpsilonHomepage = () => {
         </Sheet>
       </Sheet>
     </CssVarsProvider>
+
   );
 };
 
