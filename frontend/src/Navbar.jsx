@@ -14,9 +14,6 @@ import { useNavigate } from 'react-router-dom';
 import { Menu } from '@mui/icons-material';
 import IconButton from '@mui/joy/IconButton';
 import { Button } from '@mui/joy';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 export default function DrawerScrollable() {
   const [open, setOpen] = React.useState(false);
