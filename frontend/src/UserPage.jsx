@@ -44,7 +44,7 @@ const UserPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(`${process.env.API_URL}/api/get-events`);
+        const response = await axios.get('https://website-8t82.onrender.com/api/get-events');
         setEvents(response.data);
       } catch (error) {
         console.error('Error fetching events:', error);
@@ -66,7 +66,7 @@ const UserPage = () => {
         return;
       }
 
-      const response = await axios.post(`${process.env.API_URL}/api/register-for-event`, {
+      const response = await axios.post('https://website-8t82.onrender.com/api/register-for-event', {
         token,
         event_title: eventTitle
       });

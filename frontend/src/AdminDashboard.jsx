@@ -59,7 +59,7 @@ const AdminEventDashboard = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get(`${process.env.API_URL}/api/get-events`);
+      const response = await axios.get('https://website-8t82.onrender.com/api/get-events');
       setEvents(response.data);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -76,7 +76,7 @@ const AdminEventDashboard = () => {
       
       console.log('Sending event data:', eventData);
       
-      await axios.post(`${process.env.API_URL}/api/post-event`, eventData);
+      await axios.post('https://website-8t82.onrender.com/api/post-event', eventData);
       setIsModalOpen(false);
       setNewEvent({
         title: '',
@@ -96,7 +96,7 @@ const AdminEventDashboard = () => {
 
   const handleRemoveEvent = async (eventId) => {
     try {
-      await axios.post(`${process.env.API_URL}/api/delete-event`, {token: localStorage.getItem('token'), eventId });
+      await axios.post('https://website-8t82.onrender.com/api/delete-event', {token: localStorage.getItem('token'), eventId });
       fetchEvents();
     } catch (error) {
       console.error('Error removing event:', error);

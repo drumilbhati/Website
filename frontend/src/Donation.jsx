@@ -63,6 +63,13 @@ const EpsilonDonation = () => {
     }, 5000);
   };
 
+  useEffect(() => {
+    const donatedAmount = axios.post('https://website-8t82.onrender.com/api/profile', {
+      token: localStorage.getItem('token'),
+    });
+    setDonationAmount(donatedAmount);
+  }, []);
+
   const handleDonation = async (event) => {
     event.preventDefault();
     setError('');
@@ -71,7 +78,7 @@ const EpsilonDonation = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post(`${process.env.API_URL}/api/donate`, 
+      const response = await axios.post('https://website-8t82.onrender.com/api/donate', 
         { token, amount },
       );
       

@@ -47,7 +47,7 @@ export default function AdminLogin() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${process.env.API_URl}/api/admin-login`, { username, password });
+      const response = await axios.post('https://website-8t82.onrender.com/api/admin-login', { username, password });
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
         setMessage(response.data.message || 'Login successful');

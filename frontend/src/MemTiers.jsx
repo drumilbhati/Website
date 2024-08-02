@@ -40,7 +40,7 @@ const MembershipTiers = () => {
 
   const handleConfirm = async () => {
     try {
-      const response = await axios.post(`${process.env.API_URL}/api/subscribe`, {
+      const response = await axios.post('https://website-8t82.onrender.com/api/subscribe', {
         tier: selectedTier.name,
         token: localStorage.getItem('token')
       });
@@ -69,7 +69,7 @@ const MembershipTiers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.API_URL}/api/profile`, {
+        const response = await axios.get('https://website-8t82.onrender.com/api/profile', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         console.log(response.data);

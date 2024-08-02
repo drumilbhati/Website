@@ -23,7 +23,7 @@ export default function DrawerScrollable() {
   const findUser = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post(`${process.env.API_URL}/api/profile`, { token });
+      const response = await axios.post('https://website-8t82.onrender.com/api/profile', { token });
 
       if (response.status === 200) {
         setUsername(response.data.username);

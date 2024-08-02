@@ -51,7 +51,7 @@ const UserProfile = () => {
       try {
         const decodedToken = jwtDecode(token);
         
-        const response = await axios.get(`${process.env.API_URL}/api/auth-endpoint`, {
+        const response = await axios.get('https://website-8t82.onrender.com/api/auth-endpoint', {
           headers: { Authorization: `Bearer ${token}` }
         });
 
