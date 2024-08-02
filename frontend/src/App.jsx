@@ -7,10 +7,8 @@ import Signup from './Signup.jsx';
 import AdminLogin from './AdminLogin.jsx';
 import AdminDashboard from './AdminDashboard.jsx';
 import MemStories from './MemStories.jsx';
-import Subscription from './Subscription.jsx';
 import UserProfile from './UserProfile.jsx';
 import MemTiers from './MemTiers.jsx';
-import SideButton from './SideButton.jsx';
 import './App.css';
 import EpsilonDonation from './Donation.jsx';
 import EpsilonTestimonials from './Testimonials.jsx';
@@ -26,11 +24,9 @@ export default function App() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/member-stories" element={<MemStories />} />
-        <Route path="/subscription" element={<Subscription />} />
         <Route path="/user-profile" element={<UserProfile />} />
         <Route path="/map" element={<Map />} />
         <Route path="/membership-tiers" element={<MemTiers />} />
-        <Route path="/side-button" element={<SideButton />} />
         <Route path="/Donation" element={<EpsilonDonation />} />
         <Route path='/Testimonials' element={<EpsilonTestimonials />}></Route>
         <Route path="/UserPage" element={<UserPage />}></Route>
