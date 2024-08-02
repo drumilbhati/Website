@@ -63,13 +63,6 @@ const EpsilonDonation = () => {
     }, 5000);
   };
 
-  useEffect(() => {
-    const donatedAmount = axios.post('https://website-8t82.onrender.com/api/profile', {
-      token: localStorage.getItem('token'),
-    });
-    setDonationAmount(donatedAmount);
-  }, []);
-
   const handleDonation = async (event) => {
     event.preventDefault();
     setError('');
