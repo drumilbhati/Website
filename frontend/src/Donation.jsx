@@ -86,7 +86,8 @@ const EpsilonDonation = () => {
       
       setSuccess('Donation successful! Thank you for your contribution.');
       setDonationInput('');
-      setDonationAmount(prev => prev + amount);
+      console.log('Donation amount:', donationAmount);
+      
       addFloatingIcon();
       setOpen(false);
       return responseData;
