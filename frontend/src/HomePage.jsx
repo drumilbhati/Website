@@ -11,6 +11,13 @@ import './App.css';
 import EpsilonTestimonials from './Testimonials.jsx';
 import Navbar from './Navbar.jsx';
 
+const HomePage = () => {
+  const navigate = useNavigate();  // Initialize navigate here
+
+  const handleClick = () => {
+    navigate('/Login');  // Use navigate to change route
+  };
+}
 const theme = extendTheme({
   colorSchemes: {
     dark: {
@@ -98,7 +105,9 @@ const EpsilonHomepage = () => {
           <Typography level="h3" textAlign="center" sx={{ mb: 4, color: '#ffab00' }}>
             Unlock the secrets of the universe and ascend to a higher plane of existence.
           </Typography>
+          
           <Button
+            onClick={() => handleClick()}
             size="lg"
             sx={{
               display: 'block',
