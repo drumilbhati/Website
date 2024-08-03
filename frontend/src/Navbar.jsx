@@ -8,7 +8,6 @@ const Navbar = () => {
 
   const navItems = [
           { name: 'Home' , path: '/' },
-          { name: 'Login', path: '/Login' },
           { name: 'Join us', path: '/membership-tiers' },
           { name: 'Donate', path: '/Donation' },
           { name: 'Event Registration', path: '/UserPage' }
@@ -153,20 +152,20 @@ const Navbar = () => {
               >
                 {item.name}
               </Button>
-              {
-                username ? (
-                  <Typography
-                    level="body3"
-                    sx={{
-                      color: '#fff',
-                    }}
-                  >
-                    {username}
-                  </Typography>
-                ) : (
-                  'Guest'
-                )
-              }
+              {username ? (
+                <Button sx={{ ml: 'auto' }} onClick={() => {
+                  localStorage.removeItem('token');
+                  window.location.reload();
+                }}>
+                  Logout
+                </Button>
+              ) : (
+                <Button sx={{ ml: 'auto' }} onClick={() => {
+                  window.location.href = '/Login';
+                }}>
+                  Login
+                </Button>
+              )}
               </ListItem>
           ))}
         </List>

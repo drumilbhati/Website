@@ -70,7 +70,8 @@ export default function Login() {
       setAlert({
         type: 'success',
         message: response.data.message || 'Login successful',
-    });
+      });
+      navigate('/');
     } else {
       setAlert({
         type: 'error',
