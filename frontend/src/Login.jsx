@@ -71,9 +71,6 @@ export default function Login() {
         type: 'success',
         message: response.data.message || 'Login successful',
     });
-    setTimeout(() => {
-      navigate('/');
-    }, 2000);
     } else {
       setAlert({
         type: 'error',

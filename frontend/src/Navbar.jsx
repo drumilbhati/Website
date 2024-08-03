@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, IconButton, List, ListItem, Button, Typography } from '@mui/joy';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [username, setUsername] = useState(null);
 
   const navItems = [
           { name: 'Home' , path: '/' },
@@ -16,6 +17,35 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const findUser = async() => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No token found');
+      }
+      const response = await axios.post('https://website-8t82.onrender.com/api/profile', 
+        {token}
+      );
+
+      if (response.status !== 200) {
+        throw new Error(response.data.message);
+      }
+
+      if (response.status === 200) {
+        const responseData = response.data;
+        console.log('User data:', responseData);
+        setUsername(responseData.username);
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    findUser();
+  }, []);
 
   return (
     <Box
@@ -36,17 +66,18 @@ const Navbar = () => {
         }}
       >
         <Typography
-          level="h6"
-          component="div"
-          sx={{
-            flexGrow: 1,
-            fontFamily: "'Pricedown', sans-serif",
-            color: '#ffab00',
-            fontSize: '1.5rem',
-          }}
-        >
-          Epsilon
-        </Typography>
+            level="h1"
+            component="h1"
+            sx={{
+              fontFamily: "'Pricedown', sans-serif",
+              color: '#ffab00',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+              flexGrow: 1,
+              textAlign: 'center',
+            }}
+          >
+            Epsilon Program
+          </Typography>
 
         {/* Desktop Menu */}
         <Box
@@ -122,7 +153,21 @@ const Navbar = () => {
               >
                 {item.name}
               </Button>
-            </ListItem>
+              {
+                username ? (
+                  <Typography
+                    level="body3"
+                    sx={{
+                      color: '#fff',
+                    }}
+                  >
+                    {username}
+                  </Typography>
+                ) : (
+                  Guest
+                )
+              }
+              </ListItem>
           ))}
         </List>
       </Box>

@@ -127,43 +127,19 @@ const EpsilonDonation = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          <Sheet
-            component="header"
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              background: 'rgba(30, 30, 30, 0.8)',
-              backdropFilter: 'blur(10px)',
-              padding: 2,
-            }}
-          >
-            <Typography
-              level="h1"
-              component="h1"
-              sx={{
-                paddingLeft: 5,
-                paddingTop: 2,
-                fontFamily: "'Pricedown', sans-serif",
-                color: '#ffab00',
-                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
-              }}
-            >
-              Epsilon Program
-            </Typography>
-          </Sheet>
         </motion.div>
 
         <Sheet
-          component="navbar"
+          component="header"
           sx={{
-            display: 'block',
-            minWidth: "100%",
-            background: 'rgba(30, 30, 30, 0.8)',
-            backdropFilter: 'blur(10px)',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            background: '#222',
+            padding: 2,
           }}
-        >
-          <Navbar />
+        > 
+          <Navbar/>
         </Sheet>
 
         <Sheet component="main" sx={{ px: 4, py: 8, justifyItems: 'center', backgroundColor: 'rgba(18, 18, 18, 0.8)' }}>

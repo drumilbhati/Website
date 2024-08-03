@@ -68,21 +68,8 @@ const EpsilonHomepage = () => {
             background: '#222',
             padding: 2,
           }}
-        >
+        > 
           <Navbar/>
-          <Typography
-            level="h1"
-            component="h1"
-            sx={{
-              fontFamily: "'Pricedown', sans-serif",
-              color: '#ffab00',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
-              flexGrow: 1,
-              textAlign: 'center',
-            }}
-          >
-            Epsilon Program
-          </Typography>
         </Sheet>
 
         <Sheet component="main" sx={{ flexGrow: 1, px: 4, py: 8, backgroundColor: '#111' }}>
