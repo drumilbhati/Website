@@ -164,7 +164,7 @@ const Navbar = () => {
                     {username}
                   </Typography>
                 ) : (
-                  Guest
+                  'Guest'
                 )
               }
               </ListItem>
