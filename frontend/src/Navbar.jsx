@@ -108,7 +108,7 @@ const Navbar = () => {
                   color="neutral"
                   sx={{
                     fontFamily: "'Pricedown', sans-serif",
-                    color: '#ff00ab',
+                    color: '#ffab00',
                     textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
                     borderColor: 'transparent',
                     '&:hover': {
@@ -127,7 +127,7 @@ const Navbar = () => {
                   color="neutral"
                   sx={{
                     fontFamily: "'Pricedown', sans-serif",
-                    color: '#fff',
+                    color: '#ffab00',
                     textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
                     borderColor: 'transparent',
                     '&:hover': {
@@ -198,7 +198,7 @@ const Navbar = () => {
                   color="neutral"
                   sx={{
                     justifyContent: 'flex-start',
-                    color: '#ff00ab',
+                    color: '#ffab00',
                     borderColor: 'transparent',
                     '&:hover': {
                       borderColor: '#ffab00',
@@ -218,7 +218,7 @@ const Navbar = () => {
                 color="neutral"
                 sx={{
                   justifyContent: 'flex-start',
-                  color: '#fff',
+                  color: '#ffab00',
                   borderColor: 'transparent',
                   '&:hover': {
                     borderColor: '#ffab00',
