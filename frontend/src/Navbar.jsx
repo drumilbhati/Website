@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, IconButton, List, ListItem, Button, Typography } from '@mui/joy';
 import { Menu, X } from 'lucide-react';
+import axios from 'axios';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,6 +20,7 @@ const Navbar = () => {
 
   const findUser = async() => {
     try {
+
       const response = await axios.post('https://website-8t82.onrender.com/api/profile', 
         {
           token: localStorage.getItem('token')
