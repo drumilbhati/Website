@@ -19,7 +19,6 @@ const Navbar = () => {
 
   const findUser = async() => {
     try {
-      
       const response = await axios.post('https://website-8t82.onrender.com/api/profile', 
         {
           token: localStorage.getItem('token')
