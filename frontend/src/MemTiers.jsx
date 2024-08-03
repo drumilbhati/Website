@@ -87,7 +87,8 @@ const MembershipTiers = () => {
 
   return (
     <Box sx={{
-      
+      padding: 10,
+      height: '100vh',
       background: 'linear-gradient(135deg, #000000 0%, #434343 100%)',
       animation: 'gradientBG 15s ease infinite',
       '@keyframes gradientBG': {
@@ -105,7 +106,7 @@ const MembershipTiers = () => {
             animation: 'fadeIn 1s ease-in'
           }}
         >
-          <Navbar/>
+          
           <Typography 
             level="h2" 
             sx={{ 

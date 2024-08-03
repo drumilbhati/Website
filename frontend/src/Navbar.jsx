@@ -6,11 +6,11 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Login', path: '/Login' },
-    { name: 'Join us', path: '/membership-tiers' },
-    { name: 'Donate', path: '/Donation' },
-    { name: 'Event Registration', path: '/UserPage' }
+          { name: 'Home' , path: '/' },
+          { name: 'Login', path: '/Login' },
+          { name: 'Join us', path: '/membership-tiers' },
+          { name: 'Donate', path: '/Donation' },
+          { name: 'Event Registration', path: '/UserPage' }
   ];
 
   const toggleMenu = () => {
