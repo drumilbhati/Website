@@ -73,6 +73,7 @@ const Navbar = () => {
               textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               flexGrow: 1,
               textAlign: 'center',
+              
             }}
           >
             Epsilon Program
@@ -93,7 +94,9 @@ const Navbar = () => {
               variant="outlined"
               color="neutral"
               sx={{
+                fontFamily: "'Pricedown', sans-serif",
                 color: '#fff',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
                 borderColor: 'transparent',
                 '&:hover': {
                   borderColor: '#ffab00',
@@ -108,7 +111,9 @@ const Navbar = () => {
                 <Button variant="outlined"
                   color="neutral"
                   sx={{
-                    color: '#fff',
+                    fontFamily: "'Pricedown', sans-serif",
+                    color: '#ff00ab',
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
                     borderColor: 'transparent',
                     '&:hover': {
                       borderColor: '#ffab00',
@@ -125,7 +130,9 @@ const Navbar = () => {
                 <Button variant="outlined"
                   color="neutral"
                   sx={{
+                    fontFamily: "'Pricedown', sans-serif",
                     color: '#fff',
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
                     borderColor: 'transparent',
                     '&:hover': {
                       borderColor: '#ffab00',
@@ -195,7 +202,7 @@ const Navbar = () => {
                   color="neutral"
                   sx={{
                     justifyContent: 'flex-start',
-                    color: '#fff',
+                    color: '#ff00ab',
                     borderColor: 'transparent',
                     '&:hover': {
                       borderColor: '#ffab00',
