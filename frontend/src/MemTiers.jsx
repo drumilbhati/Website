@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Card, Typography, Stack, Modal, ModalDialog, ModalClose, Box, Sheet, Alert } from '@mui/joy';
+import { Button, Card, Typography, Stack, Modal, ModalDialog, ModalClose, Box, Sheet, Alert, CssVarsProvider } from '@mui/joy';
 import axios from 'axios';
 import Navbar from './Navbar';
 
@@ -86,16 +86,27 @@ const MembershipTiers = () => {
   }, []);
 
   return (
+    <CssVarsProvider>
+      <Sheet
+        sx={{
+          backgroundColor: '#000',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+    
     <Box sx={{
       padding: 10,
-      height: '100vh',
-      background: 'linear-gradient(135deg, #000000 0%, #434343 100%)',
+      display: 'flex',
+      flexDirection: 'column',
+      background: '#121212',
       animation: 'gradientBG 15s ease infinite',
       '@keyframes gradientBG': {
         '0%': { backgroundPosition: '0% 50%' },
         '50%': { backgroundPosition: '100% 50%' },
         '100%': { backgroundPosition: '0% 50%' },
-      },
+      }
     }}>
       <Stack spacing={4} alignItems="center" >
         <Box 
@@ -237,6 +248,8 @@ const MembershipTiers = () => {
         )}
       </Stack>
     </Box>
+  </Sheet>
+    </CssVarsProvider>
   );
 };
 
