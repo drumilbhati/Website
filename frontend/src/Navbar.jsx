@@ -105,14 +105,14 @@ const Navbar = () => {
             </Button>
           ))}
           {username ? (
-                <Button onClick={() => {
+                <Button sx={{ ml: 'auto' }} onClick={() => {
                   localStorage.removeItem('token');
                   window.location.reload();
                 }}>
                   Logout
                 </Button>
               ) : (
-                <Button onClick={() => {
+                <Button sx={{ ml: 'auto' }} onClick={() => {
                   window.location.href = '/Login';
                 }}>
                   Login
