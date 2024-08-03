@@ -27,7 +27,7 @@ const Navbar = () => {
           token: localStorage.getItem('token')
         }
       );
-      
+        
       if (response.status === 200) {
         const responseData = response.data;
         console.log('User data:', responseData);
