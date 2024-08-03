@@ -105,17 +105,36 @@ const Navbar = () => {
             </Button>
           ))}
           {username ? (
-                <Button sx={{ ml: 'auto', bgcolor: '#ffab00' }} onClick={() => {
-                  localStorage.removeItem('token');
-                  window.location.reload();
+                <Button variant="outlined"
+                  color="neutral"
+                  sx={{
+                    color: '#fff',
+                    borderColor: 'transparent',
+                    '&:hover': {
+                      borderColor: '#ffab00',
+                      backgroundColor: 'rgba(255, 171, 0, 0.1)',
+                    },
+                  }} 
+                  onClick={() => {
+                    localStorage.removeItem('token');
+                    window.location.reload();
                 }}>
                   Logout
                 </Button>
               ) : (
-                <Button sx={{ ml: 'auto', bgcolor: '#ffab00' }} onClick={() => {
-                  window.location.href = '/Login';
-                }}>
-                  Login
+                <Button variant="outlined"
+                  color="neutral"
+                  sx={{
+                    color: '#fff',
+                    borderColor: 'transparent',
+                    '&:hover': {
+                      borderColor: '#ffab00',
+                      backgroundColor: 'rgba(255, 171, 0, 0.1)',
+                    },
+                  }} onClick={() => {
+                    window.location.href = '/Login';
+                  }}>
+                    Login
                 </Button>
               )}
         </Box>
@@ -170,14 +189,40 @@ const Navbar = () => {
           ))}
           <ListItem>
           {username ? (
-                <Button onClick={() => {
-                  localStorage.removeItem('token');
-                  window.location.reload();
-                }}>
-                  Logout
+                <Button 
+                  fullWidth
+                  variant="outlined"
+                  color="neutral"
+                  sx={{
+                    justifyContent: 'flex-start',
+                    color: '#fff',
+                    borderColor: 'transparent',
+                    '&:hover': {
+                      borderColor: '#ffab00',
+                      backgroundColor: 'rgba(255, 171, 0, 0.1)',
+                    },
+                  }}
+                  onClick={() => {
+                    localStorage.removeItem('token');
+                    window.location.reload();
+                  }}>
+                    Logout
                 </Button>
               ) : (
-                <Button onClick={() => {
+                <Button 
+                fullWidth
+                variant="outlined"
+                color="neutral"
+                sx={{
+                  justifyContent: 'flex-start',
+                  color: '#fff',
+                  borderColor: 'transparent',
+                  '&:hover': {
+                    borderColor: '#ffab00',
+                    backgroundColor: 'rgba(255, 171, 0, 0.1)',
+                  },
+                }}
+                onClick={() => {
                   window.location.href = '/Login';
                 }}>
                   Login
