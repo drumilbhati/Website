@@ -156,14 +156,14 @@ const Navbar = () => {
           ))}
           <ListItem>
           {username ? (
-                <Button sx={{ ml: 'auto' }} onClick={() => {
+                <Button onClick={() => {
                   localStorage.removeItem('token');
                   window.location.reload();
                 }}>
                   Logout
                 </Button>
               ) : (
-                <Button sx={{ ml: 'auto' }} onClick={() => {
+                <Button onClick={() => {
                   window.location.href = '/Login';
                 }}>
                   Login
