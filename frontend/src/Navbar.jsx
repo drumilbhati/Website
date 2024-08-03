@@ -78,6 +78,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <Box
           sx={{
+            marginLeft: '10px',
             display: { xs: 'none', md: 'flex' },
             gap: 2,
           }}
