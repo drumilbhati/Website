@@ -27,8 +27,8 @@ const Navbar = () => {
           token: localStorage.getItem('token')
         }
       );
-        
-      if (response.status === 200) {
+
+      if (response.data) {
         const responseData = response.data;
         console.log('User data:', responseData);
         setUsername(responseData.username);
