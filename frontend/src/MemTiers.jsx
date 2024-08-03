@@ -127,6 +127,7 @@ const MembershipTiers = () => {
               animation: 'fadeIn 1s ease-in'
             }}
           >
+            <Navbar/>
             Select Your Membership
           </Typography>
           <Typography 
