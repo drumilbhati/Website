@@ -89,7 +89,7 @@ const MembershipTiers = () => {
     <CssVarsProvider>
       <Sheet
         sx={{
-          backgroundColor: '#000',
+          backgroundColor: '#121212',
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',

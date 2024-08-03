@@ -19,12 +19,13 @@ const Navbar = () => {
 
   const findUser = async() => {
     try {
-      const token = localStorage.getItem('token');
       if (!token) {
         throw new Error('No token found');
       }
       const response = await axios.post('https://website-8t82.onrender.com/api/profile', 
-        {token}
+        {
+          token: localStorage.getItem('token')
+        }
       );
 
       if (response.status !== 200) {
