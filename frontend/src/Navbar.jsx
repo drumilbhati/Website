@@ -104,6 +104,20 @@ const Navbar = () => {
               {item.name}
             </Button>
           ))}
+          {username ? (
+                <Button onClick={() => {
+                  localStorage.removeItem('token');
+                  window.location.reload();
+                }}>
+                  Logout
+                </Button>
+              ) : (
+                <Button onClick={() => {
+                  window.location.href = '/Login';
+                }}>
+                  Login
+                </Button>
+              )}
         </Box>
 
         {/* Mobile Menu Button */}
