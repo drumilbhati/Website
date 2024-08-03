@@ -152,7 +152,10 @@ const Navbar = () => {
               >
                 {item.name}
               </Button>
-              {username ? (
+              </ListItem>
+          ))}
+          <ListItem>
+          {username ? (
                 <Button sx={{ ml: 'auto' }} onClick={() => {
                   localStorage.removeItem('token');
                   window.location.reload();
@@ -166,8 +169,7 @@ const Navbar = () => {
                   Login
                 </Button>
               )}
-              </ListItem>
-          ))}
+          </ListItem>
         </List>
       </Box>
     </Box>
