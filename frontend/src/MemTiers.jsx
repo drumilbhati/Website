@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Card, Typography, Stack, Modal, ModalDialog, ModalClose, Box, Sheet, Alert, CssVarsProvider } from '@mui/joy';
 import axios from 'axios';
-import Navbar from './Navbar';
+import { useNavigate } from 'react-router-dom';
+
 
 const MembershipTiers = () => {
   const [selectedTier, setSelectedTier] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [userBalance, setUserBalance] = useState(null); // Initialize as null
   const [alert, setAlert] = useState(null);
+  const navigate = useNavigate();
 
   const tiers = [
     {
@@ -40,6 +42,11 @@ const MembershipTiers = () => {
 
   const handleConfirm = async () => {
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        navigate('/login');
+        return;
+      }
       const response = await axios.post('https://website-8t82.onrender.com/api/subscribe', {
         tier: selectedTier.name,
         token: localStorage.getItem('token')
@@ -89,7 +96,7 @@ const MembershipTiers = () => {
     <CssVarsProvider>
       <Sheet
         sx={{
-          backgroundColor: '#121212',
+          backgroundColor: '#111111',
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
@@ -127,7 +134,6 @@ const MembershipTiers = () => {
               animation: 'fadeIn 1s ease-in'
             }}
           >
-            <Navbar/>
             Select Your Membership
           </Typography>
           <Typography 
@@ -147,11 +153,11 @@ const MembershipTiers = () => {
               key={tier.name}
               variant="outlined"
               sx={{
+                width: '250px',
                 mb: 2,
                 background: tier.gradient,
                 color: 'white',
                 boxShadow: '0 10px 20px rgba(0,0,0,0.2), 0 6px 6px rgba(0,0,0,0.1)',
-                transform: 'perspective(1000px) rotateX(10deg)',
                 transition: 'all 0.3s ease-in-out',
                 '&:hover': { 
                   transform: 'perspective(1000px) rotateX(0deg) scale(1.05)',

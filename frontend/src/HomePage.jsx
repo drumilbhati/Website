@@ -11,6 +11,8 @@ import './App.css';
 import EpsilonTestimonials from './Testimonials.jsx';
 import Navbar from './Navbar.jsx';
 import { useNavigate } from 'react-router-dom';
+import Map from './Map.jsx';
+import EpsilonEnquiryForm from './EnquiryForm.jsx';
 
 const theme = extendTheme({
   colorSchemes: {
@@ -133,7 +135,18 @@ const EpsilonHomepage = () => {
           <Typography level="h4" textAlign="center" sx={{ mb: 2, color: '#fff' }}>
             Join the Epsilon Program and unlock your true potential.
           </Typography> 
+          <Button 
+              type='outlined'
+              sx={{bgcolor: '#ffab00', color: '#000', fontWeight: 'bold', '&:hover': { backgroundColor: '#ffd600' }, marginTop: 2}}
+              onClick={() => navigate('/membership-tiers')}
+            >
+              Join Us
+            </Button>
+          <Map/>
+          <br></br>
           <EpsilonTestimonials />
+          <hr></hr>
+          <EpsilonEnquiryForm/>
         </Sheet>
 
         <Sheet

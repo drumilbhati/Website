@@ -100,34 +100,14 @@ const UserPage = () => {
         }}
       >
         <Sheet
-          component="header"
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            background: '#222',
-            backdropFilter: 'blur(10px)',
-            padding: 2,
-          }}
-        >
-          <Typography
-            level="h1"
-            component="h1"
-            sx={{
-              paddingLeft: 5,
-              paddingTop: 2,
-              fontFamily: "'Pricedown', sans-serif",
-              color: '#ffab00',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
-            }}
-          >
-            Epsilon Program Events
-          </Typography>
-        </Sheet>
-        <Sheet
           component="navbar"
           sx={{
-            display: 'block',
+            position: 'sticky',
+            top: 0,
+            zIndex: 1,
+            py: 2,
+            px: 3,
+            display: 'flex',
             minWidth: "100%",
             background: '#222',
             backdropFilter: 'blur(10px)',
