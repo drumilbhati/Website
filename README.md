@@ -115,3 +115,8 @@ We welcome contributions to the Epsilon Program Recruitment Website! Please foll
 ## License
 
 This project is licensed under the [Apache License 2.0](LICENSE).
+
+## Contact
+
+Vidhan Nahar (#github.com/VidhanNahar)
+Drumil Bhati (#github.com/drumilbhati)
