@@ -87,7 +87,7 @@ const GTA5EpsilonMap = () => {
             bounds={mapBounds}
           />
           {epsilonLocations.map((location, index) => (
-            <Marker sx={{color: '#ffab00'}} key={index} position={location.position}>
+            <Marker style={{color: '#ffab00'}} key={index} position={location.position}>
               <Popup>{location.name}</Popup>
             </Marker>
           ))}
