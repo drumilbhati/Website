@@ -23,9 +23,9 @@ export default function DropDown(props) {
       
     >
       <Option value="None">None</Option>
-      <Option value="Level1">Cris Formage Level 1</Option>
-      <Option value="Level2">Cris Formage Level 2</Option>
-      <Option value="Level3">Cris Formage Level 3</Option>
+      <Option value="Cris Formage Level 1">Cris Formage Level 1</Option>
+      <Option value="Cris Formage Level 2">Cris Formage Level 2</Option>
+      <Option value="Cris Formage Level 3">Cris Formage Level 3</Option>
     </Select>
   );
 }
