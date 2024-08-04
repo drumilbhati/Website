@@ -85,7 +85,15 @@ This repository contains the code for the Epsilon Program recruitment website, i
    - Register for events of interest
 
 6. **View Testimonials**:
+
    - Check out the testimonials section on the homepage to read about member experiences
+
+7. **Map Highlighting the in-game location for the program**
+
+   - Check out the map on the homepage showcasing the GTA V map with the in-game locations related to the Epsilon Program
+
+8. **Contact form**
+   -Users can contact the admins through the contact form
 
 ## Contributing
 
