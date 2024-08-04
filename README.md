@@ -93,7 +93,7 @@ This repository contains the code for the Epsilon Program recruitment website, i
    - Check out the map on the homepage showcasing the GTA V map with the in-game locations related to the Epsilon Program
 
 8. **Contact form**
-   -Users can contact the admins through the contact form
+   -Users can contact the admins through the contact form at the end
 
 ## Contributing
 
