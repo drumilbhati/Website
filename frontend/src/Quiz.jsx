@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Typography, Sheet, Card, CardContent, Stack } from '@mui/joy';
-import backgroundImage from './assets/background.png'; 
+import backgroundImage from './assets/latest.png'; 
 const questions = [
     {
       question: "What is the name of the main character in GTA V?",
