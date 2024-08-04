@@ -189,7 +189,7 @@ const AdminEventDashboard = () => {
         <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
           <ModalDialog>
             <DialogTitle>Create New Event</DialogTitle>
-            <DialogContent>
+            <DialogContent sx={{overflowX:'hidden'}}>
               <Input
                 placeholder="Title"
                 value={newEvent.title}
