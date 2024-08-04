@@ -14,6 +14,9 @@
 
 This repository contains the code for the Epsilon Program recruitment website, inspired by the fictional organization from Grand Theft Auto V. The website serves as a platform for user engagement, event management, and program support.
 ![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
 
 ## Features
 
