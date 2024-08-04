@@ -94,6 +94,7 @@ const UserPage = () => {
     <CssVarsProvider theme={theme} defaultMode="dark">
       <Sheet
         sx={{
+          overflowX: 'hidden',
           backgroundColor: '#000',
           minHeight: '100vh',
           background: 'linear-gradient(to bottom, #121212, #0a0a0a)',
