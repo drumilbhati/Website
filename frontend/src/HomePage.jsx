@@ -135,6 +135,13 @@ const EpsilonHomepage = () => {
           <Typography level="h4" textAlign="center" sx={{ mb: 2, color: '#fff' }}>
             Join the Epsilon Program and unlock your true potential.
           </Typography> 
+          <Typography level="body" textAlign="center" sx={{ mb: 4, color: '#fff' }}>
+            Discover the secrets of the universe and ascend to a higher plane of existence. 
+            Join the Epsilon Program today and unlock your true potential.
+            Get away from the limitations of your physical form and see beyond the limits of the cosmos.
+            Get free from the burdens of life and experience the power of the cosmos.
+            Experience the power of the cosmos.
+          </Typography>
           <Button 
               type='outlined'
               sx={{bgcolor: '#ffab00', color: '#000', fontWeight: 'bold', '&:hover': { backgroundColor: '#ffd600' }, mt: 2, mb: 5}}
