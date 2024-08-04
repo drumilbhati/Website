@@ -69,7 +69,6 @@ const Navbar = () => {
               textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
               flexGrow: 1,
               textAlign: 'center',
-              
             }}
           >
             Epsilon Program

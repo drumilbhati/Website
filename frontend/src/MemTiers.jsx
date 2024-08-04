@@ -103,6 +103,7 @@ const MembershipTiers = () => {
           flexDirection: 'column',
         }}
       >
+        <Navbar/>
     
     <Box sx={{
       padding: 10,
@@ -125,7 +126,7 @@ const MembershipTiers = () => {
             animation: 'fadeIn 1s ease-in'
           }}
         >
-          
+
           <Typography 
             level="h2" 
             sx={{ 
@@ -134,21 +135,20 @@ const MembershipTiers = () => {
               animation: 'fadeIn 1s ease-in'
             }}
           >
-            <Sheet
+            {/* <Sheet
             sx={{
-              position: 'fixed',
+              display: 'flex',
+              justifyContent: 'center',
+              minWidth: '100vh',
               top: 0,
               left: 0,
-              right: 'auto',
-              right: 0,
+              
+              
               zIndex: 9999
             }}
             >
-            {/* <List sx={{display: 'flex', justifyContent: 'flex-start'}}> */}
-
               <Navbar/>
-            {/* </List> */}
-            </Sheet>
+            </Sheet> */}
             
             Select Your Membership
           </Typography>
