@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button, Card, Typography, Stack, Modal, ModalDialog, ModalClose, Box, Sheet, Alert, CssVarsProvider } from '@mui/joy';
 import axios from 'axios';
 import Navbar from './Navbar';
+import List from '@mui/material/List';
+
 
 const MembershipTiers = () => {
   const [selectedTier, setSelectedTier] = useState(null);
@@ -121,13 +123,27 @@ const MembershipTiers = () => {
           <Typography 
             level="h2" 
             sx={{ 
-              
               color: '#FFA500',
               textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
               animation: 'fadeIn 1s ease-in'
             }}
           >
-            <Navbar/>
+            <Sheet
+            sx={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 'auto',
+              right: 0,
+              zIndex: 9999
+            }}
+            >
+            <List sx={{display: 'flex', justifyContent: 'flex-start'}}>
+
+              <Navbar/>
+            </List>
+            </Sheet>
+            
             Select Your Membership
           </Typography>
           <Typography 
