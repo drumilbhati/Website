@@ -53,7 +53,7 @@ const EpsilonEnquiryForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      axios.post('https://website-8t82.onrender.com/api/enquiry', formData);
+      axios.post('https://website-8t82.onrender.com/api/submit-enquiry', formData);
     } catch (error) {
       console.error('Error submitting form:', error);
     }
