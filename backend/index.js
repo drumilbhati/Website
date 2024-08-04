@@ -1,7 +1,6 @@
 import express from 'express';
 import userRouter from './router/user.router.js';
 import eventsRouter from './router/events.router.js';
-import enquiryRouter from './router/enquiry.router.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -22,7 +21,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true, limit: "1mb"}));
 app.use(userRouter);
 app.use(eventsRouter);
-app.use(enquiryRouter);
 
 
 mongoose.connect(process.env.MONGO_URL)

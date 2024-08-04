@@ -94,21 +94,40 @@ const UserPage = () => {
     <CssVarsProvider theme={theme} defaultMode="dark">
       <Sheet
         sx={{
-          overflowX: 'hidden',
           backgroundColor: '#000',
           minHeight: '100vh',
           background: 'linear-gradient(to bottom, #121212, #0a0a0a)',
         }}
       >
         <Sheet
+          component="header"
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            background: '#222',
+            backdropFilter: 'blur(10px)',
+            padding: 2,
+          }}
+        >
+          <Typography
+            level="h1"
+            component="h1"
+            sx={{
+              paddingLeft: 5,
+              paddingTop: 2,
+              fontFamily: "'Pricedown', sans-serif",
+              color: '#ffab00',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+            }}
+          >
+            Epsilon Program Events
+          </Typography>
+        </Sheet>
+        <Sheet
           component="navbar"
           sx={{
-            position: 'sticky',
-            top: 0,
-            zIndex: 1,
-            py: 2,
-            px: 3,
-            display: 'flex',
+            display: 'block',
             minWidth: "100%",
             background: '#222',
             backdropFilter: 'blur(10px)',
