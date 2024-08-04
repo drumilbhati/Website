@@ -8,6 +8,7 @@ import Input from '@mui/joy/Input';
 import Textarea from '@mui/joy/Textarea';
 import Button from '@mui/joy/Button';
 import { Send } from 'lucide-react';
+import axios from 'axios';
 
 const theme = extendTheme({
   colorSchemes: {
@@ -51,7 +52,11 @@ const EpsilonEnquiryForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to a server
+    try {
+      axios.post('https://website-8t82.onrender.com/api/enquiry', formData);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
     console.log('Form submitted:', formData);
     // Reset form after submission
     setFormData({ name: '', email: '', message: '' });
@@ -63,6 +68,7 @@ const EpsilonEnquiryForm = () => {
         component="form"
         onSubmit={handleSubmit}
         sx={{
+          maxWidth: 400,
           mx: 'auto',
           my: 4,
           py: 3,

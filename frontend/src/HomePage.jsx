@@ -137,14 +137,15 @@ const EpsilonHomepage = () => {
           </Typography> 
           <Button 
               type='outlined'
-              sx={{bgcolor: '#ffab00', color: '#000', fontWeight: 'bold', '&:hover': { backgroundColor: '#ffd600' }, marginTop: 2}}
+              sx={{bgcolor: '#ffab00', color: '#000', fontWeight: 'bold', '&:hover': { backgroundColor: '#ffd600' }, mt: 2, mb: 5}}
               onClick={() => navigate('/membership-tiers')}
             >
               Join Us
-            </Button>
+          </Button>
+          <hr></hr>
+          <EpsilonTestimonials/>
+          <hr></hr>
           <Map/>
-          <br></br>
-          <EpsilonTestimonials />
           <hr></hr>
           <EpsilonEnquiryForm/>
         </Sheet>
