@@ -76,6 +76,10 @@ const GTA5EpsilonMap = () => {
           zoom={0} 
           crs={L.CRS.Simple}
           style={{ height: '100%', width: '100%' }}
+          bounds={mapBounds}
+          boundsOptions={{ padding: [100, 100] }}
+          maxBounds={mapBounds}
+          maxBoundsViscosity={1}
         >
           <DebugComponent />
           <ImageOverlay
