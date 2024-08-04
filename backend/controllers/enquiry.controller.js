@@ -1,3 +1,5 @@
+import Enquiry from "../models/enquiry.models.js";
+
 export const submitEnquiry = async (req, res) => {
     const { username, email, message } = req.body;
     if (!username || !email || !message) {
