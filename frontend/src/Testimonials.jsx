@@ -32,19 +32,18 @@ const EpsilonTestimonials = () => {
 
   return (
     <Box sx={{  
-      minHeight: '100vh',
-      bgcolor: '#000',
+      mt: 5,
+      mb: 10,
+      bgcolor: '#111',
       color: '#ffab00',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      p: 4,
-      background: 'linear-gradient(to bottom, #1e1e1e, #121212)',
     }}>
       <Typography 
         level="h2" 
         sx={{ 
-          mb: 4, 
+          mb: 2,
           textAlign: 'center', 
           color: '#ffab00',
           textShadow: '1px 1px 2px rgba(0,0,0,0.3)',

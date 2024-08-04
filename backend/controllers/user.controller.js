@@ -190,6 +190,7 @@ export const findProfile = async (req, res) => {
             username: user.username,
             balance: user.balance,
             donation: user.donation,
+            membership: user.membership,
         });
     } catch (error) {
         console.error('User profile error:', error);
@@ -208,6 +209,12 @@ export const subscribe = async (req, res) => {
         }
         if (user.role !== 'user') {
             return res.status(403).json({ message: 'Unauthorized' });
+        }
+        if (user.membership === 'Cris Formage Level 2' && tier === 'Cris Formage Level 1') {
+            return res.status(400).json({ message: 'Cris Formage Level 2 cannot be upgraded to Cris Formage Level 1' });
+        }
+        if (user.membership === 'Cris Formage Level 3' && tier !== 'Cris Formage Level 3') {
+            return res.status(400).json({ message: 'Cris Formage Level 3 cannot be downgraded' });
         }
         if (!tier) {
             return res.status(400).json({ message: 'Invalid tier' });
@@ -248,3 +255,4 @@ export const subscribe = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+
