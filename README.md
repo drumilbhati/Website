@@ -118,5 +118,5 @@ This project is licensed under the [Apache License 2.0](LICENSE).
 
 ## Contact
 
-[Vidhan Nahar] (https://github.com/VidhanNahar)
-[Drumil Bhati] (https://github.com/drumilbhati)
+[Vidhan Nahar](https://github.com/VidhanNahar)
+[Drumil Bhati](https://github.com/drumilbhati)
