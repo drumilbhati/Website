@@ -3,7 +3,7 @@ import { Button, Card, Typography, Stack, Modal, ModalDialog, ModalClose, Box, S
 import axios from 'axios';
 import Navbar from './Navbar';
 import { useNavigate } from 'react-router-dom';
-// import List from '@mui/material/List';
+import List from '@mui/joy/List';
 
 const MembershipTiers = () => {
   const [selectedTier, setSelectedTier] = useState(null);
@@ -144,10 +144,10 @@ const MembershipTiers = () => {
               zIndex: 9999
             }}
             >
-            {/* <List sx={{display: 'flex', justifyContent: 'flex-start'}}> */}
+            <List sx={{display: 'flex', justifyContent: 'flex-start'}}>
 
               <Navbar/>
-            {/* </List> */}
+            </List>
             </Sheet>
             
             Select Your Membership

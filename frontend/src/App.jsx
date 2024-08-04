@@ -13,6 +13,7 @@ import EpsilonDonation from './Donation.jsx';
 import EpsilonTestimonials from './Testimonials.jsx';
 import UserPage from './UserPage.jsx';
 import EpsilonEnquiryForm from './EnquiryForm.jsx';
+import Quiz from './Quiz.jsx';
 
 export default function App() {
   return (
@@ -30,7 +31,7 @@ export default function App() {
         <Route path='/Testimonials' element={<EpsilonTestimonials />}></Route>
         <Route path="/UserPage" element={<UserPage />}></Route>
         <Route path="/EnquiryForm" element={<EpsilonEnquiryForm />}></Route>
-       
+        <Route path='/Quiz' element={<Quiz />}></Route>
       </Routes>
     </>
   );
