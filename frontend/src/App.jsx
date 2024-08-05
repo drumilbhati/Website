@@ -1,19 +1,19 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Map from './Map.jsx';
-import EpsilonHomepage from './HomePage.jsx';
-import Login from './Login.jsx';
-import Signup from './Signup.jsx';
-import AdminLogin from './AdminLogin.jsx';
-import AdminDashboard from './AdminDashboard.jsx';
-import UserProfile from './UserProfile.jsx';
-import MemTiers from './MemTiers.jsx';
+import Map from './components/Map.jsx';
+import EpsilonHomepage from './pages/user/HomePage.jsx';
+import Login from './auth/Login.jsx';
+import Signup from './auth/Signup.jsx';
+import AdminLogin from './auth/AdminLogin.jsx';
+import AdminDashboard from './pages/admin/AdminDashboard.jsx';
+import UserProfile from './components/UserProfile.jsx';
+import MemTiers from './pages/user/MemTiers.jsx';
 import './App.css';
-import EpsilonDonation from './Donation.jsx';
-import EpsilonTestimonials from './Testimonials.jsx';
-import UserPage from './UserPage.jsx';
-import EpsilonEnquiryForm from './EnquiryForm.jsx';
-import Quiz from './Quiz.jsx';
+import EpsilonDonation from './pages/user/Donation.jsx';
+import EpsilonTestimonials from './components/Testimonials.jsx';
+import UserPage from './pages/user/UserPage.jsx';
+import EpsilonEnquiryForm from './components/EnquiryForm.jsx';
+import Quiz from './components/Quiz.jsx';
 
 export default function App() {
   return (

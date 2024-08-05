@@ -9,9 +9,9 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
-import './App.css';
+import axios from 'axios';
 
-// Custom theme inspired by GTA5 (same as login component)
+// Custom theme inspired by GTA5
 const theme = extendTheme({
   colorSchemes: {
     dark: {
@@ -37,33 +37,23 @@ const theme = extendTheme({
   },
 });
 
-export default function SignUp() {
+export default function AdminLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('https://website-8t82.onrender.com/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+      const response = await axios.post('https://website-8t82.onrender.com/api/admin-login', { username, password });
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+        setMessage(response.data.message || 'Login successful');
+        navigate('/admin-dashboard');
       }
-
-      const data = await response.json();
-      setMessage('Account created successfully');
-      // Redirect to login page after a short delay
-      setTimeout(() => navigate('/login'), 2000);
     } catch (error) {
-      setMessage(error.message || 'Error creating account');
+      setMessage(error.response?.data?.message || 'Login failed');
     }
   };
 
@@ -79,9 +69,6 @@ export default function SignUp() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundImage: 'url("/api/placeholder/1920/1080")', // Placeholder for a GTA5-style background image
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
         }}
       >
         <Sheet
@@ -105,7 +92,7 @@ export default function SignUp() {
               textAlign: 'center',
             }}
           >
-            Join Los Santos
+            Admin Login
           </Typography>
           <form onSubmit={handleSubmit}>
             <FormControl sx={{ mb: 2 }}>
@@ -145,7 +132,7 @@ export default function SignUp() {
                 '&:hover': { backgroundColor: '#ffd600' },
               }}
             >
-              Create Account
+              Enter Los Santos
             </Button>
           </form>
           {message && (
@@ -160,16 +147,14 @@ export default function SignUp() {
               color: '#bdbdbd',
             }}
           >
-            Already have an account?{' '}
-            <Link
+            <Link 
               component={RouterLink}
               to="/login"
               sx={{
                 color: '#ffab00',
                 '&:hover': { color: '#ffd600' },
-              }}
-            >
-              Log in
+              }}>
+              User Login
             </Link>
           </Typography>
         </Sheet>

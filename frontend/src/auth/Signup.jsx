@@ -9,10 +9,9 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
-import axios from 'axios';
-import './App.css';
+import '../App.css';
 
-// Custom theme inspired by GTA5
+// Custom theme inspired by GTA5 (same as login component)
 const theme = extendTheme({
   colorSchemes: {
     dark: {
@@ -38,68 +37,36 @@ const theme = extendTheme({
   },
 });
 
-export default function Login() {
+export default function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [alert, setAlert] = useState('');
   const navigate = useNavigate();
-  
-  const API_URL = 'https://website-8t82.onrender.com'; // Consider moving this to an environment variable
 
   const handleSubmit = async (event) => {
-  event.preventDefault();
-  setMessage('');
-  
-  try {
-    console.log('Attempting to login...');
-    const response = await axios.post(`${API_URL}/api/login`, 
-      { username, password },
-      { // Important for CORS if using cookies
+    event.preventDefault();
+    try {
+      const response = await fetch('https://website-8t82.onrender.com/api/register', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-      }
-    );
-    
-    console.log('Login response:', response);
-
-    if (response.data && response.data.token) {
-      localStorage.setItem('token', response.data.token);
-      setMessage(response.data.message || 'Login successful');
-      setAlert({
-        type: 'success',
-        message: response.data.message || 'Login successful',
+        body: JSON.stringify({ username, password }),
       });
-      navigate('/');
-    } else {
-      setAlert({
-        type: 'error',
-        message: response.data.message || 'Login failed',
-      })
-      throw new Error('Invalid response from server');
-    }
-  } catch (error) {
-    console.error('Login error:', error);
 
-    if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      console.error('Error data:', error.response.data);
-      console.error('Error status:', error.response.status);
-      console.error('Error headers:', error.response.headers);
-      setMessage(`Error: ${error.response.status} - ${error.response.data.message || 'Unknown error'}`);
-    } else if (error.request) {
-      // The request was made but no response was received
-      console.error('Error request:', error.request);
-      setMessage('No response from server. Please check your network connection.');
-    } else {
-      // Something happened in setting up the request that triggered an Error
-      console.error('Error message:', error.message);
-      setMessage(`An unexpected error occurred: ${error.message}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      setMessage('Account created successfully');
+      // Redirect to login page after a short delay
+      setTimeout(() => navigate('/login'), 2000);
+    } catch (error) {
+      setMessage(error.message || 'Error creating account');
     }
-  }
-};
+  };
+
   return (
     <CssVarsProvider theme={theme} defaultMode="dark">
       <CssBaseline />
@@ -112,6 +79,9 @@ export default function Login() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
+          backgroundImage: 'url("/api/placeholder/1920/1080")', // Placeholder for a GTA5-style background image
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
         <Sheet
@@ -135,7 +105,7 @@ export default function Login() {
               textAlign: 'center',
             }}
           >
-            Epsilon Program Login
+            Join Los Santos
           </Typography>
           <form onSubmit={handleSubmit}>
             <FormControl sx={{ mb: 2 }}>
@@ -175,7 +145,7 @@ export default function Login() {
                 '&:hover': { backgroundColor: '#ffd600' },
               }}
             >
-              Enter Los Santos
+              Create Account
             </Button>
           </form>
           {message && (
@@ -190,25 +160,16 @@ export default function Login() {
               color: '#bdbdbd',
             }}
           >
-            New to Los Santos?{' '}
+            Already have an account?{' '}
             <Link
               component={RouterLink}
-              to="/signup"
+              to="/login"
               sx={{
                 color: '#ffab00',
                 '&:hover': { color: '#ffd600' },
               }}
             >
-              Create an account
-            </Link>
-            <Link 
-              component={RouterLink}
-              to="/admin-login"
-              sx={{
-                color: '#ffab00',
-                '&:hover': { color: '#ffd600' },
-              }}>
-              Admin Login
+              Log in
             </Link>
           </Typography>
         </Sheet>

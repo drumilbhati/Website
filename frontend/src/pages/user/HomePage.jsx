@@ -7,12 +7,11 @@ import Grid from '@mui/joy/Grid';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import { Sun, Moon, Eye } from 'lucide-react';
-import './App.css';
-import EpsilonTestimonials from './Testimonials.jsx';
-import Navbar from './Navbar.jsx';
+import EpsilonTestimonials from '../../components/Testimonials.jsx';
+import Navbar from '../../components/Navbar.jsx';
 import { useNavigate } from 'react-router-dom';
-import Map from './Map.jsx';
-import EpsilonEnquiryForm from './EnquiryForm.jsx';
+import Map from '../../components/Map.jsx';
+import EpsilonEnquiryForm from '../../components/EnquiryForm.jsx';
 
 const theme = extendTheme({
   colorSchemes: {

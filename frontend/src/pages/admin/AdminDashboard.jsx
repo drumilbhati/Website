@@ -12,7 +12,7 @@ import ModalDialog from '@mui/joy/ModalDialog';
 import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 import { PlusCircle, Trash2 } from 'lucide-react';
-import DropDown from './DropDown';
+import DropDown from '../../components/DropDown';
 import axios from 'axios';
 
 const theme = extendTheme({

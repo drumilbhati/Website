@@ -8,7 +8,7 @@ import CardContent from '@mui/joy/CardContent';
 import Button from '@mui/joy/Button';
 import Input from '@mui/joy/Input';
 import Box from '@mui/joy/Box';
-import Navbar from './Navbar.jsx';
+import Navbar from '../../components/Navbar.jsx';
 import axios from 'axios';
 import { Search } from 'lucide-react';
 

@@ -12,8 +12,7 @@ import ModalClose from '@mui/joy/ModalClose';
 import Input from '@mui/joy/Input';
 import { DollarSign, Zap, Brain, ChevronUp, Eye } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Navbar from './Navbar.jsx';
-import './App.css';
+import Navbar from '../../components/Navbar.jsx';
 import axios from 'axios';
 
 const theme = extendTheme({

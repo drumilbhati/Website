@@ -3,7 +3,7 @@ import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
 import Typography from '@mui/joy/Typography';
 import FormControl from '@mui/joy/FormControl';
-// import FormLabel from '@mui/joy/FormLabel';
+import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Textarea from '@mui/joy/Textarea';
 import Button from '@mui/joy/Button';
@@ -97,7 +97,7 @@ const EpsilonEnquiryForm = () => {
           Contact the Epsilon Program
         </Typography>
         <FormControl>
-          {/* <FormLabel sx={{ color: '#ffab00' }}>Name</FormLabel> */}
+          <FormLabel sx={{ color: '#ffab00' }}>Name</FormLabel>
           <Input
             name="name"
             value={formData.name}
@@ -110,7 +110,7 @@ const EpsilonEnquiryForm = () => {
           />
         </FormControl>
         <FormControl>
-          {/* <FormLabel sx={{ color: '#ffab00' }}>Email</FormLabel> */}
+          <FormLabel sx={{ color: '#ffab00' }}>Email</FormLabel>
           <Input
             name="email"
             type="email"
@@ -124,7 +124,7 @@ const EpsilonEnquiryForm = () => {
           />
         </FormControl>
         <FormControl>
-          {/* <FormLabel sx={{ color: '#ffab00' }}>Message</FormLabel> */}
+          <FormLabel sx={{ color: '#ffab00' }}>Message</FormLabel>
           <Textarea
             name="message"
             value={formData.message}
