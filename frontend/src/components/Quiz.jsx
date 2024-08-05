@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Typography, Sheet, Card, CardContent, Stack } from '@mui/joy';
-import backgroundImage from './assets/latest.png'; 
+import backgroundImage from '../assets/latest.png'; 
 const questions = [
     {
       question: "What is the name of the main character in GTA V?",
@@ -60,9 +60,6 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
-
-const imageElement = document.querySelector('img');
-const imagePath = '/assets/latest.png';
 
   const handleAnswer = (isCorrect) => {
     if (isCorrect) {
