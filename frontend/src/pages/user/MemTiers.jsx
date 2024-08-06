@@ -79,8 +79,11 @@ const MembershipTiers = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://website-8t82.onrender.com/api/profile', {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+          token: localStorage.getItem('token');
         });
+        if (response.status !== 200) {
+          throw new Error('Network response was not ok');
+        }
         console.log(response.data);
         setUserBalance(response.data.balance);
         setMembership(response.data.membership);
@@ -146,7 +149,7 @@ const MembershipTiers = () => {
               mt: 2
             }}
           >
-            Your current membership: ${membership}
+            Your current membership: {membership}
           </Typography>
           <Typography
             level="body1" 
