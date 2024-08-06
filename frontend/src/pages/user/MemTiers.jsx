@@ -11,6 +11,7 @@ const MembershipTiers = () => {
   const [userBalance, setUserBalance] = useState(null); // Initialize as null
   const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
+  const [membership, setMembership] = useState('None');
 
   const tiers = [
     {
@@ -82,6 +83,7 @@ const MembershipTiers = () => {
         });
         console.log(response.data);
         setUserBalance(response.data.balance);
+        setMembership(response.data.membership);
       } catch (error) {
         console.error('Error fetching user balance:', error);
         setAlert({
@@ -134,22 +136,7 @@ const MembershipTiers = () => {
               textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
               animation: 'fadeIn 1s ease-in'
             }}
-          >
-            {/* <Sheet
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              minWidth: '100vh',
-              top: 0,
-              left: 0,
-              
-              
-              zIndex: 9999
-            }}
-            >
-              <Navbar/>
-            </Sheet> */}
-            
+          > 
             Select Your Membership
           </Typography>
           <Typography 
@@ -159,6 +146,14 @@ const MembershipTiers = () => {
               mt: 2
             }}
           >
+            Your current membership: ${membership}
+          </Typography>
+          <Typography
+            level="body1" 
+            sx={{ 
+              color: '#FFF',
+              mt: 2
+            }}>
             Your balance: ${userBalance !== null ? userBalance : '1000000'}
           </Typography>
         </Box>
