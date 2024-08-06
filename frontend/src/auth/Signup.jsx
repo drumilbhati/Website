@@ -48,10 +48,6 @@ export default function SignUp() {
     event.preventDefault();
     try {
       const response = await axios.post('https://website-8t82.onrender.com/api/register', { username, password });
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
 
       const data = await response.json();
       setMessage('Account created successfully');
