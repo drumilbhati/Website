@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Typography, Sheet, Card, CardContent, Stack } from '@mui/joy';
-import backgroundImage from '../assets/latest.png'; 
+// import backgroundImage from '../assets/latest.png'; 
 const questions = [
     {
       question: "What is the name of the main character in GTA V?",
@@ -87,15 +87,15 @@ const Quiz = () => {
   };
 
   return (
-    <div style={{
-      backgroundImage: `url(${backgroundImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }}>
+    // <div style={{
+    //   backgroundImage: `url(${backgroundImage})`,
+    //   backgroundSize: 'cover',
+    //   backgroundPosition: 'center',
+    //   minHeight: '100vh',
+    //   display: 'flex',
+    //   alignItems: 'center',
+    //   justifyContent: 'center'
+    // }}>
       <Sheet sx={{ 
         maxWidth: 600, 
         margin: 'auto', 
@@ -160,7 +160,7 @@ const Quiz = () => {
           </Card>
         )}
       </Sheet>
-    </div>
+    // </div>
   );
 };
 
