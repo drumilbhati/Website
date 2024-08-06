@@ -79,7 +79,7 @@ const MembershipTiers = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://website-8t82.onrender.com/api/profile', {
-          token: localStorage.getItem('token');
+          token: localStorage.getItem('token')
         });
         if (response.status !== 200) {
           throw new Error('Network response was not ok');
