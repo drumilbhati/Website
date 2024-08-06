@@ -51,6 +51,8 @@ export default function Login() {
   try {
     console.log('Attempting to login...');
     const response = login(username, password);
+    console.log('Response:', response);
+    
     
     console.log('Login response:', response);
 
