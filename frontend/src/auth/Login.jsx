@@ -9,7 +9,6 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
-import axios from 'axios';
 
 // Custom theme inspired by GTA5
 const theme = extendTheme({
@@ -44,7 +43,7 @@ export default function Login() {
   const [alert, setAlert] = useState('');
   const navigate = useNavigate();
   
-  const API_URL = 'https://website-8t82.onrender.com'; // Consider moving this to an environment variable
+  //const API_URL = 'https://website-8t82.onrender.com'; // Consider moving this to an environment variable
 
   const handleSubmit = async (event) => {
   event.preventDefault();
@@ -52,14 +51,7 @@ export default function Login() {
   
   try {
     console.log('Attempting to login...');
-    const response = await axios.post(`${API_URL}/api/login`, 
-      { username, password },
-      { // Important for CORS if using cookies
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    const response = auth_api.login(username, password);
     
     console.log('Login response:', response);
 
