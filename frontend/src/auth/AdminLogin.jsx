@@ -9,7 +9,7 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
-import { adminLogin } from '../api/auth_api';
+import axios from 'axios';
 
 // Custom theme inspired by GTA5
 const theme = extendTheme({
@@ -46,7 +46,7 @@ export default function AdminLogin() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = adminLogin(username, password);
+      const response = await axios.post('https://website-8t82.onrender.com/api/admin-login', { username, password });
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
         setMessage(response.data.message || 'Login successful');

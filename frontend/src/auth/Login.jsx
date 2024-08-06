@@ -9,7 +9,6 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
-import { login } from '../api/auth_api';
 
 // Custom theme inspired by GTA5
 const theme = extendTheme({
@@ -44,30 +43,30 @@ export default function Login() {
   const [alert, setAlert] = useState('');
   const navigate = useNavigate();
   
+  //const API_URL = 'https://website-8t82.onrender.com'; // Consider moving this to an environment variable
+
   const handleSubmit = async (event) => {
   event.preventDefault();
   setMessage('');
   
   try {
     console.log('Attempting to login...');
-    const response = login(username, password);
-    console.log('Response:', response);
-    
+    const response = auth_api.login(username, password);
     
     console.log('Login response:', response);
 
     if (response.data && response.data.token) {
       localStorage.setItem('token', response.data.token);
-      setMessage('Login successful');
+      setMessage(response.data.message || 'Login successful');
       setAlert({
         type: 'success',
-        message: 'Login successful',
+        message: response.data.message || 'Login successful',
       });
       navigate('/');
     } else {
       setAlert({
         type: 'error',
-        message: 'Login failed',
+        message: response.data.message || 'Login failed',
       })
       throw new Error('Invalid response from server');
     }
@@ -80,15 +79,15 @@ export default function Login() {
       console.error('Error data:', error.response.data);
       console.error('Error status:', error.response.status);
       console.error('Error headers:', error.response.headers);
-      setMessage(`Error: ${error.response.status} - ${'Unknown error'}`);
+      setMessage(`Error: ${error.response.status} - ${error.response.data.message || 'Unknown error'}`);
     } else if (error.request) {
       // The request was made but no response was received
       console.error('Error request:', error.request);
       setMessage('No response from server. Please check your network connection.');
     } else {
       // Something happened in setting up the request that triggered an Error
-      //console.error('Error message:', error.message);
-      //setMessage(`An unexpected error occurred: ${error.message}`);
+      console.error('Error message:', error.message);
+      setMessage(`An unexpected error occurred: ${error.message}`);
     }
   }
 };

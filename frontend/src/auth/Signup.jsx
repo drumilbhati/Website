@@ -10,7 +10,6 @@ import Button from '@mui/joy/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
 import '../App.css';
-import { register } from '../api/auth_api';
 
 // Custom theme inspired by GTA5 (same as login component)
 const theme = extendTheme({
@@ -47,7 +46,7 @@ export default function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = register(username, password);
+      const response = auth_api.register(username, password);
       
       if (!response.ok) {
         throw new Error('Network response was not ok');
