@@ -9,6 +9,7 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/joy/Link';
+import { login } from '../api/auth_api';
 
 // Custom theme inspired by GTA5
 const theme = extendTheme({
@@ -51,7 +52,7 @@ export default function Login() {
   
   try {
     console.log('Attempting to login...');
-    const response = auth_api.login(username, password);
+    const response = login(username, password);
     
     console.log('Login response:', response);
 
