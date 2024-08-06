@@ -29,3 +29,17 @@ export const register = async (username, password) => {
         throw error;
     }
 }
+
+export const adminLogin = async (username, password) => {
+    try{
+        console.log('Attempting to login');
+        const response = await axios.post(`${BASE_URL}/api/admin-login`, {
+            username,
+            password,
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Login error:', error);
+        throw error;
+    }
+}
