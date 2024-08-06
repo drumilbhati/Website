@@ -55,6 +55,7 @@ const MembershipTiers = () => {
       });
       if (response.status === 200) {
         setUserBalance(response.data.balance);
+        setMembership(response.data.membership);
         setAlert({
           type: 'success',
           message: `Successfully subscribed to ${selectedTier.name}. Your new balance is $${response.data.balance}.`
