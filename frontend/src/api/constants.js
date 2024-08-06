@@ -1,1 +1,1 @@
-export const API_URL = 'https://website-8t82.onrender.com'; // Consider moving this to an environment variable
+export const API_URL = 'https://website-8t82.onrender.com';
