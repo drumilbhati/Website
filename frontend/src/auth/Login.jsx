@@ -51,8 +51,14 @@ export default function Login() {
   
   try {
     console.log('Attempting to login...');
-    const response = auth_api.login(username, password);
-    
+    const response = await axios.post(`${API_URL}/api/login`, 
+      { username, password },
+      { // Important for CORS if using cookies
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
     console.log('Login response:', response);
 
     if (response.data && response.data.token) {

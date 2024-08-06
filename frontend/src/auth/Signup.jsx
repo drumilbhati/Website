@@ -46,7 +46,13 @@ export default function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = auth_api.register(username, password);
+      const response = await fetch('https://website-8t82.onrender.com/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
       
       if (!response.ok) {
         throw new Error('Network response was not ok');
