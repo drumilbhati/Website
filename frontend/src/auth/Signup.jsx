@@ -69,9 +69,6 @@ export default function SignUp() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundImage: 'url("/api/placeholder/1920/1080")', // Placeholder for a GTA5-style background image
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
         }}
       >
         <Sheet
