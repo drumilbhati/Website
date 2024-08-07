@@ -90,10 +90,10 @@ const MembershipTiers = () => {
         setMembership(response.data.membership);
       } catch (error) {
         console.error('Error fetching user balance:', error);
-        setAlert({
-          type: 'error',
-          //message: 'Error fetching user balance. Please try again later.'
-        });
+        // setAlert({
+        //   type: 'error',
+        //   message: 'Error fetching user balance. Please try again later.'
+        // });
       }
     };
     fetchData();
