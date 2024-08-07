@@ -49,9 +49,11 @@ export default function SignUp() {
     try {
       const response = await axios.post('https://website-8t82.onrender.com/api/register', { username, password });
 
-      const data = await response.json();
-      setMessage('Account created successfully');
-      navigate('/login');
+      
+      if (response.data) {
+        setMessage('Account created successfully');
+        navigate('/login');
+      }
     } catch (error) {
       setMessage(error.message || 'Error creating account');
     }
