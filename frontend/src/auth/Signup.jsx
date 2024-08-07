@@ -52,7 +52,7 @@ export default function SignUp() {
       const data = await response.json();
       setMessage('Account created successfully');
       // Redirect to login page after a short delay
-      setTimeout(() => navigate('/login'), 2000);
+      //setTimeout(() => navigate('/login'), 2000);
     } catch (error) {
       setMessage(error.message || 'Error creating account');
     }
